@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="sm" fixed="top" sticky="true" id="header">
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-      <b-navbar-brand style="font-size: 23px; padding-left: 50px; font-weight: bold back">
+      <b-navbar-brand style="font-size: 23px; padding-left: 20px; font-weight: bold back">
         <img src="logo.png" alt="" height="50" />
         <a class="logo" href="/">New Horizons</a>
       </b-navbar-brand>
@@ -53,14 +53,6 @@ function scrollFunction() {
   -o-transition: all ease-out 0.5s;
   transition: all ease-out 0.5s;
   padding: 0px;
-}
-
-#__BVID__622561___BV_dropdown__{
-  color: black !important;
-}
-
-#__BVID__622561___BV_dropdown__:hover{
-  color: black !important;
 }
 
 #i-logo {
