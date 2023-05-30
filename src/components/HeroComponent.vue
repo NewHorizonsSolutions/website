@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero">
+    <section class="hero" style="width: fit-content;">
       <header id="header" class="p-5"></header>
       <header class="hero-header" style="display: flex; justify-content: space-around">
         <div style="padding-top: 100px">

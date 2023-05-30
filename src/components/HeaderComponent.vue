@@ -3,11 +3,15 @@
     <b-navbar toggleable="sm" fixed="top" sticky="true" id="header">
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
       <b-navbar-brand style="font-size: 23px; padding-left: 70px; font-weight: bold back">
-        <img src="logo.png" alt="" height="50">
+        <img src="logo.png" alt="" height="50" />
         <a class="logo" href="/">New Horizons</a>
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
+          <b-nav-item-dropdown text="EN" right>
+            <b-dropdown-item href="#">🇬🇧 EN</b-dropdown-item>
+            <b-dropdown-item href="#">🇪🇸 ES</b-dropdown-item>
+          </b-nav-item-dropdown>
           <b-nav-text><a href="/#aboutme">Portfolio</a></b-nav-text>
           <b-nav-text><a href="/#mystack">Team</a></b-nav-text>
           <b-nav-text><a href="/#portfolio">Services</a></b-nav-text>
@@ -51,6 +55,14 @@ function scrollFunction() {
   padding: 0px;
 }
 
+#__BVID__622561___BV_dropdown__{
+  color: black !important;
+}
+
+#__BVID__622561___BV_dropdown__:hover{
+  color: black !important;
+}
+
 #i-logo {
   color: white;
   margin: 0px 0px 5px 5px;
@@ -73,7 +85,7 @@ function scrollFunction() {
 .button-primary:hover {
   color: black;
   background-color: transparent;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 a {
@@ -122,8 +134,7 @@ nav li a:hover {
 }
 
 @media screen and (max-width: 575px) {
-
-  nav li{
+  nav li {
     text-align: center;
     padding: 20px;
   }
