@@ -1,14 +1,16 @@
 <script setup>
-import { RouterView } from 'vue-router'
-import HeaderComponent from './components/HeaderComponent.vue'
+// import { RouterView } from 'vue-router'
+// import HeaderComponent from './components/HeaderComponent.vue'
+import InProgress from './components/InProgress.vue'
 </script>
 
 <template>
-  <HeaderComponent />
-  <router-view></router-view>
+  <!-- <HeaderComponent /> -->
+  <!-- <router-view></router-view> -->
+  <InProgress />
 </template>
-
 <style scoped>
+
 header {
   line-height: 1.5;
   max-height: 100vh;
