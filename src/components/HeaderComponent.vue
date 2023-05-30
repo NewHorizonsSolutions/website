@@ -2,13 +2,12 @@
   <div>
     <b-navbar toggleable="sm" fixed="top" sticky="true" id="header">
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-      <b-navbar-brand style="font-size: 23px; padding-left: 70px; font-weight: bold back">
+      <b-navbar-brand style="font-size: 23px; padding-left: 50px; font-weight: bold back">
         <img src="logo.png" alt="" height="50" />
         <a class="logo" href="/">New Horizons</a>
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
-          <h1>Esto es desa</h1>
           <b-nav-item-dropdown text="EN" right>
             <b-dropdown-item href="#">🇬🇧 EN</b-dropdown-item>
             <b-dropdown-item href="#">🇪🇸 ES</b-dropdown-item>
