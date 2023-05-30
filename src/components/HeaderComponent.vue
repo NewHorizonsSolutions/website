@@ -3,6 +3,7 @@
     <b-navbar toggleable="sm" fixed="top" sticky="true" id="header">
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
       <b-navbar-brand style="font-size: 23px; padding-left: 70px; font-weight: bold back">
+        <img src="logo.png" alt="" height="50">
         <a class="logo" href="/">New Horizons</a>
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
@@ -26,25 +27,28 @@ export default {
 }
 function scrollFunction() {
   if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-    document.getElementById('header').style.background =
-      'linear-gradient(to top, rgb(223, 233, 243) 0%, white 100%)'
+    // document.getElementById('header').style.background =
+    //   'linear-gradient(to top, rgb(223, 233, 243) 0%, white 100%)'
     document.getElementById('i-logo').style.color = 'black'
     document.getElementById('header').style.transitionProperty = '1s'
   } else {
-    document.getElementById('header').style.background = 'transparent'
+    // document.getElementById('header').style.background = 'transparent'
     document.getElementById('i-logo').style.color = '#42b983'
   }
 }
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
 #header {
-  background: transparent;
+  background: white;
   -webkit-transition: all ease-out 0.5s;
   -moz-transition: all ease-out 0.5s;
   -o-transition: all ease-out 0.5s;
   transition: all ease-out 0.5s;
-  padding: 8px 0px;
+  padding: 0px;
 }
 
 #i-logo {
@@ -53,7 +57,7 @@ function scrollFunction() {
 }
 
 .button {
-  padding: 0.5em 1.5em;
+  padding: 0.6em 1.3em;
   color: white;
   text-decoration: none;
   border: 0.1em solid white;
@@ -61,12 +65,13 @@ function scrollFunction() {
 }
 
 .button-primary {
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: black;
+  border: 1.5px solid black;
 }
 
 .button-primary:hover {
-  color: white;
+  color: black;
   background-color: transparent;
   transition: .5s;
 }
@@ -77,9 +82,12 @@ a {
   color: white;
 }
 
-.logo:hover {
+.logo {
   color: black;
-  transition: 1s;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 nav {
@@ -90,10 +98,11 @@ nav li a {
   font-weight: bold;
   text-decoration: none;
   transition: 0.3s;
-  color: white;
+  color: black;
   margin: 20px;
   font-size: 14px;
   letter-spacing: 3px;
+  font-family: 'DM Sans', sans-serif;
 }
 
 nav li a:hover {
@@ -113,16 +122,18 @@ nav li a:hover {
 }
 
 @media screen and (max-width: 575px) {
+
+  nav li{
+    text-align: center;
+    padding: 20px;
+  }
+
   nav li a {
     font-size: 15px;
   }
 
   #i-logo {
     color: black !important;
-  }
-
-  #header {
-    background: linear-gradient(to top, #dfe9f3 0%, white 100%) !important;
   }
 }
 </style>

@@ -1,18 +1,28 @@
 <template>
   <div>
     <section class="hero">
-      <header id="header" class="p-5">
+      <header id="header" class="p-5"></header>
+      <header class="hero-header" style="display: flex; justify-content: space-around">
+        <div style="padding-top: 100px">
+          <h1 class="hero-title pl-2" style="padding-bottom: 0px">We improve you.</h1>
+          <h1 class="hero-title pl-5" style="font-size: 70px; padding-top: 20px">
+            Exceed your horizons.
+          </h1>
+          <p class="w-75 mt-5 pl-5" id="description">
+            We deliver comprehensive development solutions from end to end, we seek to streamline
+            your production tasks. Our main objective is to add value to your business.
+          </p>
+        </div>
+        <div style="padding-top: 50px; padding-right: 50px">
+          <img src="laptop.png" id="pc" alt="" style="height: 400px; width: 450px" />
+        </div>
       </header>
-      <header class="hero-header">
-        <h1 class="hero-title pl-2" style="padding-bottom: 0px;">We improve you.</h1>
-        <h1 class="hero-title pl-5" style="font-size: 70px; padding-top: 20px;">Exceed your horizons.</h1>
-      </header>
-      <footer class="hero-footer p-5">
-        <a class="button button-primary" style="padding: 10px 50px;" href="#">English</a>
-        <a class="button" style="padding: 10px 50px;" href="#">Spanish</a>
+      <footer class="hero-footer pl-5">
+        <a class="button button-primary" href="#">Let's Talk</a>
+        <a class="button" href="#">Know us</a>
       </footer>
     </section>
-    <article>
+    <!-- <article>
       <h2>Some additional content</h2>
       <p>
         The rest of the page content continues below the hero. You can use the hero at the top of
@@ -29,11 +39,13 @@
         pharetra habitasse elementum ut bibendum per sociosqu phasellus etiam, velit faucibus
         integer torquent leo elementum maecenas netus.
       </p>
-    </article>
+    </article> -->
   </div>
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
 body {
   font-family: 'PT Sans Caption', 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif;
@@ -58,17 +70,19 @@ body {
   font-size: 6vh;
 }
 
+#description {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2.5vh;
+}
 
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
   padding: 1em;
   box-sizing: border-box;
   color: white;
-  background: url(https://images.unsplash.com/photo-1500417148159-68083bd7333a) center center
-    no-repeat;
+  background: rgb(0, 0, 0);
   background-size: cover;
 }
 
@@ -86,16 +100,48 @@ body {
   }
 }
 
+@media screen and (max-width: 922px) {
+  #pc {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .hero-header,
+  #description,
+  .hero-footer {
+    text-align: center;
+    margin: auto;
+  }
+  .hero-header {
+    padding-top: 0px;
+  }
+  .hero-footer {
+    margin-top: 50px;
+  }
+  .button {
+    padding: 0.8em 2em !important;
+  }
+}
+
 .hero-footer {
   display: flex;
   margin-bottom: 1em;
+  padding: 5px 0px 90px 5px;
 }
 
 .button {
-  padding: 0.5em 0.67em;
+  padding: 10px 50px;
   color: white;
   text-decoration: none;
   border: 0.1em solid white;
+  border-radius: 15px;
+  margin-right: 20px;
+  transition: 1s;
+}
+
+.button:hover {
+  padding: 10px 52px !important;
 }
 
 .button-primary {
