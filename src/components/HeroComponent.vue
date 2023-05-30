@@ -13,8 +13,8 @@
             your production tasks. Our main objective is to add value to your business.
           </p>
         </div>
-        <div style="padding-top: 50px; padding-right: 50px">
-          <img src="laptop.png" id="pc" alt="" style="height: 400px; width: 450px" />
+        <div style="padding-top: 80px; padding-right: 50px">
+          <img src="laptop.png" id="pc" alt="" style="height: 400px; width: 480px" />
         </div>
       </header>
       <footer class="hero-footer pl-5">
