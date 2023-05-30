@@ -8,6 +8,7 @@
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
+          <h1>Esto es desa</h1>
           <b-nav-item-dropdown text="EN" right>
             <b-dropdown-item href="#">🇬🇧 EN</b-dropdown-item>
             <b-dropdown-item href="#">🇪🇸 ES</b-dropdown-item>
