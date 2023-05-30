@@ -82,7 +82,7 @@ body {
   padding: 1em;
   box-sizing: border-box;
   color: white;
-  background: rgb(0, 0, 0);
+  background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
   background-size: cover;
 }
 
@@ -138,10 +138,6 @@ body {
   border-radius: 15px;
   margin-right: 20px;
   transition: 1s;
-}
-
-.button:hover {
-  padding: 10px 52px !important;
 }
 
 .button-primary {

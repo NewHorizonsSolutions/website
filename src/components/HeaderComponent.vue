@@ -66,7 +66,7 @@ function scrollFunction() {
 
 .button-primary {
   color: white;
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   border: 1.5px solid black;
 }
 
