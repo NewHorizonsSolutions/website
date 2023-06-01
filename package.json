@@ -12,6 +12,7 @@
   "dependencies": {
     "bootstrap": "^5.2.3",
     "bootstrap-vue-3": "^0.5.1",
+    "jquery": "^3.7.0",
     "pinia": "^2.0.36",
     "sass": "^1.62.1",
     "vue": "^3.3.4",
