@@ -12,10 +12,11 @@
             <b-dropdown-item href="#">🇬🇧 EN</b-dropdown-item>
             <b-dropdown-item href="#">🇪🇸 ES</b-dropdown-item>
           </b-nav-item-dropdown>
-          <b-nav-text><a href="/#aboutme">Portfolio</a></b-nav-text>
-          <b-nav-text><a href="/#mystack">Team</a></b-nav-text>
-          <b-nav-text><a href="/#portfolio">Services</a></b-nav-text>
-          <b-nav-text><a href="/#path">Culture</a></b-nav-text>
+          <b-nav-text><a href="/#services">Services</a></b-nav-text>
+          <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
+          <b-nav-text><a href="/#portfolio">Portfolio</a></b-nav-text>
+          <b-nav-text><a href="/#team">Team</a></b-nav-text>
+          <b-nav-text><a href="/#culture">Culture</a></b-nav-text>
           <b-nav-text><a class="button button-primary" href="#">Contact</a></b-nav-text>
         </b-navbar-nav>
       </b-collapse>
@@ -101,27 +102,34 @@ nav {
 nav li a {
   font-weight: bold;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.1s;
   color: black;
   margin: 20px;
   font-size: 14px;
   letter-spacing: 3px;
   font-family: 'DM Sans', sans-serif;
+  padding-bottom: 6px;
 }
 
 nav li a:hover {
-  color: black;
+  border-bottom: 3px solid;
 }
 
-@media screen and (max-width: 922px) {
+@media screen and (max-width: 1070px) {
   nav li a {
-    font-size: 12px;
+    margin: 8px;
   }
 }
 
-@media screen and (max-width: 829px) {
+@media screen and (max-width: 940px) {
   nav li a {
-    font-size: 5px;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 885px) {
+  nav li a {
+    visibility: hidden;
   }
 }
 
@@ -132,6 +140,7 @@ nav li a:hover {
   }
 
   nav li a {
+    visibility: inherit;
     font-size: 15px;
   }
 

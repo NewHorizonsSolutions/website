@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero" style="width: fit-content;">
+    <section class="hero" style="width: fit-content">
       <header id="header" class="p-5"></header>
       <header class="hero-header" style="display: flex; justify-content: space-around">
         <div style="padding-top: 100px">
@@ -14,32 +14,27 @@
           </p>
         </div>
         <div style="padding-top: 80px; padding-right: 50px">
-          <img src="laptop.png" id="pc" alt="" style="height: 400px; width: 480px" />
+          <img src="laptop.png" id="pc" alt="" style="height: 420px; width: 485px" />
         </div>
       </header>
       <footer class="hero-footer pl-5">
         <a class="button button-primary" href="#">Let's Talk</a>
-        <a class="button" href="#">Know us</a>
+        <a class="button right" href="#">Know us</a>
       </footer>
     </section>
-    <!-- <article>
-      <h2>Some additional content</h2>
-      <p>
-        The rest of the page content continues below the hero. You can use the hero at the top of
-        your page, e.g. the home page. A hero is great to display a high quality picture together
-        with tasty title.
-      </p>
-      <p>
-        Ad donec tincidunt torquent ultricies convallis sodales faucibus magna, fringilla lorem
-        blandit sollicitudin donec faucibus curae orci molestie, et proin curae aliquet venenatis
-        ligula amet vivamus orci varius arcu.
-      </p>
-      <p>
-        Laoreet fusce condimentum venenatis quisque imperdiet ornare cras faucibus convallis,
-        pharetra habitasse elementum ut bibendum per sociosqu phasellus etiam, velit faucibus
-        integer torquent leo elementum maecenas netus.
-      </p>
-    </article> -->
+    <div class="custom-shape-divider-bottom-1685639774">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -82,7 +77,7 @@ body {
   padding: 1em;
   box-sizing: border-box;
   color: white;
-  background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
+  background: linear-gradient(to bottom, rgb(90, 89, 89) 0%, rgb(0, 0, 0) 99.4%);
   background-size: cover;
   height: 100vh;
 }
@@ -98,6 +93,12 @@ body {
 @media only screen and (min-width: 32em) {
   .hero-title {
     font-size: 16vh;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .hero {
+    height: 100%;
   }
 }
 
@@ -123,6 +124,10 @@ body {
   .button {
     padding: 0.8em 2em !important;
   }
+
+  svg{
+    width: calc(295% + 1.5px) !important;
+  }
 }
 
 .hero-footer {
@@ -139,16 +144,43 @@ body {
   border-radius: 15px;
   margin-right: 20px;
   transition: 1s;
+  background: transparent;
+}
+
+.right:hover {
+  box-shadow: inset 400px 0 0 0 white;
+  color: black;
 }
 
 .button-primary {
   color: black;
   background-color: white;
+  top: 0;
+  position: relative;
+  transition: top ease 0.5s;
 }
 
-article {
-  max-width: 36em;
-  margin: 0 auto;
-  padding: 1em;
+.button-primary:hover {
+  top: -6px;
+}
+.custom-shape-divider-bottom-1685639774 {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1685639774 svg {
+  position: relative;
+  display: block;
+  width: calc(135% + 1.5px);
+  height: 97px;
+  background: black;
+}
+
+.custom-shape-divider-bottom-1685639774 .shape-fill {
+  fill: #ffffff;
 }
 </style>
