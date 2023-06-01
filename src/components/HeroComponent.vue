@@ -124,10 +124,7 @@ body {
   .button {
     padding: 0.8em 2em !important;
   }
-
-  svg{
-    width: calc(295% + 1.5px) !important;
-  }
+  
 }
 
 .hero-footer {
