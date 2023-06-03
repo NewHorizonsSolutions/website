@@ -9,8 +9,8 @@
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
           <b-nav-item-dropdown text="EN" right>
-            <b-dropdown-item href="#">🇬🇧 EN</b-dropdown-item>
-            <b-dropdown-item href="#">🇪🇸 ES</b-dropdown-item>
+            <b-dropdown-item href="#">🇬🇧 English</b-dropdown-item>
+            <b-dropdown-item href="#">🇪🇸 Español</b-dropdown-item>
           </b-nav-item-dropdown>
           <b-nav-text><a href="/#services">Services</a></b-nav-text>
           <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
@@ -24,23 +24,23 @@
   </div>
 </template>
 <script>
-window.onscroll = function () {
-  scrollFunction()
-}
+// window.onscroll = function () {
+//   scrollFunction()
+// }
 export default {
   name: 'NavHeader'
 }
-function scrollFunction() {
-  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-    // document.getElementById('header').style.background =
-    //   'linear-gradient(to top, rgb(223, 233, 243) 0%, white 100%)'
-    document.getElementById('i-logo').style.color = 'black'
-    document.getElementById('header').style.transitionProperty = '1s'
-  } else {
-    // document.getElementById('header').style.background = 'transparent'
-    document.getElementById('i-logo').style.color = '#42b983'
-  }
-}
+// function scrollFunction() {
+//   if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+//     // document.getElementById('header').style.background =
+//     //   'linear-gradient(to top, rgb(223, 233, 243) 0%, white 100%)'
+//     document.getElementById('i-logo').style.color = 'black'
+//     document.getElementById('header').style.transitionProperty = '1s'
+//   } else {
+//     // document.getElementById('header').style.background = 'transparent'
+//     document.getElementById('i-logo').style.color = '#42b983'
+//   }
+// }
 </script>
 
 <style scoped>

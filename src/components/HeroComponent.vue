@@ -1,40 +1,38 @@
 <template>
   <div>
     <section class="hero">
-      <header id="header" class="p-5"></header>
-      <header class="hero-header" style="display: flex; justify-content: space-around">
-        <div style="padding-top: 100px">
-          <h1 class="hero-title pl-2" style="padding-bottom: 0px">We improve you.</h1>
-          <h1 class="hero-title pl-5" style="font-size: 70px; padding-top: 20px">
-            Exceed your horizons.
-          </h1>
-          <p class="w-75 mt-5 pl-5" id="description">
-            We deliver comprehensive development solutions from end to end, we seek to streamline
-            your production tasks. Our main objective is to add value to your business.
-          </p>
-        </div>
-        <div style="padding-top: 80px; padding-right: 50px">
-          <img src="laptop.png" id="pc" alt="" style="height: 420px; width: 485px" />
-        </div>
-      </header>
-      <footer class="hero-footer pl-5">
-        <a class="button button-primary" href="#">Let's Talk</a>
-        <a class="button right" href="#">Know us</a>
-      </footer>
+      <video
+        class="elementor-background-video-hosted elementor-html5-video"
+        autoplay
+        muted
+        playsinline
+        loop
+        src="video.mp4"
+      ></video>
+      <div class="capa"></div>
+      <div style="position: relative;">
+        <header id="header" class="p-5"></header>
+        <header class="hero-header" style="display: flex; justify-content: space-around">
+          <div style="padding-top: 100px">
+            <h1 class="hero-title pl-2" style="padding-bottom: 0px">We improve you.</h1>
+            <h1 class="hero-title pl-5" style="font-size: 70px; padding-top: 20px">
+              Exceed your horizons.
+            </h1>
+            <p class="w-50 mt-5 pl-5" id="description">
+              We deliver comprehensive development solutions from end to end, we seek to streamline
+              your production tasks. Our main objective is to add value to your business.
+            </p>
+          </div>
+          <!-- <div style="padding-top: 80px; padding-right: 50px">
+            <img src="laptop.png" id="pc" alt="" style="height: 420px; width: 485px" />
+          </div> -->
+        </header>
+        <footer class="hero-footer pl-12 pt-10">
+          <a class="button button-primary" href="#">Let's Talk</a>
+          <a class="button right" href="#">Know us</a>
+        </footer>
+      </div>
     </section>
-    <div class="custom-shape-divider-bottom-1685639774">
-      <svg
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1200 120"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-          class="shape-fill"
-        ></path>
-      </svg>
-    </div>
   </div>
 </template>
 
@@ -45,6 +43,25 @@
 body {
   font-family: 'PT Sans Caption', 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif;
   font-size: 3vh;
+}
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.capa{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1c1c1d;
+  opacity: .6;
 }
 
 #header {
@@ -77,9 +94,11 @@ body {
   padding: 1em;
   box-sizing: border-box;
   color: white;
-  background: linear-gradient(to bottom, rgb(90, 89, 89) 0%, rgb(0, 0, 0) 99.4%);
+  background: linear-gradient(to top, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
   background-size: cover;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-title {
@@ -124,7 +143,6 @@ body {
   .button {
     padding: 0.8em 2em !important;
   }
-  
 }
 
 .hero-footer {
@@ -174,7 +192,7 @@ body {
   display: block;
   width: calc(135% + 1.5px);
   height: 97px;
-  background: black;
+  background: rgb(32, 38, 57);
 }
 
 .custom-shape-divider-bottom-1685639774 .shape-fill {
