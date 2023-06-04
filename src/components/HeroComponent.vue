@@ -18,8 +18,8 @@
             <h1 class="hero-title pl-15" style="font-size: 70px; padding-top: 20px; display: flex">
               Exceed your
               <div>
-                <div class="ml-4" style="display: flex; width: 350px">
-                  <span class="text_1">horizons...</span>
+                <div class="ml-4 typewriter" style="display: flex; width: 350px">
+                  <span class="text_1 pb-5">horizons...</span>
                   <span class="text_2 pb-5">prospects.</span>
                 </div>
               </div>
@@ -245,6 +245,19 @@ video {
   .button {
     padding: 10px 50px !important;
     margin: auto;
+  }
+
+  .hero-title {
+    display: block !important;
+  }
+
+  .text_1,
+  .text_2 {
+    margin-top: 10px !important;
+  }
+
+  .typewriter {
+    margin: auto !important;
   }
 }
 
