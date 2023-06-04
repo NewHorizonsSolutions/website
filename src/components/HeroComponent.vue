@@ -164,6 +164,8 @@ video {
     margin: auto !important;
     justify-content: center !important;
     align-items: center !important;
+    padding: 50px !important;
+    padding-bottom: 100px !important;
   }
   .button {
     padding: 10px 50px !important;
