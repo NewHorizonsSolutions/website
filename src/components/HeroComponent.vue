@@ -15,8 +15,16 @@
         <header class="hero-header">
           <div style="padding-top: 100px">
             <h1 class="hero-title pl-10" style="padding-bottom: 0px">We improve you.</h1>
-            <h1 class="hero-title pl-15" style="font-size: 70px; padding-top: 20px">
-              Exceed your horizons.
+            <h1 class="hero-title pl-15" style="font-size: 70px; padding-top: 20px; display: flex">
+              Exceed your
+              <div>
+                <div class="ml-4" style="display: flex; width: 350px">
+                  <span class="text_1">horizons...</span>
+                  <span class="text_2 pb-5">prospects.</span>
+                </div>
+              </div>
+              <!-- <span class="text_1">limits.</span>
+              <span class="text_2">goals.</span> -->
             </h1>
             <p class="w-50 mt-5 pl-15" id="description">
               We deliver comprehensive development solutions from end to end, we seek to streamline
@@ -56,6 +64,72 @@
 body {
   font-family: 'PT Sans Caption', 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif;
   font-size: 3vh;
+}
+
+.text_1 {
+  animation: text1;
+}
+
+.text_2 {
+  animation: text2;
+}
+
+.text_1,
+.text_2 {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  /* width: fit-content !important; */
+  display: inline-block;
+  position: relative;
+  animation-duration: 12s;
+  animation-timing-function: steps(15, end);
+  animation-iteration-count: infinite;
+}
+
+.text_1::after,
+.text_2::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  animation: caret infinite;
+  animation-duration: 1s;
+  animation-timing-function: steps(1, end);
+}
+
+@keyframes text2 {
+  0%,
+  50%,
+  100% {
+    width: 0;
+  }
+
+  60%,
+  90% {
+    width: 21.2em;
+  }
+}
+
+@keyframes text1 {
+  0%,
+  50%,
+  100% {
+    width: 0;
+  }
+  10%,
+  40% {
+    width: 17em;
+  }
+}
+
+@keyframes caret {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 video {
@@ -98,6 +172,7 @@ video {
 #description {
   font-family: 'DM Sans', sans-serif;
   font-size: 2.5vh;
+  margin-top: 0px !important;
 }
 
 .hero {
