@@ -254,6 +254,7 @@ video {
   .text_1,
   .text_2 {
     margin-top: 10px !important;
+    padding-bottom: 0px !important;
   }
 
   .typewriter {
