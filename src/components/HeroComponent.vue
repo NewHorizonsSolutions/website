@@ -10,15 +10,15 @@
         src="video.mp4"
       ></video>
       <div class="capa"></div>
-      <div style="position: relative;">
-        <header id="header" class="p-5"></header>
-        <header class="hero-header" style="display: flex; justify-content: space-around">
+      <div style="position: relative">
+        <header id="header" style="padding-top: 100px"></header>
+        <header class="hero-header">
           <div style="padding-top: 100px">
-            <h1 class="hero-title pl-2" style="padding-bottom: 0px">We improve you.</h1>
-            <h1 class="hero-title pl-5" style="font-size: 70px; padding-top: 20px">
+            <h1 class="hero-title pl-10" style="padding-bottom: 0px">We improve you.</h1>
+            <h1 class="hero-title pl-15" style="font-size: 70px; padding-top: 20px">
               Exceed your horizons.
             </h1>
-            <p class="w-50 mt-5 pl-5" id="description">
+            <p class="w-50 mt-5 pl-15" id="description">
               We deliver comprehensive development solutions from end to end, we seek to streamline
               your production tasks. Our main objective is to add value to your business.
             </p>
@@ -26,11 +26,24 @@
           <!-- <div style="padding-top: 80px; padding-right: 50px">
             <img src="laptop.png" id="pc" alt="" style="height: 420px; width: 485px" />
           </div> -->
+          <footer class="hero-footer pl-15 pt-10">
+            <a class="button button-primary" href="#">Let's Talk</a>
+            <a class="button right" href="#">Know us</a>
+          </footer>
         </header>
-        <footer class="hero-footer pl-12 pt-10">
-          <a class="button button-primary" href="#">Let's Talk</a>
-          <a class="button right" href="#">Know us</a>
-        </footer>
+      </div>
+      <div class="custom-shape-divider-bottom-1685871786">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z"
+            class="shape-fill"
+          ></path>
+        </svg>
       </div>
     </section>
   </div>
@@ -54,14 +67,14 @@ video {
   object-fit: cover;
 }
 
-.capa{
+.capa {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: #1c1c1d;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 #header {
@@ -133,15 +146,28 @@ video {
   .hero-footer {
     text-align: center;
     margin: auto;
+    padding: auto;
   }
-  .hero-header {
-    padding-top: 0px;
+  .hero-header h1 {
+    padding: 0px !important;
+    padding-bottom: 30px !important;
+    margin: auto !important;
+  }
+
+  p {
+    width: 75% !important;
+    margin: auto !important;
+    padding: 0px !important;
   }
   .hero-footer {
     margin-top: 50px;
+    margin: auto !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
   .button {
-    padding: 0.8em 2em !important;
+    padding: 10px 50px !important;
+    margin: auto;
   }
 }
 
@@ -157,7 +183,6 @@ video {
   text-decoration: none;
   border: 0.1em solid white;
   border-radius: 15px;
-  margin-right: 20px;
   transition: 1s;
   background: transparent;
 }
@@ -172,13 +197,15 @@ video {
   background-color: white;
   top: 0;
   position: relative;
+  margin-right: 20px;
   transition: top ease 0.5s;
 }
 
 .button-primary:hover {
   top: -6px;
 }
-.custom-shape-divider-bottom-1685639774 {
+.custom-shape-divider-bottom-1685871786 {
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -187,15 +214,14 @@ video {
   transform: rotate(180deg);
 }
 
-.custom-shape-divider-bottom-1685639774 svg {
+.custom-shape-divider-bottom-1685871786 svg {
   position: relative;
   display: block;
-  width: calc(135% + 1.5px);
-  height: 97px;
-  background: rgb(32, 38, 57);
+  width: calc(100% + 1.3px);
+  height: 29px;
 }
 
-.custom-shape-divider-bottom-1685639774 .shape-fill {
-  fill: #ffffff;
+.custom-shape-divider-bottom-1685871786 .shape-fill {
+  fill: #f7f7f7;
 }
 </style>
