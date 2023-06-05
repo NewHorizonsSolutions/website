@@ -3,10 +3,9 @@
     <h1 class="title">Services</h1>
     <div>
       <b-card-group deck class="justify-center" style="padding-bottom: 300px; padding-top: 30px">
-        <div>
           <b-card
             tag="article"
-            style="max-width: 20rem; border: 2px solid black"
+            style="border: 2px solid black; width: auto;"
             class="tag m-5 box--gradient"
             align="center"
           >
@@ -17,11 +16,9 @@
               growth that identifies you.
             </b-card-text>
           </b-card>
-        </div>
-        <div>
           <b-card
             tag="article"
-            style="max-width: 20rem; border: 2px solid black"
+            style="border: 2px solid black; width: auto;"
             class="tag m-5 box--gradient"
             align="center"
           >
@@ -33,11 +30,9 @@
               unique needs.
             </b-card-text>
           </b-card>
-        </div>
-        <div>
           <b-card
             tag="article"
-            style="max-width: 20rem; border: 2px solid black"
+            style="border: 2px solid black; width: auto;"
             class="tag m-5 box--gradient"
             align="center"
           >
@@ -49,7 +44,6 @@
               deployment.
             </b-card-text>
           </b-card>
-        </div>
       </b-card-group>
     </div>
     <!-- <img src="mountain.png" id="mountain" alt="" style="width: -webkit-fill-available" /> -->
