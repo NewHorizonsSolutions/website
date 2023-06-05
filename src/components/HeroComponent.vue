@@ -82,7 +82,7 @@ body {
   /* width: fit-content !important; */
   display: inline-block;
   position: relative;
-  animation-duration: 12s;
+  animation-duration: 20s;
   animation-timing-function: steps(15, end);
   animation-iteration-count: infinite;
 }
