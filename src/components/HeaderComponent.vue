@@ -14,7 +14,7 @@
           </b-nav-item-dropdown>
           <b-nav-text><a href="/#services">Services</a></b-nav-text>
           <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
-          <b-nav-text><a href="/#portfolio">Portfolio</a></b-nav-text>
+          <b-nav-text><a href="/#customers">Customers</a></b-nav-text>
           <b-nav-text><a href="/#team">Team</a></b-nav-text>
           <b-nav-text><a href="/#culture">Culture</a></b-nav-text>
           <b-nav-text><a class="button button-primary" href="#">Contact</a></b-nav-text>
@@ -24,23 +24,19 @@
   </div>
 </template>
 <script>
-// window.onscroll = function () {
-//   scrollFunction()
-// }
+window.onscroll = function () {
+  scrollFunction()
+}
 export default {
   name: 'NavHeader'
 }
-// function scrollFunction() {
-//   if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-//     // document.getElementById('header').style.background =
-//     //   'linear-gradient(to top, rgb(223, 233, 243) 0%, white 100%)'
-//     document.getElementById('i-logo').style.color = 'black'
-//     document.getElementById('header').style.transitionProperty = '1s'
-//   } else {
-//     // document.getElementById('header').style.background = 'transparent'
-//     document.getElementById('i-logo').style.color = '#42b983'
-//   }
-// }
+function scrollFunction() {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    document.getElementById('header').style.padding = '0px'
+  } else {
+    document.getElementById('header').style.padding = '12px'
+  }
+}
 </script>
 
 <style scoped>
@@ -49,11 +45,12 @@ export default {
 
 #header {
   background: white;
-  -webkit-transition: all ease-out 0.5s;
-  -moz-transition: all ease-out 0.5s;
-  -o-transition: all ease-out 0.5s;
-  transition: all ease-out 0.5s;
-  padding: 0px;
+  -webkit-transition: all ease-out 0.3s;
+  -moz-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  padding: 12px;
+  box-shadow: inset 0 0 5px #a9a8a8;
 }
 
 #i-logo {

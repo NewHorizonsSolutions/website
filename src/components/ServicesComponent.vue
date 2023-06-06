@@ -2,48 +2,48 @@
   <section id="services">
     <h1 class="title">Services</h1>
     <div>
-      <b-card-group deck class="justify-center" style="padding-bottom: 300px; padding-top: 30px">
-          <b-card
-            tag="article"
-            style="border: 2px solid black; width: auto;"
-            class="tag m-5 box--gradient"
-            align="center"
-          >
-            <img src="design.png" alt="" height="70" class="m-5" />
-            <h3>Design</h3>
-            <b-card-text class="mb-10" style="font-family: 'DM Sans', sans-serif">
-              Creating custom software solutions to meet your unique business needs and drive the
-              growth that identifies you.
-            </b-card-text>
-          </b-card>
-          <b-card
-            tag="article"
-            style="border: 2px solid black; width: auto;"
-            class="tag m-5 box--gradient"
-            align="center"
-          >
-            <img src="development.png" alt="" height="70" class="m-5" />
+      <b-card-group deck class="justify-center" style="padding-bottom: 300px; padding-top: 90px">
+        <b-card
+          tag="article"
+          style="border: 2px solid black"
+          class="tag m-5 box--gradient size"
+          align="center"
+        >
+          <img src="design.png" alt="" height="70" class="m-5" />
+          <h3>Design</h3>
+          <b-card-text class="mb-10" style="font-family: 'DM Sans', sans-serif">
+            Creating custom software solutions to meet your unique business needs and drive the
+            growth that identifies you.
+          </b-card-text>
+        </b-card>
+        <b-card
+          tag="article"
+          style="border: 2px solid black"
+          class="tag m-5 box--gradient size"
+          align="center"
+        >
+          <img src="development.png" alt="" height="70" class="m-5" />
 
-            <h3>Development</h3>
-            <b-card-text class="mb-5" style="font-family: 'DM Sans', sans-serif">
-              Our dedicated team of experts excels in developing custom software tailored to your
-              unique needs.
-            </b-card-text>
-          </b-card>
-          <b-card
-            tag="article"
-            style="border: 2px solid black; width: auto;"
-            class="tag m-5 box--gradient"
-            align="center"
-          >
-            <img src="implementation.png" alt="" height="70" class="m-5" />
+          <h3>Development</h3>
+          <b-card-text class="mb-5" style="font-family: 'DM Sans', sans-serif">
+            Our dedicated team of experts excels in developing custom software tailored to your
+            unique needs.
+          </b-card-text>
+        </b-card>
+        <b-card
+          tag="article"
+          style="border: 2px solid black"
+          class="tag m-5 box--gradient size"
+          align="center"
+        >
+          <img src="implementation.png" alt="" height="70" class="m-5" />
 
-            <h3>Implementation</h3>
-            <b-card-text class="mb-5" style="font-family: 'DM Sans', sans-serif">
-              We specialize in end-to-end implementation, ensuring integration and successful
-              deployment.
-            </b-card-text>
-          </b-card>
+          <h3>Implementation</h3>
+          <b-card-text class="mb-5" style="font-family: 'DM Sans', sans-serif">
+            We specialize in end-to-end implementation, ensuring integration and successful
+            deployment.
+          </b-card-text>
+        </b-card>
       </b-card-group>
     </div>
     <!-- <img src="mountain.png" id="mountain" alt="" style="width: -webkit-fill-available" /> -->
@@ -94,13 +94,21 @@ $(document).on('scroll', function () {
   font-size: 40px;
   text-align: center;
   font-weight: bold;
-  padding: 50px 0px 0px;
+  padding: 80px 0px 0px;
   color: black;
+}
+
+.size {
+  max-width: 20rem;
 }
 
 @media screen and (max-width: 922px) {
   .box--gradient {
     background: linear-gradient(to bottom, #e8e9ef, #eee, #e8e9f1) !important;
+  }
+  .size {
+    width: auto !important;
+    max-width: fit-content;
   }
 }
 
