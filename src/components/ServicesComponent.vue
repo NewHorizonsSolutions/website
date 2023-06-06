@@ -1,8 +1,9 @@
 <template>
   <section id="services">
     <h1 class="title">Services</h1>
+    <p class="description w-75">Management of an agile and efficient organization when working.</p>
     <div>
-      <b-card-group deck class="justify-center" style="padding-bottom: 300px; padding-top: 90px">
+      <b-card-group deck class="justify-center" style="padding-bottom: 300px; padding-top: 60px">
         <b-card
           tag="article"
           style="border: 2px solid black"
@@ -97,7 +98,12 @@ $(document).on('scroll', function () {
   padding: 80px 0px 0px;
   color: black;
 }
-
+.description {
+  font-size: 17px;
+  letter-spacing: 3px;
+  margin: auto;
+  text-align: center;
+}
 .size {
   max-width: 20rem;
 }

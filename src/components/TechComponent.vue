@@ -56,8 +56,8 @@
 
 <style scoped>
 #technologies {
-  background: #232526; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #232526, #414345); /* Chrome 10-25, Safari 5.1-6 */
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #232526, #414345);
   background: linear-gradient(to bottom, #232526, #414345);
   color: white;
   padding: 50px 0px 50px 0px;

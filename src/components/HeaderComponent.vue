@@ -8,21 +8,21 @@
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
+          <b-nav-text><a href="/#services">Services</a></b-nav-text>
+          <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
+          <b-nav-text><a href="/#customers">Customers</a></b-nav-text>
+          <b-nav-text><a href="/#culture" class="cult">Culture</a></b-nav-text>
           <b-nav-item-dropdown text="EN" right>
             <b-dropdown-item href="#">🇬🇧 English</b-dropdown-item>
             <b-dropdown-item href="#">🇪🇸 Español</b-dropdown-item>
           </b-nav-item-dropdown>
-          <b-nav-text><a href="/#services">Services</a></b-nav-text>
-          <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
-          <b-nav-text><a href="/#customers">Customers</a></b-nav-text>
-          <b-nav-text><a href="/#team">Team</a></b-nav-text>
-          <b-nav-text><a href="/#culture">Culture</a></b-nav-text>
           <b-nav-text><a class="button button-primary" href="#">Contact</a></b-nav-text>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
+
 <script>
 window.onscroll = function () {
   scrollFunction()
@@ -31,7 +31,10 @@ export default {
   name: 'NavHeader'
 }
 function scrollFunction() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (
+    document.body.scrollTop > 100 ||
+    (document.documentElement.scrollTop > 100 && !window.matchMedia('(max-width: 575px)').matches)
+  ) {
     document.getElementById('header').style.padding = '0px'
   } else {
     document.getElementById('header').style.padding = '12px'
@@ -56,6 +59,10 @@ function scrollFunction() {
 #i-logo {
   color: white;
   margin: 0px 0px 5px 5px;
+}
+
+.cult {
+  margin-right: 25px;
 }
 
 .button {
@@ -122,6 +129,10 @@ nav li a:hover {
   nav li a {
     font-size: 10px;
   }
+
+  .cult{
+    margin: 0px;
+  }
 }
 
 @media screen and (max-width: 885px) {
@@ -143,6 +154,10 @@ nav li a:hover {
 
   #i-logo {
     color: black !important;
+  }
+
+  #header {
+    padding: 0 !important;
   }
 }
 </style>
