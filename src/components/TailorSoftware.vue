@@ -117,8 +117,8 @@
   background: -webkit-linear-gradient(to right, #232526, #414345); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #232526, #414345);
   color: white;
-  padding: 5rem 0 13rem;
-  margin: 90px 0px 0px;
+  padding: 5rem 0 14rem;
+  margin: 180px 0px 0px;
   position: relative;
 }
 
