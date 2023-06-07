@@ -145,6 +145,7 @@ $(document).on('scroll', function () {
   }
 
   video {
+    visibility: hidden;
     display: none;
   }
 
