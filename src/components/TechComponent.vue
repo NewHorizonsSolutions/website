@@ -89,4 +89,10 @@ i:hover {
   letter-spacing: 3px;
   margin: auto;
 }
+
+@media screen and (max-width: 575px) {
+  i{
+    font-size: 40px;
+  }
+}
 </style>
