@@ -40,7 +40,7 @@
           </footer>
         </header>
       </div>
-      <div class="custom-shape-divider-bottom-1685871786">
+      <!-- <div class="custom-shape-divider-bottom-1685871786">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@
             class="shape-fill"
           ></path>
         </svg>
-      </div>
+      </div> -->
     </section>
   </div>
 </template>

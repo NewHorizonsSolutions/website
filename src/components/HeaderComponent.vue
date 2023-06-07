@@ -8,14 +8,17 @@
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
+          <div style="display: flex; text-align: center; justify-content: center;">
+            <span class="mdi mdi-web globe" style="margin: auto"></span>
+            <b-nav-item-dropdown text="EN" right>
+              <b-dropdown-item href="#">English</b-dropdown-item>
+              <b-dropdown-item href="#">Español</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </div>
           <b-nav-text><a href="/#services">Services</a></b-nav-text>
           <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
           <b-nav-text><a href="/#customers">Customers</a></b-nav-text>
           <b-nav-text><a href="/#culture" class="cult">Culture</a></b-nav-text>
-          <b-nav-item-dropdown text="EN" right>
-            <b-dropdown-item href="#">🇬🇧 English</b-dropdown-item>
-            <b-dropdown-item href="#">🇪🇸 Español</b-dropdown-item>
-          </b-nav-item-dropdown>
           <b-nav-text><a class="button button-primary" href="#">Contact</a></b-nav-text>
         </b-navbar-nav>
       </b-collapse>
@@ -130,8 +133,12 @@ nav li a:hover {
     font-size: 10px;
   }
 
-  .cult{
+  .cult {
     margin: 0px;
+  }
+
+  .globe {
+    display: none;
   }
 }
 

@@ -6,29 +6,28 @@
         achieve your ideal.
       </p>
     </div>
-    <div class="tag monitor">
-      <img
-        src="monitor.png"
-        width="1000"
-        alt=""
-        style="filter: drop-shadow(-2px 2px 15px rgba(0, 0, 0, 0.7))"
-      />
-    </div>
-    <!-- <div style="position: relative">
-      <div class="custom-shape-divider-top-16860623830">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z"
-            class="shape-fill"
-          ></path>
-        </svg>
+    <div class="tag monitor" style="justify-content: center">
+      <div class="left">
+        <h1 class="mb-4" style="font-size: 30px">Let's create something remarkable!</h1>
+        <p style="font-family: 'DM Sans', sans-serif; font-size: 16px">
+          We develop robust, secure, and scalable software solutions. Our primary focus is on
+          enhancing user experience, incorporating a UX stage involving key users in all our
+          projects. We guarantee optimal performance by leveraging cutting-edge technologies.
+        </p>
+        <button class="btn-budget right mt-4">Ask for a budget</button>
       </div>
-    </div> -->
+      <video
+        src="software.mp4"
+        autoplay
+        loop
+        muted
+        style="
+          filter: drop-shadow(-2px 2px 15px rgba(0, 0, 0, 0.7));
+          width: 600px;
+          border-radius: 20px;
+        "
+      ></video>
+    </div>
   </section>
 </template>
 
@@ -58,28 +57,51 @@ $(document).on('scroll', function () {
 
 #software {
   color: black;
-  padding: 10rem 0 0;
-  /* background-color: #e2e1e1; */
-  background: url('https://www.pixel4k.com/wp-content/uploads/2018/10/minimalist-mountains-black-and-white-4k_1540749002.jpg')
-    no-repeat center;
-  background-size: cover;
+  padding: 10rem 0 0.6rem;
+  background-color: #f0f0f0;
   height: fit-content;
+}
 
+.left {
+  width: 520px;
+  padding-right: 50px;
+  margin-right: 50px;
+  border-right: 1.5px solid black;
 }
 
 .monitor {
-  margin-top: 5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  text-align: center;
   padding-bottom: 100px;
+  width: 100%;
+  margin: 5rem auto;
 }
 .tag {
   opacity: 0;
   transform: translate(0, 10vh);
   transition: all 3s;
 }
+.btn-budget {
+  background-color: #83bae7;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 0.8rem 1.3rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  box-shadow: inset 400px 0 0 0 #38393b;
+  color: rgb(255, 255, 255);
+  transition: all 1s ease-in-out;
+  border: #030303 solid 1px;
+}
 
+.right:hover {
+  box-shadow: inset 400px 0 0 0 #ebecec;
+  color: rgb(0, 0, 0);
+}
 .tag.visible {
   opacity: 1;
   transform: translate(0, 0);
@@ -118,18 +140,18 @@ $(document).on('scroll', function () {
 }
 
 @media screen and (max-width: 922px) {
-  img {
-    width: 500px !important;
-  }
-
   .budget {
     padding: 5rem 0 7rem;
   }
-}
 
-@media screen and (max-width: 575px) {
-  img {
-    width: 350px !important;
+  video {
+    display: none;
+  }
+
+  .left {
+    border: none;
+    margin-right: 0px;
+    padding: 30px;
   }
 }
 </style>

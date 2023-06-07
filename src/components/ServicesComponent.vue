@@ -3,10 +3,9 @@
     <h1 class="title">Services</h1>
     <p class="description w-75">Management of an agile and efficient organization when working.</p>
     <div>
-      <b-card-group deck class="justify-center" style="padding-bottom: 300px; padding-top: 60px">
+      <b-card-group deck class="justify-center" style="padding-bottom: 600px; padding-top: 60px;">
         <b-card
           tag="article"
-          style="border: 2px solid black"
           class="tag m-5 box--gradient size"
           align="center"
         >
@@ -19,7 +18,6 @@
         </b-card>
         <b-card
           tag="article"
-          style="border: 2px solid black"
           class="tag m-5 box--gradient size"
           align="center"
         >
@@ -33,7 +31,6 @@
         </b-card>
         <b-card
           tag="article"
-          style="border: 2px solid black"
           class="tag m-5 box--gradient size"
           align="center"
         >
@@ -48,7 +45,7 @@
       </b-card-group>
     </div>
     <!-- <img src="mountain.png" id="mountain" alt="" style="width: -webkit-fill-available" /> -->
-    <div class="custom-shape-divider-bottom-1685871171">
+    <!-- <div class="custom-shape-divider-bottom-1685871171">
       <svg
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +54,7 @@
       >
         <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
       </svg>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -85,8 +82,10 @@ $(document).on('scroll', function () {
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
 #services {
-  padding-bottom: 190px;
-  background: url('https://papers.co/wallpaper/papers.co-mt01-winter-mountain-snow-bw-nature-white-35-3840x2160-4k-wallpaper.jpg')
+  // background: url('https://papers.co/wallpaper/papers.co-mt01-winter-mountain-snow-bw-nature-white-35-3840x2160-4k-wallpaper.jpg')
+  //   no-repeat center;
+  // background-size: cover;
+  background: url('https://www.pixel4k.com/wp-content/uploads/2018/10/minimalist-mountains-black-and-white-4k_1540749002.jpg')
     no-repeat center;
   background-size: cover;
   height: fit-content;

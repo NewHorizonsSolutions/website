@@ -30,8 +30,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: black;
-  color: white;
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #232526, #414345);
+  background: linear-gradient(to bottom, #232526, #414345);  color: white;
   padding: 6rem 0;
   position: relative;
 }
@@ -41,7 +42,11 @@ img {
   cursor: pointer;
 }
 
-
+@media screen and (max-width: 575px) {
+  img{
+    width: -webkit-fill-available;
+  }
+}
 
 .title {
   font-size: 40px;

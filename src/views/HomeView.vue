@@ -45,6 +45,6 @@ import CustomersComponent from '../components/CustomersComponent.vue'
 }
 
 .custom-shape-divider-bottom-1685871172 .shape-fill {
-  fill: #424345;
+  fill: black;
 }
 </style>
