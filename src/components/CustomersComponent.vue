@@ -3,20 +3,20 @@
     <h1 class="title">Customers</h1>
     <p class="description w-75">These are some of the companies that trust us.</p>
     <v-container style="padding-top: 100px; padding-bottom: 90px">
-      <v-row no-gutters style="overflow: hidden; justify-content: center">
+      <v-row no-gutters style="justify-content: center">
         <v-col order="6" class="m-3">
           <v-sheet class="pa-2 ma-2" style="background: transparent; text-align: center">
-            <span> <img src="nouvelle.png" alt="" /> </span>
+            <div><img src="nouvelle.png" width="100" alt="" /></div>
           </v-sheet>
         </v-col>
         <v-col order="12" class="m-3">
           <v-sheet class="pa-2 ma-2" style="background: transparent; text-align: center">
-            <span> <img src="lwd.png" alt="" style="padding-top: 20px" /> </span>
+            <div><img src="lwd.png" width="100" alt="" style="padding-top: 20px" /></div>
           </v-sheet>
         </v-col>
         <v-col order="1" class="m-3">
           <v-sheet class="pa-2 ma-2" style="background: transparent; text-align: center">
-            <span> <img src="mcpapers.png" alt="" style="padding-top: 20px" /> </span>
+            <div><img src="mcpapers.png" width="100" alt="" style="padding-top: 20px" /></div>
           </v-sheet>
         </v-col>
       </v-row>
@@ -45,7 +45,7 @@ img {
 
 @media screen and (max-width: 575px) {
   img {
-    /* width: -webkit-fill-available; */
+    width: -webkit-fill-available;
   }
 }
 
