@@ -44,7 +44,7 @@ img {
 
 @media screen and (max-width: 575px) {
   img{
-    width: -webkit-fill-available;
+    /* width: -webkit-fill-available; */
   }
 }
 
