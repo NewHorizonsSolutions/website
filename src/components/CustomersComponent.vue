@@ -11,7 +11,7 @@
         </v-col>
         <v-col order="12" class="m-3">
           <v-sheet class="pa-2 ma-2" style="background: transparent; text-align: center">
-            <div><img src="lwd.png" width="100" alt="" style="padding-top: 20px" /></div>
+            <div><img src="lwd.png" width="100" alt="" style="padding-top: 30px; width: 350px;" /></div>
           </v-sheet>
         </v-col>
         <v-col order="1" class="m-3">
@@ -32,7 +32,7 @@
   justify-content: center;
   background: #232526;
   background: -webkit-linear-gradient(to right, #232526, #414345);
-  background: linear-gradient(to bottom, #232526, #414345);
+  background: linear-gradient(to top, #020202, #414345);
   color: white;
   padding: 6rem 0;
   position: relative;

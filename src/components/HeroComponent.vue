@@ -213,9 +213,7 @@ video {
   #pc {
     display: none;
   }
-}
 
-@media screen and (max-width: 575px) {
   .hero-header,
   #description,
   .hero-footer {
