@@ -19,8 +19,7 @@
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
             We're a passionate software solutions company driven by innovation, collaboration, and
             excellence. Our mission is to empower clients with cutting-edge solutions, while our
-            vision is to be a trusted partner for their technology needs. Together, we make a
-            positive impact in the digital world.
+            vision is to be a trusted partner for their technology needs.
           </p>
         </div>
         <span
@@ -28,7 +27,7 @@
           style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px"
         ></span>
       </div>
-      <hr>
+      <hr />
       <!-- DIVISION -->
       <div class="monitor onright">
         <div>
@@ -53,10 +52,9 @@
           </div>
           <div style="display: flex; align-items: center">
             <p class="rightxt" style="font-family: 'DM Sans', sans-serif; font-size: 16px">
-              We're a passionate software solutions company driven by innovation, collaboration, and
-              excellence. Our mission is to empower clients with cutting-edge solutions, while our
-              vision is to be a trusted partner for their technology needs. Together, we make a
-              positive impact in the digital world.
+              Our identity is shaped by our relentless pursuit of pushing the boundaries and
+              creating impactful solutions. We embrace the challenges, celebrate the successes, and
+              make a lasting mark in the world of technology.
             </p>
             <span
               class="mdi mdi-fingerprint huella2"
@@ -71,7 +69,7 @@
           </div>
         </div>
       </div>
-      <hr>
+      <hr />
       <!-- DIVISION -->
       <div class="monitor onleft">
         <div class="tag left">
@@ -89,10 +87,9 @@
             </h1>
           </div>
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
-            We're a passionate software solutions company driven by innovation, collaboration, and
-            excellence. Our mission is to empower clients with cutting-edge solutions, while our
-            vision is to be a trusted partner for their technology needs. Together, we make a
-            positive impact in the digital world.
+            Our team is a powerhouse of talent, united by a common passion for technology and a
+            relentless pursuit of excellence. Team's synergy is the driving force behind our
+            ability to exceed expectations and make a meaningful impact.
           </p>
         </div>
         <span
