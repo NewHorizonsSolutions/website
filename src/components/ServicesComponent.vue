@@ -82,9 +82,6 @@ $(document).on('scroll', function () {
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
 #services {
-  // background: url('https://papers.co/wallpaper/papers.co-mt01-winter-mountain-snow-bw-nature-white-35-3840x2160-4k-wallpaper.jpg')
-  //   no-repeat center;
-  // background-size: cover;
   background: url('https://www.pixel4k.com/wp-content/uploads/2018/10/minimalist-mountains-black-and-white-4k_1540749002.jpg')
     no-repeat center;
   background-size: cover;

@@ -3,22 +3,12 @@
     <h1 class="title">Customers</h1>
     <p class="description w-75">These are some of the companies that trust us.</p>
     <v-container style="padding-top: 100px; padding-bottom: 90px">
-      <v-row no-gutters style="justify-content: center">
-        <v-col order="6" class="m-3">
-          <v-sheet class="pa-2 ma-2" style="background: transparent; text-align: center">
-            <div><img src="nouvelle.png" width="100" alt="" /></div>
-          </v-sheet>
+      <v-row no-gutters style="justify-content: center; text-align: center">
+        <v-col style="margin: auto"> <img src="mcpapers.png" alt="" /> </v-col>
+        <v-col style="margin: auto">
+          <img src="nouvelle.png" alt="" />
         </v-col>
-        <v-col order="12" class="m-3">
-          <v-sheet class="pa-2 ma-2" style="background: transparent; text-align: center">
-            <div><img src="lwd.png" width="100" alt="" style="padding-top: 30px; width: 350px;" /></div>
-          </v-sheet>
-        </v-col>
-        <v-col order="1" class="m-3">
-          <v-sheet class="pa-2 ma-2" style="background: transparent; text-align: center">
-            <div><img src="mcpapers.png" width="100" alt="" style="padding-top: 20px" /></div>
-          </v-sheet>
-        </v-col>
+        <v-col style="margin: auto"> <img src="lwd.png" alt="" /> </v-col>
       </v-row>
     </v-container>
   </section>
@@ -39,13 +29,14 @@
 }
 
 img {
-  width: auto;
+  width: 70%;
   cursor: pointer;
 }
 
 @media screen and (max-width: 575px) {
   img {
-    width: -webkit-fill-available;
+    width: 300px;
+    margin: 20px;
   }
 }
 

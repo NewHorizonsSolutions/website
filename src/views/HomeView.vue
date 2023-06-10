@@ -3,7 +3,7 @@ import HeroComponent from '../components/HeroComponent.vue'
 import ServicesComponent from '../components/ServicesComponent.vue'
 import TechComponent from '../components/TechComponent.vue'
 import TailorSoftware from '../components/TailorSoftware.vue'
-// import BudgetComponent from '../components/BudgetComponent.vue'
+import AboutUsComponent from '../components/AboutUsComponent.vue'
 import CustomersComponent from '../components/CustomersComponent.vue'
 </script>
 
@@ -23,8 +23,8 @@ import CustomersComponent from '../components/CustomersComponent.vue'
       </svg>
     </div>
     <TailorSoftware />
-    <!-- <BudgetComponent /> -->
     <CustomersComponent />
+    <AboutUsComponent />
   </main>
 </template>
 

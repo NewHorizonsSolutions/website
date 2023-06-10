@@ -18,8 +18,8 @@
           <b-nav-text><a href="/#services">Services</a></b-nav-text>
           <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
           <b-nav-text><a href="/#customers">Customers</a></b-nav-text>
-          <b-nav-text><a href="/#culture" class="cult">Culture</a></b-nav-text>
-          <b-nav-text><a class="button button-primary" href="#">Contact</a></b-nav-text>
+          <b-nav-text><a href="/#aboutus" class="cult">About Us</a></b-nav-text>
+          <b-nav-text><a class="button button-primary" href="/contactus">Contact</a></b-nav-text>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
