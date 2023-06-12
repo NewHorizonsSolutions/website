@@ -142,12 +142,6 @@ nav li a:hover {
   }
 }
 
-@media screen and (max-width: 885px) {
-  nav li a {
-    visibility: hidden;
-  }
-}
-
 @media screen and (max-width: 575px) {
   nav li {
     text-align: center;

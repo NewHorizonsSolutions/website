@@ -3,7 +3,7 @@
     <h1 class="title">Services</h1>
     <p class="description w-75">Management of an agile and efficient organization when working.</p>
     <div>
-      <b-card-group deck class="justify-center" style="padding-bottom: 600px; padding-top: 60px;">
+      <b-card-group deck class="justify-center cards-deck" style="padding-bottom: 600px; padding-top: 60px;">
         <b-card
           tag="article"
           class="tag m-5 box--gradient size"
@@ -103,14 +103,23 @@ $(document).on('scroll', function () {
 .size {
   max-width: 20rem;
 }
+@media screen and (max-width: 1110px) {
+  .cards-deck{
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;;
+  }
+}
 
 @media screen and (max-width: 922px) {
   .box--gradient {
     background: linear-gradient(to bottom, #e8e9ef, #eee, #e8e9f1) !important;
   }
   .size {
-    width: auto !important;
-    max-width: fit-content;
+    margin: auto;
   }
 }
 
