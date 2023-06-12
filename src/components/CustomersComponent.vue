@@ -2,8 +2,8 @@
   <section id="customers">
     <h1 class="title">Customers</h1>
     <p class="description w-75">These are some of the companies that trust us.</p>
-    <v-container style="padding-top: 100px; padding-bottom: 90px">
-      <v-row no-gutters style="justify-content: center; text-align: center; width: 70%; margin: auto;">
+    <v-container style="padding-top: 100px; padding-bottom: 90px;">
+      <v-row no-gutters style="justify-content: center; text-align: center; width: 90%; margin: auto">
         <v-col style="margin: auto"> <img src="mcpapers.png" alt="" /> </v-col>
         <v-col style="margin: auto">
           <img src="nouvelle.png" alt="" />
