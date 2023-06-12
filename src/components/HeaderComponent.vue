@@ -4,7 +4,7 @@
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
       <b-navbar-brand style="font-size: 23px; padding-left: 20px; font-weight: bold back">
         <img src="logo.png" alt="" height="50" />
-        <a class="logo" href="/">New Horizons</a>
+        <a class="logo" href="/#home">New Horizons</a>
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
@@ -19,7 +19,7 @@
           <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
           <b-nav-text><a href="/#customers">Customers</a></b-nav-text>
           <b-nav-text><a href="/#aboutus" class="cult">About Us</a></b-nav-text>
-          <b-nav-text><a class="button button-primary" href="/contactus">Contact</a></b-nav-text>
+          <b-nav-text><a class="button button-primary" href="/#contactus">Contact</a></b-nav-text>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero">
+    <section id="home"  class="hero">
       <video
         class="elementor-background-video-hosted elementor-html5-video"
         autoplay
@@ -35,8 +35,8 @@
             <img src="laptop.png" id="pc" alt="" style="height: 420px; width: 485px" />
           </div> -->
           <footer class="hero-footer pl-15 pt-10">
-            <a class="button button-primary" href="#">Let's Talk</a>
-            <a class="button right" href="#">Know us</a>
+            <a class="button button-primary" href="/#contactus">Let's Talk</a>
+            <a class="button right" href="/#aboutus">Know us</a>
           </footer>
         </header>
       </div>
