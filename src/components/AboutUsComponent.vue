@@ -1,7 +1,7 @@
 <template>
   <section id="aboutus">
     <div class="cont">
-      <div class="monitor onleft">
+      <div class="monitor onleft" style="padding-bottom: 25px;">
         <div class="tag left">
           <div class="mb-4 onleft" style="display: flex">
             <h1
@@ -29,7 +29,7 @@
       </div>
       <hr />
       <!-- DIVISION -->
-      <div class="monitor onright">
+      <div class="monitor onright" style="padding: 25px 0px;">
         <div>
           <span
             class="mdi mdi-fingerprint huella"
@@ -71,7 +71,7 @@
       </div>
       <hr />
       <!-- DIVISION -->
-      <div class="monitor onleft">
+      <div class="monitor onleft" style="padding-top: 25px;">
         <div class="tag left">
           <div class="mb-4 onleft" style="display: flex">
             <h1
