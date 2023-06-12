@@ -118,27 +118,6 @@ $(document).on('scroll', function () {
   text-align: center;
 }
 
-.custom-shape-divider-top-16860623830 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
-}
-
-.custom-shape-divider-top-16860623830 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 20px;
-}
-
-.custom-shape-divider-top-16860623830 .shape-fill {
-  fill: #232526;
-}
-
 @media screen and (max-width: 922px) {
   .budget {
     padding: 5rem 0 7rem;

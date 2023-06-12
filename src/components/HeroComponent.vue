@@ -23,36 +23,18 @@
                   <span class="text_2 pb-5">prospects.</span>
                 </div>
               </div>
-              <!-- <span class="text_1">limits.</span>
-              <span class="text_2">goals.</span> -->
             </h1>
             <p class="w-50 mt-5 pl-15" id="description">
               We deliver comprehensive development solutions from end to end, we seek to streamline
               your production tasks. Our main objective is to add value to your business.
             </p>
           </div>
-          <!-- <div style="padding-top: 80px; padding-right: 50px">
-            <img src="laptop.png" id="pc" alt="" style="height: 420px; width: 485px" />
-          </div> -->
           <footer class="hero-footer pl-15 pt-10">
             <a class="button button-primary" href="/#contactus">Let's Talk</a>
             <a class="button right" href="/#aboutus">Know us</a>
           </footer>
         </header>
       </div>
-      <!-- <div class="custom-shape-divider-bottom-1685871786">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z"
-            class="shape-fill"
-          ></path>
-        </svg>
-      </div> -->
     </section>
   </div>
 </template>
@@ -79,7 +61,6 @@ body {
   width: 0;
   overflow: hidden;
   white-space: nowrap;
-  /* width: fit-content !important; */
   display: inline-block;
   position: relative;
   animation-duration: 20s;
@@ -292,25 +273,5 @@ video {
 
 .button-primary:hover {
   top: -6px;
-}
-.custom-shape-divider-bottom-1685871786 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1685871786 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 29px;
-}
-
-.custom-shape-divider-bottom-1685871786 .shape-fill {
-  fill: #f7f7f7;
 }
 </style>

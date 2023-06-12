@@ -3,7 +3,7 @@
     <h1 class="title">Customers</h1>
     <p class="description w-75">These are some of the companies that trust us.</p>
     <v-container style="padding-top: 100px; padding-bottom: 90px">
-      <v-row no-gutters style="justify-content: center; text-align: center">
+      <v-row no-gutters style="justify-content: center; text-align: center; width: 70%; margin: auto;">
         <v-col style="margin: auto"> <img src="mcpapers.png" alt="" /> </v-col>
         <v-col style="margin: auto">
           <img src="nouvelle.png" alt="" />
@@ -29,14 +29,14 @@
 }
 
 img {
-  width: 70%;
+  width: 250px;
+  margin: 20px;
   cursor: pointer;
 }
 
 @media screen and (max-width: 575px) {
   img {
-    width: 300px;
-    margin: 20px;
+    margin: 40px;
   }
 }
 
