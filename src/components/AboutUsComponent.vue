@@ -1,7 +1,7 @@
 <template>
   <section id="aboutus">
     <div class="cont">
-      <div class="monitor onleft" style="padding-bottom: 25px;">
+      <div class="monitor onleft" style="padding-bottom: 25px">
         <div class="tag left">
           <div class="mb-4 onleft" style="display: flex">
             <h1
@@ -23,16 +23,16 @@
           </p>
         </div>
         <span
-          class="mdi mdi-molecule"
+          class="mdi mdi-molecule icono"
           style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px"
         ></span>
       </div>
       <hr />
       <!-- DIVISION -->
-      <div class="monitor onright" style="padding: 25px 0px;">
+      <div class="monitor onright" style="padding: 25px 0px">
         <div>
           <span
-            class="mdi mdi-fingerprint huella"
+            class="mdi mdi-fingerprint huella icono"
             style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px"
           ></span>
         </div>
@@ -57,7 +57,7 @@
               make a lasting mark in the world of technology.
             </p>
             <span
-              class="mdi mdi-fingerprint huella2"
+              class="mdi mdi-fingerprint huella2 icono"
               style="
                 font-size: 48px;
                 border-radius: 1000px;
@@ -71,7 +71,7 @@
       </div>
       <hr />
       <!-- DIVISION -->
-      <div class="monitor onleft" style="padding-top: 25px;">
+      <div class="monitor onleft" style="padding-top: 25px">
         <div class="tag left">
           <div class="mb-4 onleft" style="display: flex">
             <h1
@@ -88,12 +88,12 @@
           </div>
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
             Our team is a powerhouse of talent, united by a common passion for technology and a
-            relentless pursuit of excellence. Team's synergy is the driving force behind our
-            ability to exceed expectations and make a meaningful impact.
+            relentless pursuit of excellence. Team's synergy is the driving force behind our ability
+            to exceed expectations and make a meaningful impact.
           </p>
         </div>
         <span
-          class="mdi mdi-wall"
+          class="mdi mdi-wall icono"
           style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px"
         ></span>
       </div>
@@ -125,8 +125,7 @@ $(document).on('scroll', function () {
 #aboutus {
   background-color: #f0f0f0;
   height: fit-content;
-  padding: 40px;
-  padding-top: 70px;
+  padding: 90px 40px 120px;
 }
 .cont {
   padding-top: 30px;
@@ -175,6 +174,12 @@ $(document).on('scroll', function () {
 .right:hover {
   box-shadow: inset 400px 0 0 0 #38393b;
   color: rgb(255, 255, 255);
+}
+
+.icono:hover {
+  cursor: pointer;
+  transition: 1s;
+  font-size: 52px !important;
 }
 
 @media screen and (max-width: 922px) {

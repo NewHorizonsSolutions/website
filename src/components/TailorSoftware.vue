@@ -14,7 +14,14 @@
           enhancing user experience, incorporating a UX stage involving key users in all our
           projects. We guarantee optimal performance by leveraging cutting-edge technologies.
         </p>
-        <button class="btn-budget right mt-4">Ask for a budget</button>
+        <div style="padding-top: 20px">
+          <a
+            class="btn-budget right"
+            href="/#contact"
+            style="text-decoration: none; margin-top: 20px"
+            >Ask for a budget</a
+          >
+        </div>
       </div>
       <video
         src="software.mp4"
@@ -86,7 +93,7 @@ $(document).on('scroll', function () {
   background-color: #83bae7;
   font-weight: bold;
   border-radius: 20px;
-  padding: 0.8rem 1.3rem;
+  padding: 0.9rem 1.3rem;
   font-size: 0.9rem;
   font-weight: bold;
   font-family: 'DM Sans', sans-serif;
