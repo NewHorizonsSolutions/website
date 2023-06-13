@@ -9,7 +9,7 @@
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
           <div style="display: flex; text-align: center; justify-content: center">
-            <span class="mdi mdi-earth" style="margin: auto"></span>
+            <span class="mdi mdi-earth globe" style="margin: auto"></span>
             <b-nav-item-dropdown text="EN" right>
               <b-dropdown-item href="#">English</b-dropdown-item>
               <b-dropdown-item href="#">Español</b-dropdown-item>
