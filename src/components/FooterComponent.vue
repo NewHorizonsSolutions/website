@@ -108,6 +108,9 @@
         </div>
       </div>
     </div>
+    <div class="footer-text">
+      <p style="margin: 0px;">&copy; New Horizons Solutions - Software Solutions - {{ new Date().getFullYear() }}</p>
+    </div>
   </section>
 </template>
 
@@ -177,13 +180,28 @@ textarea {
   height: 80px;
   width: 400px;
   overflow: hidden;
-  background: black;
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #232526, #414345);
+  background: linear-gradient(to top, #020202, #414345);
   color: white;
   border: 2px solid black !important;
 }
 
-.contact-info:hover {
-  background: red;
+.send-button:hover {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  color: white;
+}
+
+.footer-text{
+  text-align: center;
+  font-size: 12px;
+  color: black;
+  margin: 0px;
+  padding: 30px;
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #232526, #414345);
+  background: linear-gradient(to top, #020202, #414345);
+  color: white;
 }
 
 .alt-send-button {

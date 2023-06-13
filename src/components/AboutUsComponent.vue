@@ -24,7 +24,7 @@
         </div>
         <span
           class="mdi mdi-molecule icono"
-          style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px"
+          style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px; transition: 1s"
         ></span>
       </div>
       <hr />
@@ -33,7 +33,13 @@
         <div>
           <span
             class="mdi mdi-fingerprint huella icono"
-            style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px"
+            style="
+              font-size: 48px;
+              border-radius: 1000px;
+              height: 70px;
+              width: 70px;
+              transition: 1s;
+            "
           ></span>
         </div>
         <div class="tag rightdiv" id="showed">
@@ -64,6 +70,7 @@
                 height: 70px;
                 width: 70px;
                 display: none;
+                transition: 1s;
               "
             ></span>
           </div>
@@ -94,7 +101,7 @@
         </div>
         <span
           class="mdi mdi-wall icono"
-          style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px"
+          style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px; transition: 1s"
         ></span>
       </div>
     </div>
@@ -178,7 +185,6 @@ $(document).on('scroll', function () {
 
 .icono:hover {
   cursor: pointer;
-  transition: 1s;
   font-size: 52px !important;
 }
 
