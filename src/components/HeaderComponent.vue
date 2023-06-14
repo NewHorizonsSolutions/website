@@ -4,40 +4,49 @@
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
       <b-navbar-brand style="font-size: 23px; padding-left: 20px; font-weight: bold back">
         <img src="logo.png" alt="" height="50" />
-        <a class="logo" href="/">New Horizons</a>
+        <a class="logo" href="/#home">New Horizons</a>
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
         <b-navbar-nav>
-          <b-nav-item-dropdown text="EN" right>
-            <b-dropdown-item href="#">🇬🇧 EN</b-dropdown-item>
-            <b-dropdown-item href="#">🇪🇸 ES</b-dropdown-item>
-          </b-nav-item-dropdown>
-          <b-nav-text><a href="/#aboutme">Portfolio</a></b-nav-text>
-          <b-nav-text><a href="/#mystack">Team</a></b-nav-text>
-          <b-nav-text><a href="/#portfolio">Services</a></b-nav-text>
-          <b-nav-text><a href="/#path">Culture</a></b-nav-text>
-          <b-nav-text><a class="button button-primary" href="#">Contact</a></b-nav-text>
+          <div style="display: flex; text-align: center; justify-content: center">
+            <span class="mdi mdi-earth globe" style="margin: auto"></span>
+            <b-nav-item-dropdown :text="storeLang.languaje.toLocaleUpperCase()" right>
+              <b-dropdown-item v-on:click="changeLanguaje('en')">English</b-dropdown-item>
+              <b-dropdown-item v-on:click="changeLanguaje('es')">Español</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </div>
+          <b-nav-text><a href="/#home">{{ storeLang.languaje == 'en' ? "Home" : "Inicio"}}</a></b-nav-text>
+          <b-nav-text><a href="/#services">{{ storeLang.languaje == 'en' ? "Services" : "Servicios"}}</a></b-nav-text>
+          <b-nav-text><a href="/#technologies">{{ storeLang.languaje == 'en' ? "Technologies" : "Tecnologias"}}</a></b-nav-text>
+          <b-nav-text><a href="/#customers">{{ storeLang.languaje == 'en' ? "Customers" : "Clientes"}}</a></b-nav-text>
+          <b-nav-text><a href="/#aboutus" class="cult">{{ storeLang.languaje == 'en' ? "About Us" : "Nosotros"}}</a></b-nav-text>
+          <b-nav-text><a class="button button-primary" href="/#contact">{{ storeLang.languaje == 'en' ? "Contact" : "Contacto"}}</a></b-nav-text>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
-<script>
+
+<script setup>
+import { store } from '../stores/languaje.js'
+const storeLang = store()
+
 window.onscroll = function () {
   scrollFunction()
 }
-export default {
-  name: 'NavHeader'
+
+function changeLanguaje(languaje) {
+  storeLang.changeLanguaje(languaje)
 }
+
 function scrollFunction() {
-  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-    // document.getElementById('header').style.background =
-    //   'linear-gradient(to top, rgb(223, 233, 243) 0%, white 100%)'
-    document.getElementById('i-logo').style.color = 'black'
-    document.getElementById('header').style.transitionProperty = '1s'
+  if (
+    document.body.scrollTop > 100 ||
+    (document.documentElement.scrollTop > 100 && !window.matchMedia('(max-width: 575px)').matches)
+  ) {
+    document.getElementById('header').style.padding = '0px'
   } else {
-    // document.getElementById('header').style.background = 'transparent'
-    document.getElementById('i-logo').style.color = '#42b983'
+    document.getElementById('header').style.padding = '12px'
   }
 }
 </script>
@@ -48,16 +57,21 @@ function scrollFunction() {
 
 #header {
   background: white;
-  -webkit-transition: all ease-out 0.5s;
-  -moz-transition: all ease-out 0.5s;
-  -o-transition: all ease-out 0.5s;
-  transition: all ease-out 0.5s;
-  padding: 0px;
+  -webkit-transition: all ease-out 0.3s;
+  -moz-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+  padding: 12px;
+  box-shadow: inset 0 0 5px #a9a8a8;
 }
 
 #i-logo {
   color: white;
   margin: 0px 0px 5px 5px;
+}
+
+.cult {
+  margin-right: 25px;
 }
 
 .button {
@@ -101,27 +115,36 @@ nav {
 nav li a {
   font-weight: bold;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.1s;
   color: black;
   margin: 20px;
   font-size: 14px;
   letter-spacing: 3px;
   font-family: 'DM Sans', sans-serif;
+  padding-bottom: 6px;
 }
 
 nav li a:hover {
-  color: black;
+  border-bottom: 3px solid;
 }
 
-@media screen and (max-width: 922px) {
+@media screen and (max-width: 1070px) {
   nav li a {
-    font-size: 12px;
+    margin: 8px;
   }
 }
 
-@media screen and (max-width: 829px) {
+@media screen and (max-width: 940px) {
   nav li a {
-    font-size: 5px;
+    font-size: 10px;
+  }
+
+  .cult {
+    margin: 0px;
+  }
+
+  .globe {
+    display: none;
   }
 }
 
@@ -132,11 +155,16 @@ nav li a:hover {
   }
 
   nav li a {
+    visibility: inherit;
     font-size: 15px;
   }
 
   #i-logo {
     color: black !important;
+  }
+
+  #header {
+    padding: 0 !important;
   }
 }
 </style>
