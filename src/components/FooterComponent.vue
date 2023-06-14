@@ -11,7 +11,18 @@
             storeLang.languaje == 'en' ? 'We will email you soon.' : 'Te vamos a responder pronto.'
           }}
         </p>
-        <form id="contact-form" class="form-horizontal" role="form" style="margin: auto">
+        <form
+          name="contactos"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          id="contact-form"
+          class="form-horizontal"
+          role="form"
+          style="margin: auto"
+        >
+          <input type="hidden" name="form-name" value="contactos" />
+
           <div class="form-group">
             <div class="col-sm-12">
               <input
@@ -20,7 +31,6 @@
                 id="name"
                 :placeholder="storeLang.languaje == 'en' ? 'NAME' : 'NOMBRE'"
                 name="name"
-                value=""
                 required
               />
             </div>
@@ -34,7 +44,6 @@
                 id="email"
                 :placeholder="storeLang.languaje == 'en' ? 'EMAIL' : 'CORREO ELECTRÓNICO'"
                 name="email"
-                value=""
                 required
               />
             </div>
