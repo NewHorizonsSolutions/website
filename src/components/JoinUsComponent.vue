@@ -28,6 +28,8 @@ const storeLang = store()
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
 #joinus {
   background: #232526;
   background: -webkit-linear-gradient(to right, #232526, #414345);
@@ -66,6 +68,7 @@ const storeLang = store()
 .description {
   width: 30%;
   margin: auto;
+  font-family: 'DM Sans', sans-serif;
 }
 
 @media screen and (max-width: 922px) {
