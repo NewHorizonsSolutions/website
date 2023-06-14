@@ -13,13 +13,15 @@
                 border-bottom: 2px solid black;
               "
             >
-              About Us
+              {{ storeLang.languaje == 'en' ? 'About Us' : 'Nosotros' }}
             </h1>
           </div>
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
-            We're a passionate software solutions company driven by innovation, collaboration, and
-            excellence. Our mission is to empower clients with cutting-edge solutions, while our
-            vision is to be a trusted partner for their technology needs.
+            {{
+              storeLang.languaje == 'en'
+                ? "We're a passionate software solutions company driven by innovation, collaboration, and excellence. Our mission is to empower clients with cutting-edge solutions, while our vision is to be a trusted partner for their technology needs."
+                : 'Somos una empresa apasionada de soluciones de software impulsada por la innovación, la colaboración y la excelencia. Nuestra misión es empoderar a los clientes con soluciones de vanguardia, mientras que nuestra visión es ser un socio confiable para sus necesidades tecnológicas.'
+            }}
           </p>
         </div>
         <span
@@ -53,14 +55,16 @@
                 border-bottom: 2px solid black;
               "
             >
-              Our Identity
+              {{ storeLang.languaje == 'en' ? 'Our Identity' : 'Identidad' }}
             </h1>
           </div>
           <div style="display: flex; align-items: center">
             <p class="rightxt" style="font-family: 'DM Sans', sans-serif; font-size: 16px">
-              Our identity is shaped by our relentless pursuit of pushing the boundaries and
-              creating impactful solutions. We embrace the challenges, celebrate the successes, and
-              make a lasting mark in the world of technology.
+              {{
+                storeLang.languaje == 'en'
+                  ? 'Our identity is shaped by our relentless pursuit of pushing the boundaries and creating impactful solutions. We embrace the challenges, celebrate the successes, and make a lasting mark in the world of technology.'
+                  : 'Nuestra identidad está moldeada por nuestra búsqueda implacable de empujar los límites y crear soluciones impactantes. Abrazamos los desafíos, celebramos los éxitos y dejamos una marca duradera en el mundo de la tecnología.'
+              }}
             </p>
             <span
               class="mdi mdi-fingerprint huella2 icono"
@@ -90,13 +94,15 @@
                 border-bottom: 2px solid black;
               "
             >
-              The Team
+              {{ storeLang.languaje == 'en' ? 'The Team' : 'Equipo' }}
             </h1>
           </div>
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
-            Our team is a powerhouse of talent, united by a common passion for technology and a
-            relentless pursuit of excellence. Team's synergy is the driving force behind our ability
-            to exceed expectations and make a meaningful impact.
+            {{
+              storeLang.languaje == 'en'
+                ? "Our team is a powerhouse of talent, united by a common passion for technology and a relentless pursuit of excellence. Team's synergy is the driving force behind our ability to exceed expectations and make a meaningful impact."
+                : 'Nuestro equipo es una potencia de talentos, unidos por una pasión común por la tecnología y una incansable búsqueda de la excelencia. La sinergia del equipo es la fuerza impulsora detrás de nuestra capacidad para superar las expectativas y tener un impacto significativo.'
+            }}
           </p>
         </div>
         <span
@@ -108,8 +114,10 @@
   </section>
 </template>
 
-<script>
+<script setup>
+import { store } from '../stores/languaje.js'
 import $ from 'jquery'
+const storeLang = store()
 
 $(document).on('scroll', function () {
   var pageTop = $(document).scrollTop()

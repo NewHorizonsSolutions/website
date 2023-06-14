@@ -14,30 +14,48 @@
         <header id="header" style="padding-top: 100px"></header>
         <header class="hero-header">
           <div style="padding-top: 100px">
-            <h1 class="hero-title pl-10" style="padding-bottom: 0px">We improve you.</h1>
+            <h1 class="hero-title pl-10" style="padding-bottom: 0px">
+              {{ storeLang.languaje == 'en' ? 'We improve you.' : 'Te mejoramos.' }}
+            </h1>
             <h1 class="hero-title pl-15" style="font-size: 70px; padding-top: 20px; display: flex">
-              Exceed your
+              {{ storeLang.languaje == 'en' ? 'Exceed your' : 'Supera tus' }}
               <div>
                 <div class="ml-4 typewriter" style="display: flex; width: 350px">
-                  <span class="text_1 pb-5">horizons...</span>
-                  <span class="text_2 pb-5">prospects.</span>
+                  <span class="text_1 pb-5">{{
+                    storeLang.languaje == 'en' ? 'horizons...' : 'horizontes'
+                  }}</span>
+                  <span class="text_2 pb-5">{{
+                    storeLang.languaje == 'en' ? 'perspects' : 'limitantes.'
+                  }}</span>
                 </div>
               </div>
             </h1>
             <p class="w-50 mt-5 pl-15" id="description">
-              We deliver comprehensive development solutions from end to end, we seek to streamline
-              your production tasks. Our main objective is to add value to your business.
+              {{
+                storeLang.languaje == 'en'
+                  ? 'We deliver comprehensive development solutions from end to end, we seek to streamline your production tasks. Our main objective is to add value to your business.'
+                  : 'Entregamos soluciones integrales de desarrollo de punta a punta, buscamos agilizar tus tareas productivas. Nuestro principal objetivo es agregarle valor a tu negocio.'
+              }}
             </p>
           </div>
           <footer class="hero-footer pl-15 pt-10">
-            <a class="button button-primary" href="/#contact">Let's Talk</a>
-            <a class="button right" href="/#aboutus">Know us</a>
+            <a class="button button-primary" href="/#contact">{{
+              storeLang.languaje == 'en' ? "Let's Talk" : 'Hablemos'
+            }}</a>
+            <a class="button right" href="/#aboutus">{{
+              storeLang.languaje == 'en' ? 'Know us' : 'Conocenos'
+            }}</a>
           </footer>
         </header>
       </div>
     </section>
   </div>
 </template>
+
+<script setup>
+import { store } from '../stores/languaje.js'
+const storeLang = store()
+</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');

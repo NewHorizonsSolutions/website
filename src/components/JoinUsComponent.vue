@@ -2,25 +2,33 @@
   <section id="joinus">
     <div style="position: relative">
       <div class="container">
-        <h1 class="title">Join us. We need you!</h1>
+        <h1 class="title">
+          {{ storeLang.languaje == 'en' ? 'Join us. We need you!' : 'Únete. Te necesitamos!' }}
+        </h1>
         <p class="description">
-          Write to us and send us your resume, personal site or portfolio if you want to be part of
-          the NH family ❤️
+          {{
+            storeLang.languaje == 'en'
+              ? 'Write to us and send us your resume, personal site or portfolio if you want to be part of the NH family ❤️'
+              : 'Escríbenos y envíanos tu currículum, sitio personal o portfolio si quieres ser parte de la familia NH ❤️'
+          }}
         </p>
       </div>
       <div style="text-align: center; margin: 30px">
-        <a class="btn-budget" href="/#contact" style="text-decoration: none">Join the team</a>
+        <a class="btn-budget" href="/#contact" style="text-decoration: none">{{
+          storeLang.languaje == 'en' ? 'Join the team' : 'Únete al equipo'
+        }}</a>
       </div>
     </div>
   </section>
 </template>
 
+<script setup>
+import { store } from '../stores/languaje.js'
+const storeLang = store()
+</script>
+
 <style scoped>
 #joinus {
-  /* background: url('https://img.freepik.com/free-photo/aerial-view-business-team_53876-124515.jpg?w=2000&t=st=1686676457~exp=1686677057~hmac=b0e6627fc3473607fa72d3bf9859e9a40beaae876c6d17b0585c46e5e6d83ac5')
-    no-repeat center;
-  filter: grayscale(80%);
-  background-size: cover; */
   background: #232526;
   background: -webkit-linear-gradient(to right, #232526, #414345);
   background: linear-gradient(to top, #020202, #414345);

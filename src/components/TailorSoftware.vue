@@ -1,25 +1,37 @@
 <template>
   <section id="software">
-    <div class="aside">
-      <p class="tag description">
+    <div class="tag aside">
+      <p v-if="storeLang.languaje == 'en'" class="description">
         We create your <b>solution adapted to your requirements.</b> We focus on every detail to
         achieve your ideal.
+      </p>
+      <p v-else class="description">
+        Creamos tu <b>solución adaptada a tus requerimientos.</b> Nos enfocamos en cada detalle para
+        lograr tu ideal.
       </p>
     </div>
     <div class="tag monitor" style="justify-content: center">
       <div class="left">
-        <h1 class="mb-4" style="font-size: 30px">Let's create something remarkable!</h1>
+        <h1 class="mb-4" style="font-size: 30px">
+          {{
+            storeLang.languaje == 'en'
+              ? "Let's create something remarkable!"
+              : 'Creemos algo sorprendente!'
+          }}
+        </h1>
         <p style="font-family: 'DM Sans', sans-serif; font-size: 16px">
-          We develop robust, secure, and scalable software solutions. Our primary focus is on
-          enhancing user experience, incorporating a UX stage involving key users in all our
-          projects. We guarantee optimal performance by leveraging cutting-edge technologies.
+          {{
+            storeLang.languaje == 'en'
+              ? 'We develop robust, secure, and scalable software solutions. Our primary focus is on enhancing user experience, incorporating a UX stage involving key users in all our projects. We guarantee optimal performance by leveraging cutting-edge technologies.'
+              : 'Desarrollamos soluciones de software robustas, seguras y escalables. Nuestro enfoque principal es mejorar la experiencia del usuario, incorporando una etapa de UX que involucre a los usuarios clave en todos nuestros proyectos. Garantizamos un rendimiento óptimo aprovechando tecnologías de vanguardia.'
+          }}
         </p>
         <div style="padding-top: 20px">
           <a
             class="btn-budget right"
             href="/#contact"
             style="text-decoration: none; margin-top: 20px"
-            >Ask for a budget</a
+            >{{ storeLang.languaje == 'en' ? 'Ask for a budget' : 'Solicita un presupuesto' }}</a
           >
         </div>
       </div>
@@ -38,8 +50,10 @@
   </section>
 </template>
 
-<script>
+<script setup>
+import { store } from '../stores/languaje.js'
 import $ from 'jquery'
+const storeLang = store()
 
 $(document).on('scroll', function () {
   var pageTop = $(document).scrollTop()

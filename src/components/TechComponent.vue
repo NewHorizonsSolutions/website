@@ -1,8 +1,14 @@
 <template>
   <section id="technologies">
-    <h1 class="title">Technologies</h1>
-    <p class="description w-75">We work with the best technologies to deliver the best results.</p>
-    <v-container style="padding-top: 100px; padding-bottom: 90px;">
+    <h1 class="title">{{ storeLang.languaje == 'en' ? 'Technologies' : 'Tecnologias' }}</h1>
+    <p class="description w-75">
+      {{
+        storeLang.languaje == 'en'
+          ? 'We work with the best technologies to deliver the best results.'
+          : 'Trabajamos con las mejores tecnologias para entregar los mejores resultados.'
+      }}
+    </p>
+    <v-container style="padding-top: 100px; padding-bottom: 90px">
       <v-row no-gutters style="overflow: hidden; justify-content: center">
         <v-col order="6" class="m-3">
           <v-sheet class="pa-2 ma-2" style="background: transparent; padding: 0px !important">
@@ -54,6 +60,11 @@
   </section>
 </template>
 
+<script setup>
+import { store } from '../stores/languaje.js'
+const storeLang = store()
+</script>
+
 <style scoped>
 #technologies {
   background: #232526;
@@ -91,7 +102,7 @@ i:hover {
 }
 
 @media screen and (max-width: 575px) {
-  i{
+  i {
     font-size: 40px;
   }
 }

@@ -1,45 +1,52 @@
 <template>
   <section id="services">
-    <h1 class="title">Services</h1>
-    <p class="description w-75">Management of an agile and efficient organization when working.</p>
+    <h1 class="title">{{ storeLang.languaje == 'en' ? 'Services' : 'Servicios' }}</h1>
+    <p class="description w-75">
+      {{
+        storeLang.languaje == 'en'
+          ? 'Management of an agile and efficient organization when working.'
+          : 'Manejamos una organización ágil y eficiente al momento de trabajar.'
+      }}
+    </p>
     <div>
-      <b-card-group deck class="justify-center cards-deck" style="padding-bottom: 600px; padding-top: 60px;">
-        <b-card
-          tag="article"
-          class="tag m-5 box--gradient size"
-          align="center"
-        >
+      <b-card-group
+        deck
+        class="justify-center cards-deck"
+        style="padding-bottom: 600px; padding-top: 60px"
+      >
+        <b-card tag="article" class="tag m-5 box--gradient size" align="center">
           <img src="design.png" alt="" height="70" class="m-5" />
-          <h3>Design</h3>
+          <h3>{{ storeLang.languaje == 'en' ? 'Design' : 'Diseño' }}</h3>
           <b-card-text class="mb-10" style="font-family: 'DM Sans', sans-serif">
-            Creating custom software solutions to meet your unique business needs and drive the
-            growth that identifies you.
+            {{
+              storeLang.languaje == 'en'
+                ? 'Creating custom software solutions to meet your unique business needs and drive the growth that identifies you.'
+                : 'Crear soluciones de software personalizadas para satisfacer sus necesidades comerciales únicas e impulsar el crecimiento que lo identifica.'
+            }}
           </b-card-text>
         </b-card>
-        <b-card
-          tag="article"
-          class="tag m-5 box--gradient size"
-          align="center"
-        >
+        <b-card tag="article" class="tag m-5 box--gradient size" align="center">
           <img src="development.png" alt="" height="70" class="m-5" />
 
-          <h3>Development</h3>
+          <h3>{{ storeLang.languaje == 'en' ? 'Development' : 'Desarrollo' }}</h3>
           <b-card-text class="mb-5" style="font-family: 'DM Sans', sans-serif">
-            Our dedicated team of experts excels in developing custom software tailored to your
-            unique needs.
+            {{
+              storeLang.languaje == 'en'
+                ? 'Our dedicated team of experts excels in developing custom software tailored to your unique needs.'
+                : 'Nuestro dedicado equipo de expertos se destaca en el desarrollo de software personalizado adaptado a sus necesidades únicas.'
+            }}
           </b-card-text>
         </b-card>
-        <b-card
-          tag="article"
-          class="tag m-5 box--gradient size"
-          align="center"
-        >
+        <b-card tag="article" class="tag m-5 box--gradient size" align="center">
           <img src="implementation.png" alt="" height="70" class="m-5" />
 
-          <h3>Implementation</h3>
+          <h3>{{ storeLang.languaje == 'en' ? 'Implementation' : 'Implementación' }}</h3>
           <b-card-text class="mb-5" style="font-family: 'DM Sans', sans-serif">
-            We specialize in end-to-end implementation, ensuring integration and successful
-            deployment.
+            {{
+              storeLang.languaje == 'en'
+                ? 'We specialize in end-to-end implementation, ensuring integration and successful deployment.'
+                : 'Nos especializamos en la implementación de extremo a extremo, asegurando la integración y el despliegue exitoso.'
+            }}
           </b-card-text>
         </b-card>
       </b-card-group>
@@ -47,8 +54,10 @@
   </section>
 </template>
 
-<script>
+<script setup>
+import { store } from '../stores/languaje.js'
 import $ from 'jquery'
+const storeLang = store()
 
 $(document).on('scroll', function () {
   var pageTop = $(document).scrollTop()
@@ -93,13 +102,13 @@ $(document).on('scroll', function () {
   max-width: 20rem;
 }
 @media screen and (max-width: 1110px) {
-  .cards-deck{
+  .cards-deck {
     display: flex;
     flex-wrap: nowrap;
     align-content: space-around;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;;
+    align-items: center;
   }
 }
 

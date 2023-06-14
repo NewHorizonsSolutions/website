@@ -10,30 +10,35 @@
         <b-navbar-nav>
           <div style="display: flex; text-align: center; justify-content: center">
             <span class="mdi mdi-earth globe" style="margin: auto"></span>
-            <b-nav-item-dropdown text="EN" right>
-              <b-dropdown-item href="#">English</b-dropdown-item>
-              <b-dropdown-item href="#">Español</b-dropdown-item>
+            <b-nav-item-dropdown :text="storeLang.languaje.toLocaleUpperCase()" right>
+              <b-dropdown-item v-on:click="changeLanguaje('en')">English</b-dropdown-item>
+              <b-dropdown-item v-on:click="changeLanguaje('es')">Español</b-dropdown-item>
             </b-nav-item-dropdown>
           </div>
-          <b-nav-text><a href="/#home">Home</a></b-nav-text>
-          <b-nav-text><a href="/#services">Services</a></b-nav-text>
-          <b-nav-text><a href="/#technologies">Technologies</a></b-nav-text>
-          <b-nav-text><a href="/#customers">Customers</a></b-nav-text>
-          <b-nav-text><a href="/#aboutus" class="cult">About Us</a></b-nav-text>
-          <b-nav-text><a class="button button-primary" href="/#contact">Contact</a></b-nav-text>
+          <b-nav-text><a href="/#home">{{ storeLang.languaje == 'en' ? "Home" : "Inicio"}}</a></b-nav-text>
+          <b-nav-text><a href="/#services">{{ storeLang.languaje == 'en' ? "Services" : "Servicios"}}</a></b-nav-text>
+          <b-nav-text><a href="/#technologies">{{ storeLang.languaje == 'en' ? "Technologies" : "Tecnologias"}}</a></b-nav-text>
+          <b-nav-text><a href="/#customers">{{ storeLang.languaje == 'en' ? "Customers" : "Clientes"}}</a></b-nav-text>
+          <b-nav-text><a href="/#aboutus" class="cult">{{ storeLang.languaje == 'en' ? "About Us" : "Nosotros"}}</a></b-nav-text>
+          <b-nav-text><a class="button button-primary" href="/#contact">{{ storeLang.languaje == 'en' ? "Contact" : "Contacto"}}</a></b-nav-text>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
 
-<script>
+<script setup>
+import { store } from '../stores/languaje.js'
+const storeLang = store()
+
 window.onscroll = function () {
   scrollFunction()
 }
-export default {
-  name: 'NavHeader'
+
+function changeLanguaje(languaje) {
+  storeLang.changeLanguaje(languaje)
 }
+
 function scrollFunction() {
   if (
     document.body.scrollTop > 100 ||

@@ -1,9 +1,18 @@
 <template>
   <section id="customers">
-    <h1 class="title">Customers</h1>
-    <p class="description w-75">These are some of the companies that trust us.</p>
-    <v-container style="padding-top: 100px; padding-bottom: 90px;">
-      <v-row no-gutters style="justify-content: center; text-align: center; width: 90%; margin: auto">
+    <h1 class="title">{{ storeLang.languaje == 'en' ? 'Customers' : 'Clientes' }}</h1>
+    <p class="description w-75">
+      {{
+        storeLang.languaje == 'en'
+          ? 'These are some of the companies that trust us.'
+          : 'Estas son algunas de las empresas que confían en nosotros.'
+      }}
+    </p>
+    <v-container style="padding-top: 100px; padding-bottom: 90px">
+      <v-row
+        no-gutters
+        style="justify-content: center; text-align: center; width: 90%; margin: auto"
+      >
         <v-col style="margin: auto"> <img src="mcpapers.png" alt="" /> </v-col>
         <v-col style="margin: auto">
           <img src="nouvelle.png" alt="" />
@@ -13,6 +22,11 @@
     </v-container>
   </section>
 </template>
+
+<script setup>
+import { store } from '../stores/languaje.js'
+const storeLang = store()
+</script>
 
 <style scoped>
 #customers {

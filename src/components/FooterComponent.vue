@@ -5,8 +5,12 @@
     <div class="contact-wrapper">
       <!-- Left contact page -->
       <div class="content">
-        <h1 class="title">Contact Us</h1>
-        <p class="description pb-4">We will email you soon.</p>
+        <h1 class="title">{{ storeLang.languaje == 'en' ? 'Contact Us' : 'Contáctanos' }}</h1>
+        <p class="description pb-4">
+          {{
+            storeLang.languaje == 'en' ? 'We will email you soon.' : 'Te vamos a responder pronto.'
+          }}
+        </p>
         <form id="contact-form" class="form-horizontal" role="form" style="margin: auto">
           <div class="form-group">
             <div class="col-sm-12">
@@ -14,7 +18,7 @@
                 type="text"
                 class="form-control"
                 id="name"
-                placeholder="NAME"
+                :placeholder="storeLang.languaje == 'en' ? 'NAME' : 'NOMBRE'"
                 name="name"
                 value=""
                 required
@@ -28,7 +32,7 @@
                 type="email"
                 class="form-control"
                 id="email"
-                placeholder="EMAIL"
+                :placeholder="storeLang.languaje == 'en' ? 'EMAIL' : 'CORREO ELECTRÓNICO'"
                 name="email"
                 value=""
                 required
@@ -39,12 +43,14 @@
           <textarea
             class="form-control"
             rows="10"
-            placeholder="MESSAGE"
+            :placeholder="storeLang.languaje == 'en' ? 'MESSAGE' : 'MENSAJE'"
             name="message"
             required
           ></textarea>
 
-          <button class="btn send-button" id="submit" type="submit" value="SEND">SEND</button>
+          <button class="btn send-button" id="submit" type="submit" value="SEND">
+            {{ storeLang.languaje == 'en' ? 'SEND' : 'ENVIAR' }}
+          </button>
         </form>
       </div>
       <!-- Left contact page -->
@@ -89,7 +95,8 @@
         <hr />
 
         <div class="copyright" style="width: fit-content; margin: auto; margin-bottom: 60px">
-          {{ new Date().getFullYear() }} &copy; ALL OF THE RIGHTS RESERVED
+          {{ new Date().getFullYear() }} &copy;
+          {{ storeLang.languaje == 'en' ? 'ALL OF THE RIGHTS RESERVED' : 'DERECHOS RESERVADOS' }}
         </div>
         <div class="mapa" style="width: fit-content; height: fit-content">
           <iframe
@@ -109,10 +116,19 @@
       </div>
     </div>
     <div class="footer-text">
-      <p style="margin: 0px;">&copy; New Horizons Solutions - Software Solutions - {{ new Date().getFullYear() }}</p>
+      <p style="margin: 0px">
+        &copy; New Horizons Solutions -
+        {{ storeLang.languaje == 'en' ? 'Software Solutions' : 'Soluciones de Software' }} -
+        {{ new Date().getFullYear() }}
+      </p>
     </div>
   </section>
 </template>
+
+<script setup>
+import { store } from '../stores/languaje.js'
+const storeLang = store()
+</script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
@@ -192,7 +208,7 @@ textarea {
   color: white;
 }
 
-.footer-text{
+.footer-text {
   text-align: center;
   font-size: 12px;
   color: black;
