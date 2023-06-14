@@ -1,33 +1,20 @@
-# website
+# Website
 Our own website development.
 
-## Recommended IDE Setup
+## Run the web locally
+First than all, clone this repository and open a local terminal in it.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
+### Install all the dependencies
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Compile and run the project
 
 ```sh
 npm run dev
 ```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
+### Format and fix the code
 
 ```sh
 npm run lint
