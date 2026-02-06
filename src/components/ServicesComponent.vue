@@ -80,8 +80,7 @@ $(document).on('scroll', function () {
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
 #services {
-  background: url('https://www.pixel4k.com/wp-content/uploads/2018/10/minimalist-mountains-black-and-white-4k_1540749002.jpg')
-    no-repeat center;
+  background: url('/mountains-bg.jpg') no-repeat center;
   background-size: cover;
   height: fit-content;
 }
