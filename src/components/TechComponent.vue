@@ -1,6 +1,6 @@
 <template>
   <section id="technologies">
-    <h1 class="title">{{ storeLang.languaje == 'en' ? 'Technologies' : 'Tecnologias' }}</h1>
+    <h2 class="title">{{ storeLang.languaje == 'en' ? 'Technologies' : 'Tecnologias' }}</h2>
     <p class="description w-75">
       {{
         storeLang.languaje == 'en'

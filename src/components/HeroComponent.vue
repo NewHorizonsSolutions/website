@@ -14,21 +14,24 @@
         <header id="header" style="padding-top: 100px"></header>
         <header class="hero-header">
           <div style="padding-top: 100px">
-            <h1 class="hero-title pl-10" style="padding-bottom: 0px">
-              {{ storeLang.languaje == 'en' ? 'We improve you.' : 'Te mejoramos.' }}
-            </h1>
-            <h1 class="hero-title pl-15" style="font-size: 70px; padding-top: 20px; display: flex">
-              {{ storeLang.languaje == 'en' ? 'Exceed your' : 'Supera tus' }}
-              <div>
-                <div class="ml-4 typewriter" style="display: flex; width: 350px">
+            <h1 class="hero-title pl-10">
+              <span class="hero-line" style="padding-bottom: 0px; display: block">
+                {{ storeLang.languaje == 'en' ? 'We improve you.' : 'Te mejoramos.' }}
+              </span>
+              <span
+                class="hero-line pl-15"
+                style="font-size: 70px; padding-top: 20px; display: flex"
+              >
+                {{ storeLang.languaje == 'en' ? 'Exceed your' : 'Supera tus' }}
+                <span class="ml-4 typewriter" style="display: flex; width: 350px">
                   <span class="text_1 pb-5">{{
                     storeLang.languaje == 'en' ? 'horizons...' : 'horizontes'
                   }}</span>
                   <span class="text_2 pb-5">{{
                     storeLang.languaje == 'en' ? 'perspects' : 'limitantes.'
                   }}</span>
-                </div>
-              </div>
+                </span>
+              </span>
             </h1>
             <p class="w-50 mt-5 pl-15" id="description">
               {{
@@ -220,7 +223,8 @@ video {
     margin: auto;
     padding: auto;
   }
-  .hero-header h1 {
+  .hero-header h1,
+  .hero-header .hero-line {
     padding: 0px !important;
     padding-bottom: 30px !important;
     margin: auto !important;

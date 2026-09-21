@@ -4,7 +4,7 @@
       <div class="monitor onleft" style="padding-bottom: 25px">
         <div class="tag left">
           <div class="mb-4 onleft" style="display: flex">
-            <h1
+            <h2
               style="
                 font-size: 30px;
                 margin: auto 0px;
@@ -14,7 +14,7 @@
               "
             >
               {{ storeLang.languaje == 'en' ? 'About Us' : 'Nosotros' }}
-            </h1>
+            </h2>
           </div>
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
             {{
@@ -46,7 +46,7 @@
         </div>
         <div class="tag rightdiv" id="showed">
           <div class="mb-4 onright" style="display: flex">
-            <h1
+            <h2
               style="
                 font-size: 30px;
                 margin: auto 0px;
@@ -56,7 +56,7 @@
               "
             >
               {{ storeLang.languaje == 'en' ? 'Our Identity' : 'Identidad' }}
-            </h1>
+            </h2>
           </div>
           <div style="display: flex; align-items: center">
             <p class="rightxt" style="font-family: 'DM Sans', sans-serif; font-size: 16px">
@@ -85,7 +85,7 @@
       <div class="monitor onleft" style="padding-top: 25px">
         <div class="tag left">
           <div class="mb-4 onleft" style="display: flex">
-            <h1
+            <h2
               style="
                 font-size: 30px;
                 margin: auto 0px;
@@ -95,7 +95,7 @@
               "
             >
               {{ storeLang.languaje == 'en' ? 'The Team' : 'Equipo' }}
-            </h1>
+            </h2>
           </div>
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
             {{
@@ -140,7 +140,7 @@ $(document).on('scroll', function () {
 #aboutus {
   background-color: #f0f0f0;
   height: fit-content;
-  padding: 90px 40px 120px;
+  padding: 90px 40px 72px;
 }
 .cont {
   padding-top: 30px;

@@ -1,6 +1,6 @@
 <template>
   <section id="services">
-    <h1 class="title">{{ storeLang.languaje == 'en' ? 'Services' : 'Servicios' }}</h1>
+    <h2 class="title">{{ storeLang.languaje == 'en' ? 'Services' : 'Servicios' }}</h2>
     <p class="description w-75">
       {{
         storeLang.languaje == 'en'
@@ -15,7 +15,12 @@
         style="padding-bottom: 600px; padding-top: 60px"
       >
         <b-card tag="article" class="tag m-5 box--gradient size" align="center">
-          <img src="design.png" alt="" height="70" class="m-5" />
+          <img
+            src="design.png"
+            :alt="storeLang.languaje == 'en' ? 'Software design' : 'Diseño de software'"
+            height="70"
+            class="m-5"
+          />
           <h3>{{ storeLang.languaje == 'en' ? 'Design' : 'Diseño' }}</h3>
           <b-card-text class="mb-10" style="font-family: 'DM Sans', sans-serif">
             {{
@@ -26,7 +31,12 @@
           </b-card-text>
         </b-card>
         <b-card tag="article" class="tag m-5 box--gradient size" align="center">
-          <img src="development.png" alt="" height="70" class="m-5" />
+          <img
+            src="development.png"
+            :alt="storeLang.languaje == 'en' ? 'Software development' : 'Desarrollo de software'"
+            height="70"
+            class="m-5"
+          />
 
           <h3>{{ storeLang.languaje == 'en' ? 'Development' : 'Desarrollo' }}</h3>
           <b-card-text class="mb-5" style="font-family: 'DM Sans', sans-serif">
@@ -38,7 +48,14 @@
           </b-card-text>
         </b-card>
         <b-card tag="article" class="tag m-5 box--gradient size" align="center">
-          <img src="implementation.png" alt="" height="70" class="m-5" />
+          <img
+            src="implementation.png"
+            :alt="
+              storeLang.languaje == 'en' ? 'Software implementation' : 'Implementación de software'
+            "
+            height="70"
+            class="m-5"
+          />
 
           <h3>{{ storeLang.languaje == 'en' ? 'Implementation' : 'Implementación' }}</h3>
           <b-card-text class="mb-5" style="font-family: 'DM Sans', sans-serif">

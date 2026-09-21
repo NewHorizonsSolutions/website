@@ -3,7 +3,7 @@
     <b-navbar toggleable="sm" fixed="top" sticky="true" id="header">
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
       <b-navbar-brand style="font-size: 23px; padding-left: 20px; font-weight: bold back">
-        <img src="logo.png" alt="" height="50" />
+        <img src="logo.png" alt="New Horizons Solutions" height="50" />
         <a class="logo" href="/#home">New Horizons</a>
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">

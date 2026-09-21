@@ -5,7 +5,6 @@ import TechComponent from '../components/TechComponent.vue'
 import TailorSoftware from '../components/TailorSoftware.vue'
 import AboutUsComponent from '../components/AboutUsComponent.vue'
 import CustomersComponent from '../components/CustomersComponent.vue'
-import JoinUsComponent from '../components/JoinUsComponent.vue'
 </script>
 
 <template>
@@ -26,7 +25,6 @@ import JoinUsComponent from '../components/JoinUsComponent.vue'
     <TailorSoftware />
     <CustomersComponent />
     <AboutUsComponent />
-    <JoinUsComponent />
   </main>
 </template>
 

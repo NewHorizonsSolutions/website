@@ -12,13 +12,13 @@
     </div>
     <div class="tag monitor" style="justify-content: center">
       <div class="left">
-        <h1 class="mb-4" style="font-size: 30px">
+        <h2 class="mb-4" style="font-size: 30px">
           {{
             storeLang.languaje == 'en'
               ? "Let's create something remarkable!"
               : 'Creemos algo sorprendente!'
           }}
-        </h1>
+        </h2>
         <p style="font-family: 'DM Sans', sans-serif; font-size: 16px">
           {{
             storeLang.languaje == 'en'

@@ -1,7 +1,17 @@
 <script setup>
+import { onMounted, watch } from 'vue'
+import { storeToRefs } from 'pinia'
 import { RouterView } from 'vue-router'
 import FooterComponent from './components/FooterComponent.vue'
 import HeaderComponent from './components/HeaderComponent.vue'
+import { store } from './stores/languaje.js'
+import { applyPageSeo } from './seo.js'
+
+const langStore = store()
+const { languaje } = storeToRefs(langStore)
+
+onMounted(() => applyPageSeo(languaje.value))
+watch(languaje, (lang) => applyPageSeo(lang))
 </script>
 
 <template>
