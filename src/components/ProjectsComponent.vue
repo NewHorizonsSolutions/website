@@ -1,9 +1,9 @@
 <template>
-  <section id="projects">
+  <section id="projects" ref="sectionRef" class="section-mountain">
     <div class="projects-inner">
       <header class="projects-head">
-        <h2 class="title">{{ isEn ? 'Projects we delivered' : 'Casos de éxito' }}</h2>
-        <p class="description">
+        <h2 class="title" data-reveal="fade">{{ isEn ? 'Projects we delivered' : 'Casos de éxito' }}</h2>
+        <p class="description" data-reveal="fade" style="--reveal-delay: 80ms">
           {{
             isEn
               ? 'Real work with companies that trusted us. We add detail to each case as we publish it.'
@@ -13,7 +13,13 @@
       </header>
 
       <div class="projects-grid">
-      <article v-for="project in projects" :key="project.id" class="project-card tag">
+      <article
+        v-for="(project, idx) in projects"
+        :key="project.id"
+        class="project-card"
+        data-reveal
+        :style="{ '--reveal-delay': `${idx * 90}ms` }"
+      >
         <div class="project-card__header">
           <div class="project-logo-wrap">
             <img
@@ -52,10 +58,13 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { store } from '../stores/languaje.js'
 import { projects } from '../data/projects.js'
-import $ from 'jquery'
+import { useScrollReveal } from '../composables/useScrollReveal.js'
+
+const sectionRef = ref(null)
+useScrollReveal(sectionRef)
 
 const storeLang = store()
 const isEn = computed(() => storeLang.languaje === 'en')
@@ -68,29 +77,19 @@ function hasCaseDetails(project) {
     project.result
   )
 }
-
-$(document).on('scroll', function () {
-  var pageTop = $(document).scrollTop()
-  var pageBottom = pageTop + $(window).height()
-  var tags = $('#projects .tag')
-
-  for (var i = 0; i < tags.length; i++) {
-    var tag = tags[i]
-    if ($(tag).position().top < pageBottom) {
-      $(tag).addClass('visible')
-    } else {
-      $(tag).removeClass('visible')
-    }
-  }
-})
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 
 #projects {
-  background: linear-gradient(to top, #020202, #414345);
-  padding: 3rem 0 4rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 35%,
+    transparent 100%
+  );
+  padding: 4.5rem 0 5rem;
   margin-top: 0;
 }
 
@@ -107,11 +106,13 @@ $(document).on('scroll', function () {
 }
 
 .title {
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  letter-spacing: -0.03em;
   text-align: center;
-  font-weight: bold;
+  font-weight: 650;
   margin: 0;
-  color: #fff;
+  color: #f4f6fb;
 }
 
 .description {
@@ -132,19 +133,20 @@ $(document).on('scroll', function () {
 }
 
 .project-card {
-  background: #fff;
-  color: #000;
-  border-radius: 16px;
+  background: #f7f8fc;
+  color: #111;
+  border-radius: 20px;
   padding: 28px 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  transform: translate(0, 10vh);
-  transition: all 1.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
 }
 
-.project-card.visible {
-  opacity: 1;
-  transform: translate(0, 0);
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.38);
 }
 
 .project-card__header {
