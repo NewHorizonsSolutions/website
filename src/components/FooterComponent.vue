@@ -1,131 +1,167 @@
 <template>
   <section id="contact">
-    <!-- <h1 class="section-header">Contact</h1> -->
-
-    <div class="contact-wrapper">
-      <!-- Left contact page -->
-      <div class="content">
-        <h1 class="title">{{ storeLang.languaje == 'en' ? 'Contact Us' : 'Contáctanos' }}</h1>
-        <p class="description pb-4">
+    <div class="contact-section">
+      <div class="contact-divider" aria-hidden="true"></div>
+      <header class="contact-header">
+        <h2 class="title">
           {{
-            storeLang.languaje == 'en' ? 'We will email you soon.' : 'Te vamos a responder pronto.'
+            storeLang.languaje == 'en' ? 'Do you have a project in mind?' : '¿Tenés un proyecto en mente?'
+          }}
+        </h2>
+        <p class="description">
+          {{
+            storeLang.languaje == 'en'
+              ? 'Tell us what you need and we will figure out together the best way to move forward.'
+              : 'Contanos qué necesitás y analizamos juntos la mejor forma de llevarlo adelante.'
           }}
         </p>
-        <form
-          name="contactos"
-          method="post"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          id="contact-form"
-          class="form-horizontal"
-          role="form"
-          style="margin: auto"
-        >
-          <input type="hidden" name="form-name" value="contactos" />
+      </header>
 
-          <div class="form-group">
-            <div class="col-sm-12">
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                :placeholder="storeLang.languaje == 'en' ? 'NAME' : 'NOMBRE'"
-                name="name"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-12">
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                :placeholder="storeLang.languaje == 'en' ? 'EMAIL' : 'CORREO ELECTRÓNICO'"
-                name="email"
-                required
-              />
-            </div>
-          </div>
-
-          <textarea
-            class="form-control"
-            rows="10"
-            :placeholder="storeLang.languaje == 'en' ? 'MESSAGE' : 'MENSAJE'"
-            name="message"
-            required
-          ></textarea>
-
-          <button class="btn send-button" id="submit" type="submit" value="SEND">
-            {{ storeLang.languaje == 'en' ? 'SEND' : 'ENVIAR' }}
-          </button>
-        </form>
-      </div>
-      <!-- Left contact page -->
-
-      <div class="direct-contact-container content-left">
-        <ul class="contact-list" style="width: fit-content; margin: auto">
-          <li class="list-item">
-            <i class="fa fa-envelope fa-2x"
-              ><span class="contact-text gmail"
-                ><a href="mailto:info@nhsolutions.com.ar" title="Send me an email"
-                  >info@nhsolutions.com.ar</a
-                ></span
-              ></i
-            >
-          </li>
-        </ul>
-        <ul class="social-media-list" style="width: fit-content; margin: auto">
-          <a
-            href="https://www.linkedin.com/company/solutionsnewhorizons"
-            target="_blank"
-            class="contact-icon"
+      <div class="contact-grid">
+        <div class="contact-form-card">
+          <form
+            id="contact-form"
+            class="contact-form"
+            role="form"
+            novalidate
+            @submit.prevent="submitContact"
           >
-            <li class="tocado">
-              <i class="mdi mdi-linkedin" aria-hidden="true"></i></li
-          ></a>
-          <a href="https://github.com/NewHorizonsSolutions" target="_blank" class="contact-icon">
-            <li class="tocado">
-              <i class="mdi mdi-github" aria-hidden="true"></i>
-            </li>
-          </a>
-          <a href="https://nhsolutions.com.ar/" target="_blank" class="contact-icon">
-            <li class="tocado">
-              <i class="mdi mdi-web" aria-hidden="true"></i>
-            </li>
-          </a>
-          <a href="mailto:info@nhsolutions.com.ar" target="_blank" class="contact-icon">
-            <li class="tocado">
-              <i class="mdi mdi-email" aria-hidden="true"></i>
-            </li>
-          </a>
-        </ul>
-        <hr />
+            <p class="hidden-honeypot" aria-hidden="true">
+              <label>
+                No completar:
+                <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+              </label>
+            </p>
 
-        <div class="copyright" style="width: fit-content; margin: auto; margin-bottom: 60px">
-          {{ new Date().getFullYear() }} &copy;
-          {{ storeLang.languaje == 'en' ? 'ALL OF THE RIGHTS RESERVED' : 'DERECHOS RESERVADOS' }}
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              :placeholder="storeLang.languaje == 'en' ? 'NAME' : 'NOMBRE'"
+              name="name"
+              required
+            />
+
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              :placeholder="storeLang.languaje == 'en' ? 'EMAIL' : 'CORREO ELECTRÓNICO'"
+              name="email"
+              required
+            />
+
+            <textarea
+              class="form-control form-control--message"
+              rows="6"
+              :placeholder="storeLang.languaje == 'en' ? 'MESSAGE' : 'MENSAJE'"
+              name="message"
+              required
+            ></textarea>
+
+            <button
+              class="btn send-button"
+              id="submit"
+              type="submit"
+              :disabled="formStatus === 'sending'"
+            >
+              {{
+                formStatus === 'sending'
+                  ? storeLang.languaje == 'en'
+                    ? 'SENDING…'
+                    : 'ENVIANDO…'
+                  : storeLang.languaje == 'en'
+                    ? 'SEND'
+                    : 'ENVIAR'
+              }}
+            </button>
+            <p v-if="formStatus === 'success'" class="form-feedback form-feedback--success" role="status">
+              {{
+                storeLang.languaje == 'en'
+                  ? 'Message sent. We will get back to you soon.'
+                  : 'Mensaje enviado. Te responderemos pronto.'
+              }}
+            </p>
+            <p v-else-if="formStatus === 'error'" class="form-feedback form-feedback--error" role="alert">
+              {{
+                storeLang.languaje == 'en'
+                  ? 'Something went wrong. Try again or write to info@nhsolutions.com.ar.'
+                  : 'No se pudo enviar. Intentá de nuevo o escribinos a info@nhsolutions.com.ar.'
+              }}
+            </p>
+          </form>
         </div>
-        <div class="mapa" style="width: fit-content; height: fit-content">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9377154861277!2d-58.3952473241178!3d-34.60573645760501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac227399ed1%3A0xaee820b239723567!2sSarmiento%201828%2C%20C1044AAB%20CABA!5e0!3m2!1sen!2sar!4v1686682189059!5m2!1sen!2sar"
-            width="300"
-            height="410"
-            style="
-              border-radius: 20px;
-              filter: drop-shadow(-2px 2px 15px rgba(0, 0, 0, 0.7));
-              overflow: hidden;
-            "
-            allowfullscreen="false"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
+
+        <aside class="contact-aside">
+          <div class="contact-side-card">
+            <a class="contact-email" href="mailto:info@nhsolutions.com.ar">
+              info@nhsolutions.com.ar
+            </a>
+
+            <ul class="social-media-list">
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/solutionsnewhorizons"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i class="mdi mdi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/NewHorizonsSolutions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <i class="mdi mdi-github" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nhsolutions.com.ar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Website"
+                >
+                  <i class="mdi mdi-web" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@nhsolutions.com.ar" aria-label="Email">
+                  <i class="mdi mdi-email" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+
+            <div class="map-block">
+              <div class="map-card__header">
+                <span class="mdi mdi-map-marker-outline map-card__icon" aria-hidden="true"></span>
+                <div class="map-card__text">
+                  <p class="map-card__label">
+                    {{ storeLang.languaje == 'en' ? 'Our office' : 'Nuestra oficina' }}
+                  </p>
+                  <p class="map-card__address">Sarmiento 1828, CABA</p>
+                </div>
+              </div>
+              <div class="map-wrap">
+                <iframe
+                  title="New Horizons Solutions office — Sarmiento 1828, CABA"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9377154861277!2d-58.3952473241178!3d-34.60573645760501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac227399ed1%3A0xaee820b239723567!2sSarmiento%201828%2C%20C1044AAB%20CABA!5e0!3m2!1sen!2sar!4v1686682189059!5m2!1sen!2sar"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
+
     <div class="footer-text">
-      <p style="margin: 0px">
+      <p>
         &copy; New Horizons Solutions -
         {{ storeLang.languaje == 'en' ? 'Software Solutions' : 'Soluciones de Software' }} -
         {{ new Date().getFullYear() }}
@@ -135,8 +171,37 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { store } from '../stores/languaje.js'
+
 const storeLang = store()
+const formStatus = ref('idle')
+
+const contactApiUrl = import.meta.env.VITE_CONTACT_API_URL || '/.netlify/functions/send-contact'
+
+async function submitContact(event) {
+  const form = event.target
+  formStatus.value = 'sending'
+
+  const payload = Object.fromEntries(new FormData(form).entries())
+
+  try {
+    const response = await fetch(contactApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+
+    if (!response.ok) {
+      throw new Error('Contact API failed')
+    }
+
+    form.reset()
+    formStatus.value = 'success'
+  } catch {
+    formStatus.value = 'error'
+  }
+}
 </script>
 
 <style scoped>
@@ -144,300 +209,308 @@ const storeLang = store()
 
 #contact {
   width: 100%;
-  height: 100%;
-  padding-top: 60px;
-  background-color: #f0f0f0;
+  background-color: #ececec;
+  border-top: 1px solid #ddd;
+}
+
+.contact-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 24px 72px;
+}
+
+.contact-divider {
+  width: 56px;
+  height: 2px;
+  margin: 0 auto 40px;
+  background-color: #1b1b1b;
+  border-radius: 1px;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 48px;
 }
 
 .title {
   font-size: 40px;
-  text-align: center;
-  padding: 50px 0px 0px;
   font-weight: bold;
-  color: black;
+  color: #000;
+  margin: 0 0 12px;
 }
 
 .description {
-  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
   letter-spacing: 3px;
-  text-align: center;
+  margin: 0;
+  color: #333;
 }
 
-.section-header {
-  text-align: center;
-  margin: 0 auto;
-  padding: 40px 0;
-  font: 300 60px 'Oswald', sans-serif;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 6px;
-}
-
-.contact-wrapper {
+.contact-grid {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 28px;
   margin: 0 auto;
-  padding: 20px;
-  position: relative;
-  max-width: 840px;
+  width: 100%;
 }
 
-/* Left contact page */
-.form-horizontal {
-  /*float: left;*/
-  max-width: 400px;
-  font-weight: 400;
+.contact-form-card,
+.contact-side-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 36px 36px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.form-control,
-textarea {
-  max-width: 400px;
-  background-color: whitesmoke;
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hidden-honeypot {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+.form-feedback {
+  margin: 8px 0 0;
   font-family: 'DM Sans', sans-serif;
-  margin: 20px 0;
-  color: black;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.form-feedback--success {
+  color: #1a6b3a;
+}
+
+.form-feedback--error {
+  color: #a32b2b;
+}
+
+.send-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.form-control {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  margin: 12px 0 0;
+  padding: 14px 16px;
+  color: #000;
   letter-spacing: 1px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #414345;
+  box-shadow: 0 0 0 3px rgba(65, 67, 69, 0.15);
+}
+
+.form-control--message {
+  resize: vertical;
+  min-height: 140px;
 }
 
 .send-button {
-  margin: 15px 0px 70px;
-  height: 80px;
-  width: 400px;
-  overflow: hidden;
-  background: #232526;
-  background: -webkit-linear-gradient(to right, #232526, #414345);
+  margin-top: 24px;
+  width: 100%;
+  height: 56px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
   background: linear-gradient(to top, #020202, #414345);
-  color: white;
-  border: 2px solid black !important;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
 }
 
 .send-button:hover {
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+.send-button:active {
+  transform: translateY(1px);
+}
+
+.contact-aside {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+
+.contact-side-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.map-block {
+  width: 100%;
+}
+
+.contact-email {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+  word-break: break-word;
+}
+
+.contact-email:hover {
+  border-bottom-color: #000;
+}
+
+.social-media-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social-media-list li {
+  margin: 0;
+}
+
+.social-media-list a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #1b1b1b;
+  font-size: 22px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.social-media-list a:hover {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0 0 1px #1b1b1b;
+  transform: scale(1.05);
+}
+
+.map-card__header {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.map-card__icon {
+  font-size: 28px;
+  color: #1b1b1b;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.map-card__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #555;
+  margin: 0 0 4px;
+}
+
+.map-card__address {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.map-wrap {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  aspect-ratio: 4 / 3;
+  background: #f0f0f0;
+}
+
+.map-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .footer-text {
   text-align: center;
   font-size: 12px;
-  color: black;
-  margin: 0px;
-  padding: 30px;
-  background: #232526;
-  background: -webkit-linear-gradient(to right, #232526, #414345);
+  margin: 0;
+  padding: 28px 16px;
   background: linear-gradient(to top, #020202, #414345);
-  color: white;
-}
-
-.alt-send-button {
-  width: 400px;
-  height: 34px;
-  transition: all 4s ease-in-out;
-}
-
-/* Begin Right Contact Page */
-.direct-contact-container {
-  max-width: 400px;
-}
-
-/* Location, Phone, Email Section */
-.contact-list {
-  list-style-type: none;
-  margin-left: -30px;
-  padding-right: 20px;
-}
-
-.list-item {
-  line-height: 4;
-  color: #aaa;
-}
-
-.content-left {
-  width: fit-content;
-  padding: 60px 0px 60px 60px;
-}
-
-.contact-text {
-  font: 300 18px 'Lato', sans-serif;
-  letter-spacing: 1.9px;
-  color: #bbb;
-}
-
-.place {
-  margin-left: 62px;
-}
-
-.phone {
-  margin-left: 56px;
-}
-
-.gmail {
-  color: black;
-}
-
-.contact-text a {
-  color: black;
-  text-decoration: none;
-  transition: 1s;
-}
-
-.contact-text a:hover {
-  border-bottom: 1px solid black;
-  text-decoration: none;
-}
-
-/* Social Media Icons */
-.social-media-list {
-  position: relative;
-  font-size: 22px;
-  text-align: center;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-}
-
-.tocado:hover {
-  color: black !important;
-}
-
-.social-media-list li a {
   color: #fff;
 }
 
-.social-media-list li {
-  position: relative;
-  display: inline-block;
-  height: 60px;
-  width: 60px;
-  margin: 10px 3px;
-  line-height: 60px;
-  border-radius: 50%;
-  color: #fff;
-  background-color: rgb(27, 27, 27);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+.footer-text p {
+  margin: 0;
 }
 
-.social-media-list li:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 50%;
-  opacity: 0;
-  box-shadow: 0 0 0 1px #fff;
-  transition: all 0.2s ease-in-out;
-}
-
-.social-media-list li:hover {
-  background-color: #fff;
-}
-
-.social-media-list li:hover:after {
-  opacity: 1;
-  transform: scale(1.12);
-  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
-}
-
-.social-media-list li:hover a {
-  color: #000;
-}
-
-.copyright {
-  font: 200 14px 'Oswald', sans-serif;
-  color: #555;
-  letter-spacing: 1px;
-  text-align: center;
-}
-
-hr {
-  border-color: rgba(255, 255, 255, 0.6);
-}
-.content {
-  background: white;
-  height: fit-content;
-  width: 600px;
-  border-radius: 20px;
-  padding: 0px 40px 0px 40px;
-}
-
-/* Begin Media Queries*/
-@media screen and (max-width: 850px) {
-  .contact-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  .direct-contact-container,
-  .form-horizontal {
-    margin: 0 auto;
+@media screen and (max-width: 480px) {
+  .contact-form-card,
+  .contact-side-card {
+    padding: 28px 24px 32px;
   }
 
-  .content {
-    background: transparent;
-    width: 100%;
-    padding: 0px !important;
-    margin: auto;
+  .contact-section {
+    padding: 72px 16px 56px;
   }
 
-  .content-left {
-    width: fit-content;
-    padding: 0px;
-    margin: auto !important;
+  .contact-header {
+    margin-bottom: 32px;
   }
 
-  .direct-contact-container {
-    margin-top: 60px;
-    max-width: 300px;
-  }
-  .social-media-list li {
-    height: 60px;
-    width: 60px;
-    line-height: 60px;
-  }
-  .social-media-list li:after {
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-  }
-}
-
-@media screen and (max-width: 569px) {
-  .direct-contact-container,
-  .form-wrapper {
-    float: none;
-    margin: 0 auto;
-  }
-  .form-control,
-  textarea {
-    margin: 20px auto;
+  .title {
+    font-size: 32px;
   }
 
-  .direct-contact-container {
-    margin-top: 60px;
-    max-width: 280px;
+  .description {
+    font-size: 14px;
+    letter-spacing: 2px;
   }
-  .social-media-list {
-    left: 0;
-  }
-  .social-media-list li {
-    height: 55px;
-    width: 55px;
-    line-height: 55px;
-    font-size: 2rem;
-  }
-  .social-media-list li:after {
-    width: 55px;
-    height: 55px;
-    line-height: 55px;
-  }
-}
 
-@media screen and (max-width: 410px) {
-  .send-button {
-    width: 99%;
+  .social-media-list a {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
   }
 }
 </style>

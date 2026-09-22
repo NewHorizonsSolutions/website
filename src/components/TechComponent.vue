@@ -1,11 +1,11 @@
 <template>
   <section id="technologies">
-    <h1 class="title">{{ storeLang.languaje == 'en' ? 'Technologies' : 'Tecnologias' }}</h1>
+    <h2 class="title">{{ storeLang.languaje == 'en' ? 'Technologies' : 'Tecnologías' }}</h2>
     <p class="description w-75">
       {{
         storeLang.languaje == 'en'
-          ? 'We work with the best technologies to deliver the best results.'
-          : 'Trabajamos con las mejores tecnologias para entregar los mejores resultados.'
+          ? 'The stack supports the solution — we choose tools based on maintainability, scale, and your context.'
+          : 'El stack respalda la solución — elegimos herramientas según mantenibilidad, escala y tu contexto.'
       }}
     </p>
     <v-container style="padding-top: 100px; padding-bottom: 90px">
@@ -67,12 +67,9 @@ const storeLang = store()
 
 <style scoped>
 #technologies {
-  background: #232526;
-  background: -webkit-linear-gradient(to right, #232526, #414345);
   background: linear-gradient(to bottom, #020202, #414345);
   color: white;
-  padding: 50px 0px 50px 0px;
-  padding-top: 0px !important;
+  padding: 3rem 0 50px;
   text-align: center;
 }
 

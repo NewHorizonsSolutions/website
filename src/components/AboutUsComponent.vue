@@ -4,7 +4,7 @@
       <div class="monitor onleft" style="padding-bottom: 25px">
         <div class="tag left">
           <div class="mb-4 onleft" style="display: flex">
-            <h1
+            <h2
               style="
                 font-size: 30px;
                 margin: auto 0px;
@@ -14,13 +14,13 @@
               "
             >
               {{ storeLang.languaje == 'en' ? 'About Us' : 'Nosotros' }}
-            </h1>
+            </h2>
           </div>
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
             {{
               storeLang.languaje == 'en'
-                ? "We're a passionate software solutions company driven by innovation, collaboration, and excellence. Our mission is to empower clients with cutting-edge solutions, while our vision is to be a trusted partner for their technology needs."
-                : 'Somos una empresa apasionada de soluciones de software impulsada por la innovación, la colaboración y la excelencia. Nuestra misión es empoderar a los clientes con soluciones de vanguardia, mientras que nuestra visión es ser un socio confiable para sus necesidades tecnológicas.'
+                ? 'New Horizons Solutions is a technology partner based in Buenos Aires. We build custom software, platform delivery practices, and cybersecurity consulting — working closely with each client to understand how their business operates before we build.'
+                : 'New Horizons Solutions es un partner tecnológico con base en Buenos Aires. Desarrollamos software a medida, plataformas de despliegue y consultoría en ciberseguridad — trabajando cerca de cada cliente para entender cómo opera su negocio antes de construir.'
             }}
           </p>
         </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="tag rightdiv" id="showed">
           <div class="mb-4 onright" style="display: flex">
-            <h1
+            <h2
               style="
                 font-size: 30px;
                 margin: auto 0px;
@@ -55,15 +55,15 @@
                 border-bottom: 2px solid black;
               "
             >
-              {{ storeLang.languaje == 'en' ? 'Our Identity' : 'Identidad' }}
-            </h1>
+              {{ storeLang.languaje == 'en' ? 'How we partner' : 'Cómo acompañamos' }}
+            </h2>
           </div>
           <div style="display: flex; align-items: center">
             <p class="rightxt" style="font-family: 'DM Sans', sans-serif; font-size: 16px">
               {{
                 storeLang.languaje == 'en'
-                  ? 'Our identity is shaped by our relentless pursuit of pushing the boundaries and creating impactful solutions. We embrace the challenges, celebrate the successes, and make a lasting mark in the world of technology.'
-                  : 'Nuestra identidad está moldeada por nuestra búsqueda implacable de empujar los límites y crear soluciones impactantes. Abrazamos los desafíos, celebramos los éxitos y dejamos una marca duradera en el mundo de la tecnología.'
+                  ? 'We aim for long-term relationships: clear communication, realistic scopes, and solutions that can grow with you. We combine product thinking, engineering, and operations so technology supports daily work — not the other way around.'
+                  : 'Buscamos relaciones de largo plazo: comunicación clara, alcances realistas y soluciones que puedan crecer con vos. Combinamos mirada de producto, ingeniería y operación para que la tecnología acompañe el día a día — no al revés.'
               }}
             </p>
             <span
@@ -85,7 +85,7 @@
       <div class="monitor onleft" style="padding-top: 25px">
         <div class="tag left">
           <div class="mb-4 onleft" style="display: flex">
-            <h1
+            <h2
               style="
                 font-size: 30px;
                 margin: auto 0px;
@@ -94,14 +94,14 @@
                 border-bottom: 2px solid black;
               "
             >
-              {{ storeLang.languaje == 'en' ? 'The Team' : 'Equipo' }}
-            </h1>
+              {{ storeLang.languaje == 'en' ? 'Our capabilities' : 'Capacidades' }}
+            </h2>
           </div>
           <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
             {{
               storeLang.languaje == 'en'
-                ? "Our team is a powerhouse of talent, united by a common passion for technology and a relentless pursuit of excellence. Team's synergy is the driving force behind our ability to exceed expectations and make a meaningful impact."
-                : 'Nuestro equipo es una potencia de talentos, unidos por una pasión común por la tecnología y una incansable búsqueda de la excelencia. La sinergia del equipo es la fuerza impulsora detrás de nuestra capacidad para superar las expectativas y tener un impacto significativo.'
+                ? 'Multidisciplinary team: analysis, UX, development, integrations, cloud, and emerging tools including AI. We stay up to date because our clients need solutions that remain useful over time — not one-off deliveries.'
+                : 'Equipo multidisciplinario: análisis, UX, desarrollo, integraciones, cloud y herramientas emergentes, incluida IA. Nos actualizamos porque nuestros clientes necesitan soluciones útiles en el tiempo — no entregas aisladas.'
             }}
           </p>
         </div>
@@ -140,7 +140,7 @@ $(document).on('scroll', function () {
 #aboutus {
   background-color: #f0f0f0;
   height: fit-content;
-  padding: 90px 40px 120px;
+  padding: 90px 40px 72px;
 }
 .cont {
   padding-top: 30px;

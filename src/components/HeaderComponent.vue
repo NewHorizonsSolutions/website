@@ -3,7 +3,7 @@
     <b-navbar toggleable="sm" fixed="top" sticky="true" id="header">
       <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
       <b-navbar-brand style="font-size: 23px; padding-left: 20px; font-weight: bold back">
-        <img src="logo.png" alt="" height="50" />
+        <img src="logo.png" alt="New Horizons Solutions" height="50" />
         <a class="logo" href="/#home">New Horizons</a>
       </b-navbar-brand>
       <b-collapse id="nav-text-collapse" is-nav style="justify-content: end">
@@ -16,9 +16,9 @@
             </b-nav-item-dropdown>
           </div>
           <b-nav-text><a href="/#home">{{ storeLang.languaje == 'en' ? "Home" : "Inicio"}}</a></b-nav-text>
-          <b-nav-text><a href="/#services">{{ storeLang.languaje == 'en' ? "Services" : "Servicios"}}</a></b-nav-text>
-          <b-nav-text><a href="/#technologies">{{ storeLang.languaje == 'en' ? "Technologies" : "Tecnologias"}}</a></b-nav-text>
-          <b-nav-text><a href="/#customers">{{ storeLang.languaje == 'en' ? "Customers" : "Clientes"}}</a></b-nav-text>
+          <b-nav-text><a href="/#solutions">{{ storeLang.languaje == 'en' ? 'Solutions' : 'Soluciones' }}</a></b-nav-text>
+          <b-nav-text><a href="/#projects">{{ storeLang.languaje == 'en' ? 'Projects' : 'Proyectos' }}</a></b-nav-text>
+          <b-nav-text><a href="/#technologies">{{ storeLang.languaje == 'en' ? 'Technologies' : 'Tecnologías' }}</a></b-nav-text>
           <b-nav-text><a href="/#aboutus" class="cult">{{ storeLang.languaje == 'en' ? "About Us" : "Nosotros"}}</a></b-nav-text>
           <b-nav-text><a class="button button-primary" href="/#contact">{{ storeLang.languaje == 'en' ? "Contact" : "Contacto"}}</a></b-nav-text>
         </b-navbar-nav>
