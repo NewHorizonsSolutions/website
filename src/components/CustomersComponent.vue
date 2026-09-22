@@ -1,11 +1,17 @@
 <template>
   <section id="customers">
-    <h2 class="title">{{ storeLang.languaje == 'en' ? 'Customers' : 'Clientes' }}</h2>
+    <h2 class="title">
+      {{
+        storeLang.languaje == 'en'
+          ? 'Companies that trusted us'
+          : 'Empresas que confiaron en nosotros'
+      }}
+    </h2>
     <p class="description">
       {{
         storeLang.languaje == 'en'
-          ? 'These are some of the companies that trust us.'
-          : 'Estas son algunas de las empresas que confían en nosotros.'
+          ? 'Organizations that chose us to build and evolve their technology.'
+          : 'Organizaciones que nos eligieron para construir y evolucionar su tecnología.'
       }}
     </p>
 
@@ -60,18 +66,9 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { store } from '../stores/languaje.js'
+import { clients } from '../data/clients.js'
 
 const storeLang = store()
-
-const clients = [
-  { src: '/mcpapers.png', name: 'MC Papers' },
-  { src: '/brain-suystem.png', name: 'Brain System', colored: true },
-  { src: '/boomeer.png', name: 'Boomeer' },
-  { src: '/keilix.png', name: 'Keilix', colored: true },
-  { src: '/nouvelle.png', name: 'Nouvelle' },
-  { src: '/lwd.png', name: 'LWD' },
-  { src: '/bkit.png', name: 'BKit' }
-]
 
 const currentIndex = ref(0)
 const itemsPerView = ref(3)
@@ -130,9 +127,9 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to top, #020202, #414345);
-  color: white;
-  padding: 6rem 0 4rem;
+  background: #f0f0f0;
+  color: #111;
+  padding: 4.5rem 0 4rem;
 }
 
 .title {
@@ -197,11 +194,12 @@ onUnmounted(() => {
 }
 
 .client-card img {
-  max-width: 240px;
-  max-height: 88px;
+  max-width: 200px;
+  max-height: 72px;
   width: auto;
-  height: auto;
+  height: 72px;
   object-fit: contain;
+  object-position: center;
 }
 
 .client-card img.logo-monochrome {
@@ -220,17 +218,18 @@ onUnmounted(() => {
   justify-content: center;
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
   font-size: 28px;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .carousel-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .carousel-btn:active {

@@ -3,10 +3,16 @@
     <div class="contact-section">
       <div class="contact-divider" aria-hidden="true"></div>
       <header class="contact-header">
-        <h2 class="title">{{ storeLang.languaje == 'en' ? 'Contact Us' : 'Contáctanos' }}</h2>
+        <h2 class="title">
+          {{
+            storeLang.languaje == 'en' ? 'Do you have a project in mind?' : '¿Tenés un proyecto en mente?'
+          }}
+        </h2>
         <p class="description">
           {{
-            storeLang.languaje == 'en' ? 'We will email you soon.' : 'Te vamos a responder pronto.'
+            storeLang.languaje == 'en'
+              ? 'Tell us what you need and we will figure out together the best way to move forward.'
+              : 'Contanos qué necesitás y analizamos juntos la mejor forma de llevarlo adelante.'
           }}
         </p>
       </header>
@@ -14,15 +20,18 @@
       <div class="contact-grid">
         <div class="contact-form-card">
           <form
-            name="contactos"
-            method="post"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
             id="contact-form"
             class="contact-form"
             role="form"
+            novalidate
+            @submit.prevent="submitContact"
           >
-            <input type="hidden" name="form-name" value="contactos" />
+            <p class="hidden-honeypot" aria-hidden="true">
+              <label>
+                No completar:
+                <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+              </label>
+            </p>
 
             <input
               type="text"
@@ -50,62 +59,102 @@
               required
             ></textarea>
 
-            <button class="btn send-button" id="submit" type="submit">
-              {{ storeLang.languaje == 'en' ? 'SEND' : 'ENVIAR' }}
+            <button
+              class="btn send-button"
+              id="submit"
+              type="submit"
+              :disabled="formStatus === 'sending'"
+            >
+              {{
+                formStatus === 'sending'
+                  ? storeLang.languaje == 'en'
+                    ? 'SENDING…'
+                    : 'ENVIANDO…'
+                  : storeLang.languaje == 'en'
+                    ? 'SEND'
+                    : 'ENVIAR'
+              }}
             </button>
+            <p v-if="formStatus === 'success'" class="form-feedback form-feedback--success" role="status">
+              {{
+                storeLang.languaje == 'en'
+                  ? 'Message sent. We will get back to you soon.'
+                  : 'Mensaje enviado. Te responderemos pronto.'
+              }}
+            </p>
+            <p v-else-if="formStatus === 'error'" class="form-feedback form-feedback--error" role="alert">
+              {{
+                storeLang.languaje == 'en'
+                  ? 'Something went wrong. Try again or write to info@nhsolutions.com.ar.'
+                  : 'No se pudo enviar. Intentá de nuevo o escribinos a info@nhsolutions.com.ar.'
+              }}
+            </p>
           </form>
         </div>
 
         <aside class="contact-aside">
-          <a class="contact-email" href="mailto:info@nhsolutions.com.ar">
-            info@nhsolutions.com.ar
-          </a>
+          <div class="contact-side-card">
+            <a class="contact-email" href="mailto:info@nhsolutions.com.ar">
+              info@nhsolutions.com.ar
+            </a>
 
-          <ul class="social-media-list">
-            <li>
-              <a
-                href="https://www.linkedin.com/company/solutionsnewhorizons"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <i class="mdi mdi-linkedin" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/NewHorizonsSolutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <i class="mdi mdi-github" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://nhsolutions.com.ar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Website"
-              >
-                <i class="mdi mdi-web" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:info@nhsolutions.com.ar" aria-label="Email">
-                <i class="mdi mdi-email" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ul>
+            <ul class="social-media-list">
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/solutionsnewhorizons"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i class="mdi mdi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/NewHorizonsSolutions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <i class="mdi mdi-github" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nhsolutions.com.ar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Website"
+                >
+                  <i class="mdi mdi-web" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@nhsolutions.com.ar" aria-label="Email">
+                  <i class="mdi mdi-email" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
 
-          <div class="map-wrap">
-            <iframe
-              title="New Horizons Solutions office — Sarmiento 1828, CABA"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9377154861277!2d-58.3952473241178!3d-34.60573645760501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac227399ed1%3A0xaee820b239723567!2sSarmiento%201828%2C%20C1044AAB%20CABA!5e0!3m2!1sen!2sar!4v1686682189059!5m2!1sen!2sar"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <div class="map-block">
+              <div class="map-card__header">
+                <span class="mdi mdi-map-marker-outline map-card__icon" aria-hidden="true"></span>
+                <div class="map-card__text">
+                  <p class="map-card__label">
+                    {{ storeLang.languaje == 'en' ? 'Our office' : 'Nuestra oficina' }}
+                  </p>
+                  <p class="map-card__address">Sarmiento 1828, CABA</p>
+                </div>
+              </div>
+              <div class="map-wrap">
+                <iframe
+                  title="New Horizons Solutions office — Sarmiento 1828, CABA"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9377154861277!2d-58.3952473241178!3d-34.60573645760501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac227399ed1%3A0xaee820b239723567!2sSarmiento%201828%2C%20C1044AAB%20CABA!5e0!3m2!1sen!2sar!4v1686682189059!5m2!1sen!2sar"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </aside>
       </div>
@@ -122,8 +171,37 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { store } from '../stores/languaje.js'
+
 const storeLang = store()
+const formStatus = ref('idle')
+
+const contactApiUrl = import.meta.env.VITE_CONTACT_API_URL || '/.netlify/functions/send-contact'
+
+async function submitContact(event) {
+  const form = event.target
+  formStatus.value = 'sending'
+
+  const payload = Object.fromEntries(new FormData(form).entries())
+
+  try {
+    const response = await fetch(contactApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+
+    if (!response.ok) {
+      throw new Error('Contact API failed')
+    }
+
+    form.reset()
+    formStatus.value = 'success'
+  } catch {
+    formStatus.value = 'error'
+  }
+}
 </script>
 
 <style scoped>
@@ -170,23 +248,55 @@ const storeLang = store()
 }
 
 .contact-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 32px;
-  align-items: start;
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.contact-form-card {
+.contact-form-card,
+.contact-side-card {
   background: #fff;
   border-radius: 20px;
   padding: 32px 36px 36px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.hidden-honeypot {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+.form-feedback {
+  margin: 8px 0 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.form-feedback--success {
+  color: #1a6b3a;
+}
+
+.form-feedback--error {
+  color: #a32b2b;
+}
+
+.send-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 .form-control {
@@ -243,10 +353,20 @@ const storeLang = store()
 .contact-aside {
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+
+.contact-side-card {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 28px;
-  padding: 8px 0;
+  gap: 24px;
+}
+
+.map-block {
+  width: 100%;
 }
 
 .contact-email {
@@ -299,13 +419,49 @@ const storeLang = store()
   transform: scale(1.05);
 }
 
+.map-card__header {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.map-card__icon {
+  font-size: 28px;
+  color: #1b1b1b;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.map-card__label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #555;
+  margin: 0 0 4px;
+}
+
+.map-card__address {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  line-height: 1.4;
+}
+
 .map-wrap {
   width: 100%;
-  max-width: 420px;
-  border-radius: 20px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e0e0e0;
   aspect-ratio: 4 / 3;
+  background: #f0f0f0;
 }
 
 .map-wrap iframe {
@@ -328,28 +484,12 @@ const storeLang = store()
   margin: 0;
 }
 
-@media screen and (max-width: 900px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-
-  .contact-form-card {
+@media screen and (max-width: 480px) {
+  .contact-form-card,
+  .contact-side-card {
     padding: 28px 24px 32px;
   }
 
-  .contact-aside {
-    padding-bottom: 8px;
-  }
-
-  .map-wrap {
-    max-width: none;
-  }
-}
-
-@media screen and (max-width: 480px) {
   .contact-section {
     padding: 72px 16px 56px;
   }

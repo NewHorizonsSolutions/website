@@ -16,9 +16,9 @@
             </b-nav-item-dropdown>
           </div>
           <b-nav-text><a href="/#home">{{ storeLang.languaje == 'en' ? "Home" : "Inicio"}}</a></b-nav-text>
-          <b-nav-text><a href="/#services">{{ storeLang.languaje == 'en' ? "Services" : "Servicios"}}</a></b-nav-text>
-          <b-nav-text><a href="/#technologies">{{ storeLang.languaje == 'en' ? "Technologies" : "Tecnologias"}}</a></b-nav-text>
-          <b-nav-text><a href="/#customers">{{ storeLang.languaje == 'en' ? "Customers" : "Clientes"}}</a></b-nav-text>
+          <b-nav-text><a href="/#solutions">{{ storeLang.languaje == 'en' ? 'Solutions' : 'Soluciones' }}</a></b-nav-text>
+          <b-nav-text><a href="/#projects">{{ storeLang.languaje == 'en' ? 'Projects' : 'Proyectos' }}</a></b-nav-text>
+          <b-nav-text><a href="/#technologies">{{ storeLang.languaje == 'en' ? 'Technologies' : 'Tecnologías' }}</a></b-nav-text>
           <b-nav-text><a href="/#aboutus" class="cult">{{ storeLang.languaje == 'en' ? "About Us" : "Nosotros"}}</a></b-nav-text>
           <b-nav-text><a class="button button-primary" href="/#contact">{{ storeLang.languaje == 'en' ? "Contact" : "Contacto"}}</a></b-nav-text>
         </b-navbar-nav>

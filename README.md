@@ -70,7 +70,39 @@ En Netlify podés definir `VITE_SITE_URL` en variables de entorno del sitio.
 
 ## Formulario de contacto
 
-Formulario compatible con **Netlify Forms** (`data-netlify` en el componente de contacto + formulario oculto en `index.html`).
+El formulario envía un `POST` JSON a la función **`send-contact`** (`netlify/functions/send-contact.js`), que manda el correo con la API de **[Resend](https://resend.com)**. La API key **no** va en el front: solo en variables de entorno de Netlify.
+
+Destinatarios por defecto (si no definís `CONTACT_TO`):
+
+- `christian@nhsolutions.com.ar`
+- `ramigarcia10@gmail.com`
+
+### Configuración en Netlify
+
+1. Crear cuenta en [Resend](https://resend.com) y verificar el dominio **nhsolutions.com.ar** (DNS: SPF/DKIM que indique Resend).
+2. Generar una **API key** en Resend.
+3. En Netlify → sitio → **Site configuration** → **Environment variables**, agregar:
+
+   | Variable | Valor |
+   |----------|--------|
+   | `RESEND_API_KEY` | `re_...` (secreto) |
+   | `CONTACT_FROM` | `NH Solutions <info@nhsolutions.com.ar>` (remitente verificado) |
+   | `CONTACT_TO` | `christian@nhsolutions.com.ar,ramigarcia10@gmail.com` (opcional; si falta, usa los dos mails por defecto) |
+
+4. **Deploy** de nuevo el sitio para que tome las variables.
+5. Probar el formulario en producción. El campo **Reply-To** del mail es el email que escribió la persona en el formulario.
+
+Copiá `.env.example` a `.env` para pruebas locales. Sin Resend configurado, el envío fallará en local salvo que uses `netlify dev` con esas variables.
+
+### Prueba local
+
+```sh
+npm install -g netlify-cli   # una vez
+netlify link                 # vincular el sitio, si aplica
+netlify dev
+```
+
+Abrí la URL que muestra Netlify Dev (puerto **8888**) y probá el contacto.
 
 ## Desarrollo local
 

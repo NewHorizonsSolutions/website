@@ -2,14 +2,14 @@ export const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://nhsolutions.co
 
 const PAGE_META = {
   en: {
-    title: 'New Horizons Solutions | Custom Software Development',
+    title: 'New Horizons Solutions | Technology & Custom Software',
     description:
-      'End-to-end custom software design, development, and implementation. New Horizons Solutions helps businesses streamline production and grow with tailored technology.'
+      'Custom software, platform engineering, cybersecurity consulting, and integrations. New Horizons Solutions helps businesses evolve with technology — including AI capabilities we are actively building.'
   },
   es: {
-    title: 'New Horizons Solutions | Desarrollo de Software a Medida',
+    title: 'New Horizons Solutions | Tecnología y Software a Medida',
     description:
-      'Diseño, desarrollo e implementación de software a medida de punta a punta. New Horizons Solutions agiliza tu producción y suma valor a tu negocio.'
+      'Software a medida, plataformas de despliegue, consultoría en ciberseguridad e integraciones. New Horizons Solutions acompaña la evolución de tu negocio con tecnología — incluidas capacidades de IA en desarrollo.'
   }
 }
 

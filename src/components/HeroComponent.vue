@@ -13,40 +13,28 @@
       <div style="position: relative">
         <header id="header" style="padding-top: 100px"></header>
         <header class="hero-header">
-          <div style="padding-top: 100px">
-            <h1 class="hero-title pl-10">
-              <span class="hero-line" style="padding-bottom: 0px; display: block">
-                {{ storeLang.languaje == 'en' ? 'We improve you.' : 'Te mejoramos.' }}
-              </span>
-              <span
-                class="hero-line pl-15"
-                style="font-size: 70px; padding-top: 20px; display: flex"
-              >
-                {{ storeLang.languaje == 'en' ? 'Exceed your' : 'Supera tus' }}
-                <span class="ml-4 typewriter" style="display: flex; width: 350px">
-                  <span class="text_1 pb-5">{{
-                    storeLang.languaje == 'en' ? 'horizons...' : 'horizontes'
-                  }}</span>
-                  <span class="text_2 pb-5">{{
-                    storeLang.languaje == 'en' ? 'perspects' : 'limitantes.'
-                  }}</span>
-                </span>
-              </span>
-            </h1>
-            <p class="w-50 mt-5 pl-15" id="description">
+          <div class="hero-copy">
+            <h1 class="hero-title hero-title--main">
               {{
                 storeLang.languaje == 'en'
-                  ? 'We deliver comprehensive development solutions from end to end, we seek to streamline your production tasks. Our main objective is to add value to your business.'
-                  : 'Entregamos soluciones integrales de desarrollo de punta a punta, buscamos agilizar tus tareas productivas. Nuestro principal objetivo es agregarle valor a tu negocio.'
+                  ? 'We drive business with technology.'
+                  : 'Impulsamos negocios con tecnología.'
+              }}
+            </h1>
+            <p class="hero-lead" id="description">
+              {{
+                storeLang.languaje == 'en'
+                  ? 'We design and build digital solutions, optimize processes, and adopt new technologies to support your business as it evolves.'
+                  : 'Diseñamos y desarrollamos soluciones digitales, optimizamos procesos y sumamos nuevas tecnologías para acompañar la evolución de tu negocio.'
               }}
             </p>
           </div>
-          <footer class="hero-footer pl-15 pt-10">
-            <a class="button button-primary" href="/#contact">{{
-              storeLang.languaje == 'en' ? "Let's Talk" : 'Hablemos'
+          <footer class="hero-footer pt-10">
+            <a class="button button-primary hero-cta" href="/#contact">{{
+              storeLang.languaje == 'en' ? 'Tell us about your project' : 'Contanos tu proyecto'
             }}</a>
-            <a class="button right" href="/#aboutus">{{
-              storeLang.languaje == 'en' ? 'Know us' : 'Conocenos'
+            <a class="button right hero-cta" href="/#solutions">{{
+              storeLang.languaje == 'en' ? 'Explore our solutions' : 'Conocé nuestras soluciones'
             }}</a>
           </footer>
         </header>
@@ -174,7 +162,6 @@ video {
 #description {
   font-family: 'DM Sans', sans-serif;
   font-size: 2.5vh;
-  margin-top: 0px !important;
 }
 
 .hero {
@@ -199,8 +186,53 @@ video {
   line-height: 0.9;
 }
 
+.hero-copy {
+  padding-top: 100px;
+  max-width: min(50vw, 42rem);
+  padding-left: clamp(1.25rem, 3.5vw, 3.75rem);
+  box-sizing: border-box;
+}
+
+.hero-title--main {
+  max-width: 14em;
+  line-height: 1.1;
+  font-size: clamp(2rem, 5vw, 2.85rem) !important;
+}
+
+.hero-lead {
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.65;
+  letter-spacing: 0.04em;
+  margin-top: 1.75rem;
+  max-width: 36rem;
+}
+
+@media screen and (min-width: 923px) {
+  .hero-copy {
+    max-width: min(68vw, 58rem);
+  }
+
+  .hero-title--main {
+    max-width: none;
+    width: 100%;
+    font-size: clamp(3rem, 5.2vw, 5rem) !important;
+    line-height: 1.06;
+  }
+
+  .hero-lead,
+  #description {
+    margin-top: 3.5rem !important;
+    max-width: 36rem;
+    font-size: clamp(1rem, 1.35vw, 1.2rem);
+  }
+
+  .hero-footer {
+    margin-top: 2.5rem;
+  }
+}
+
 @media only screen and (min-width: 32em) {
-  .hero-title {
+  .hero-title:not(.hero-title--main) {
     font-size: 16vh;
   }
 }
@@ -216,36 +248,66 @@ video {
     display: none;
   }
 
-  .hero-header,
-  #description,
-  .hero-footer {
-    text-align: center;
-    margin: auto;
-    padding: auto;
-  }
-  .hero-header h1,
-  .hero-header .hero-line {
-    padding: 0px !important;
-    padding-bottom: 30px !important;
-    margin: auto !important;
+  .hero-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  p {
-    width: 75% !important;
-    margin: auto !important;
-    padding: 0px !important;
+  .hero-copy {
+    width: min(92%, 28rem);
+    max-width: none;
+    padding-left: 0;
+    margin: 0 auto;
+    text-align: left;
   }
+
+  .hero-header h1,
+  .hero-header .hero-line {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .hero-title--main {
+    max-width: none;
+    font-size: clamp(1.95rem, 7.5vw, 2.65rem) !important;
+  }
+
+  .hero-lead,
+  #description {
+    width: 100% !important;
+    margin: 1.75rem 0 0 !important;
+    font-size: inherit;
+    padding: 0 !important;
+    letter-spacing: 0.03em;
+  }
+
   .hero-footer {
-    margin-top: 50px;
-    margin: auto !important;
+    margin: 2rem auto 0 !important;
     justify-content: center !important;
-    align-items: center !important;
-    padding: 50px !important;
-    padding-bottom: 100px !important;
+    align-items: stretch !important;
+    flex-direction: column !important;
+    gap: 0.75rem;
+    width: min(92%, 28rem);
+    padding-left: 0 !important;
+    padding: 0 0 4rem !important;
+    box-sizing: border-box;
   }
-  .button {
-    padding: 10px 50px !important;
-    margin: auto;
+
+  .hero-footer .hero-cta {
+    display: block;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    text-align: center;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
+  .hero-footer .button-primary {
+    margin-right: 0 !important;
   }
 
   .hero-title {
@@ -266,7 +328,9 @@ video {
 .hero-footer {
   display: flex;
   margin-bottom: 1em;
-  padding: 5px 0px 90px 5px;
+  padding: 5px 0 90px;
+  padding-left: clamp(1.25rem, 3.5vw, 3.75rem);
+  box-sizing: border-box;
 }
 
 .button {
@@ -295,5 +359,18 @@ video {
 
 .button-primary:hover {
   top: -6px;
+}
+
+@media screen and (max-width: 922px) {
+  .hero-footer .button-primary:hover {
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .hero-footer .hero-cta {
+    font-size: 0.85rem;
+    padding: 0.65rem 0.85rem !important;
+  }
 }
 </style>
