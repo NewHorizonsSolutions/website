@@ -53,8 +53,6 @@
 
       </article>
       </div>
-
-      <ProjectsShowcaseCarousel />
     </div>
   </section>
 </template>
@@ -64,7 +62,6 @@ import { computed, ref } from 'vue'
 import { store } from '../stores/languaje.js'
 import { projects } from '../data/projects.js'
 import { useScrollReveal } from '../composables/useScrollReveal.js'
-import ProjectsShowcaseCarousel from './ProjectsShowcaseCarousel.vue'
 
 const sectionRef = ref(null)
 useScrollReveal(sectionRef)

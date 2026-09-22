@@ -13,7 +13,7 @@
         <article
           v-for="(item, idx) in solutionCards"
           :key="item.id"
-          class="solution-card"
+          :class="['solution-card', { featured: item.featured }]"
           data-reveal
           :style="{ '--reveal-delay': `${idx * 100}ms` }"
         >
@@ -146,11 +146,10 @@ const solutionCards = [
 
 .solutions-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1.15fr 0.85fr;
   gap: 16px;
   max-width: 1100px;
   margin: 0 auto;
-  align-items: stretch;
 }
 
 .solution-card {
@@ -158,8 +157,6 @@ const solutionCards = [
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  height: 100%;
-  min-height: 100%;
   margin: 0;
   padding: 1.5rem 1.35rem 1.25rem;
   border-radius: 20px;
@@ -177,6 +174,10 @@ const solutionCards = [
 .solution-card:hover {
   transform: translateY(-4px);
   border-color: rgba(255, 255, 255, 0.32);
+}
+
+.solution-card.featured {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 100%);
 }
 
 .solution-icon {
@@ -206,9 +207,8 @@ const solutionCards = [
   flex-wrap: wrap;
   gap: 8px;
   list-style: none;
-  margin: auto 0 0;
+  margin: 0;
   padding: 0;
-  align-self: flex-start;
 }
 
 .solution-tags li {
@@ -219,6 +219,12 @@ const solutionCards = [
   background: #262626;
   border-radius: 999px;
   padding: 0.35rem 0.7rem;
+}
+
+@media screen and (min-width: 900px) {
+  .solution-card.featured:first-child {
+    grid-row: span 2;
+  }
 }
 
 @media screen and (max-width: 899px) {
