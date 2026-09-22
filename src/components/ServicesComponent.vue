@@ -13,7 +13,7 @@
         <article
           v-for="(item, idx) in solutionCards"
           :key="item.id"
-          :class="['solution-card', { featured: item.featured }]"
+          class="solution-card"
           data-reveal
           :style="{ '--reveal-delay': `${idx * 100}ms` }"
         >
@@ -58,8 +58,7 @@ const solutionCards = [
     bodyEn:
       'We build custom platforms and systems to digitize processes, centralize information, and solve concrete business needs.',
     tagsEs: ['Plataformas web', 'Sistemas internos', 'APIs', 'Integraciones'],
-    tagsEn: ['Web platforms', 'Internal systems', 'APIs', 'Integrations'],
-    featured: true
+    tagsEn: ['Web platforms', 'Internal systems', 'APIs', 'Integrations']
   },
   {
     id: 'cybersecurity',
@@ -95,8 +94,7 @@ const solutionCards = [
     bodyEn:
       'We streamline and set up a clear, practical deployment flow and release tracking so your software team can ship with more confidence and less friction.',
     tagsEs: ['CI/CD', 'Despliegues', 'Versiones', 'DevOps'],
-    tagsEn: ['CI/CD', 'Deployments', 'Release tracking', 'DevOps'],
-    featured: true
+    tagsEn: ['CI/CD', 'Deployments', 'Release tracking', 'DevOps']
   }
 ]
 </script>
@@ -146,10 +144,12 @@ const solutionCards = [
 
 .solutions-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 16px;
   max-width: 1100px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 .solution-card {
@@ -157,6 +157,8 @@ const solutionCards = [
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 1.5rem 1.35rem 1.25rem;
   border-radius: 20px;
@@ -174,10 +176,6 @@ const solutionCards = [
 .solution-card:hover {
   transform: translateY(-4px);
   border-color: rgba(255, 255, 255, 0.32);
-}
-
-.solution-card.featured {
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 100%);
 }
 
 .solution-icon {
@@ -207,8 +205,9 @@ const solutionCards = [
   flex-wrap: wrap;
   gap: 8px;
   list-style: none;
-  margin: 0;
+  margin: auto 0 0;
   padding: 0;
+  align-self: flex-start;
 }
 
 .solution-tags li {
@@ -221,15 +220,15 @@ const solutionCards = [
   padding: 0.35rem 0.7rem;
 }
 
-@media screen and (min-width: 900px) {
-  .solution-card.featured:first-child {
-    grid-row: span 2;
-  }
-}
-
 @media screen and (max-width: 899px) {
   .solutions-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .solution-card {
+    height: auto;
+    min-height: 0;
   }
 }
 </style>
