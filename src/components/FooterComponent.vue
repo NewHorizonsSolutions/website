@@ -1,14 +1,14 @@
 <template>
-  <section id="contact">
+  <section id="contact" ref="sectionRef" class="section-mountain section-mountain--mesh">
     <div class="contact-section">
       <div class="contact-divider" aria-hidden="true"></div>
       <header class="contact-header">
-        <h2 class="title">
+        <h2 class="title" data-reveal="fade">
           {{
             storeLang.languaje == 'en' ? 'Do you have a project in mind?' : '¿Tenés un proyecto en mente?'
           }}
         </h2>
-        <p class="description">
+        <p class="description" data-reveal="fade" style="--reveal-delay: 80ms">
           {{
             storeLang.languaje == 'en'
               ? 'Tell us what you need and we will figure out together the best way to move forward.'
@@ -18,7 +18,7 @@
       </header>
 
       <div class="contact-grid">
-        <div class="contact-form-card">
+        <div class="contact-form-card" data-reveal style="--reveal-delay: 120ms">
           <form
             id="contact-form"
             class="contact-form"
@@ -93,7 +93,7 @@
         </div>
 
         <aside class="contact-aside">
-          <div class="contact-side-card">
+          <div class="contact-side-card" data-reveal style="--reveal-delay: 220ms">
             <a class="contact-email" href="mailto:info@nhsolutions.com.ar">
               info@nhsolutions.com.ar
             </a>
@@ -173,9 +173,12 @@
 <script setup>
 import { ref } from 'vue'
 import { store } from '../stores/languaje.js'
+import { useScrollReveal } from '../composables/useScrollReveal.js'
 
 const storeLang = store()
 const formStatus = ref('idle')
+const sectionRef = ref(null)
+useScrollReveal(sectionRef)
 
 const contactApiUrl = import.meta.env.VITE_CONTACT_API_URL || '/.netlify/functions/send-contact'
 
@@ -209,8 +212,8 @@ async function submitContact(event) {
 
 #contact {
   width: 100%;
-  background-color: #ececec;
-  border-top: 1px solid #ddd;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.14) 55%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-section {
@@ -223,7 +226,7 @@ async function submitContact(event) {
   width: 56px;
   height: 2px;
   margin: 0 auto 40px;
-  background-color: #1b1b1b;
+  background: linear-gradient(90deg, #fafafa, #737373);
   border-radius: 1px;
 }
 
@@ -233,34 +236,38 @@ async function submitContact(event) {
 }
 
 .title {
-  font-size: 40px;
-  font-weight: bold;
-  color: #000;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  color: #f4f6fb;
   margin: 0 0 12px;
 }
 
 .description {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 17px;
-  letter-spacing: 3px;
+  font-size: 1.02rem;
+  letter-spacing: 0.02em;
   margin: 0;
-  color: #333;
+  color: rgba(244, 246, 251, 0.72);
+  line-height: 1.6;
 }
 
 .contact-grid {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 28px;
   margin: 0 auto;
   width: 100%;
+  max-width: 640px;
 }
 
 .contact-form-card,
 .contact-side-card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 32px 36px 36px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   width: 100%;
 }
@@ -302,22 +309,26 @@ async function submitContact(event) {
 .form-control {
   width: 100%;
   box-sizing: border-box;
-  background-color: #f5f5f5;
+  background-color: rgba(255, 255, 255, 0.06);
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   margin: 12px 0 0;
   padding: 14px 16px;
-  color: #000;
-  letter-spacing: 1px;
-  border: 1px solid #e0e0e0;
+  color: #f4f6fb;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.form-control::placeholder {
+  color: rgba(244, 246, 251, 0.45);
+}
+
 .form-control:focus {
   outline: none;
-  border-color: #414345;
-  box-shadow: 0 0 0 3px rgba(65, 67, 69, 0.15);
+  border-color: #d4d4d4;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
 }
 
 .form-control--message {
@@ -332,11 +343,11 @@ async function submitContact(event) {
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 2px;
-  color: #fff;
+  letter-spacing: 0.08em;
+  color: #0a0a0a;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(to top, #020202, #414345);
+  background: #fafafa;
   cursor: pointer;
   transition: box-shadow 0.2s ease, transform 0.15s ease;
 }
@@ -373,7 +384,7 @@ async function submitContact(event) {
   font-family: 'DM Sans', sans-serif;
   font-size: 17px;
   letter-spacing: 0.5px;
-  color: #000;
+  color: #e5e5e5;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease;
@@ -381,7 +392,7 @@ async function submitContact(event) {
 }
 
 .contact-email:hover {
-  border-bottom-color: #000;
+  border-bottom-color: #fafafa;
 }
 
 .social-media-list {
@@ -405,17 +416,17 @@ async function submitContact(event) {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  color: #fff;
-  background-color: #1b1b1b;
+  color: #f4f6fb;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 22px;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
 .social-media-list a:hover {
-  background-color: #fff;
-  color: #000;
-  box-shadow: 0 0 0 1px #1b1b1b;
+  background: #fafafa;
+  color: #0a0a0a;
   transform: scale(1.05);
 }
 
@@ -431,7 +442,7 @@ async function submitContact(event) {
 
 .map-card__icon {
   font-size: 28px;
-  color: #1b1b1b;
+  color: #d4d4d4;
   line-height: 1;
   margin-top: 2px;
 }
@@ -442,7 +453,7 @@ async function submitContact(event) {
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #555;
+  color: rgba(244, 246, 251, 0.55);
   margin: 0 0 4px;
 }
 
@@ -450,7 +461,7 @@ async function submitContact(event) {
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   font-weight: 600;
-  color: #000;
+  color: #f4f6fb;
   margin: 0;
   line-height: 1.4;
 }
@@ -459,9 +470,9 @@ async function submitContact(event) {
   width: 100%;
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   aspect-ratio: 4 / 3;
-  background: #f0f0f0;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .map-wrap iframe {
@@ -476,8 +487,9 @@ async function submitContact(event) {
   font-size: 12px;
   margin: 0;
   padding: 28px 16px;
-  background: linear-gradient(to top, #020202, #414345);
-  color: #fff;
+  background: rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(244, 246, 251, 0.65);
 }
 
 .footer-text p {

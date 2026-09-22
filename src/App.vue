@@ -16,8 +16,11 @@ watch(languaje, (lang) => applyPageSeo(lang))
 
 <template>
   <HeaderComponent />
-  <router-view></router-view>
-  <FooterComponent />
+  <div class="site-canvas">
+    <div class="site-mountain-ambient" aria-hidden="true"></div>
+    <router-view></router-view>
+    <FooterComponent />
+  </div>
 </template>
 <style scoped>
 

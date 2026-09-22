@@ -1,9 +1,9 @@
 <template>
-  <section id="process">
-    <h2 class="section-title">
+  <section id="process" ref="sectionRef" class="section-mountain">
+    <h2 class="section-title" data-reveal="fade">
       {{ storeLang.languaje == 'en' ? 'How we work' : 'Cómo trabajamos' }}
     </h2>
-    <p class="section-lead">
+    <p class="section-lead" data-reveal="fade" style="--reveal-delay: 80ms">
       {{
         storeLang.languaje == 'en'
           ? 'A clear path from your need to a solution in production — with communication at every step.'
@@ -12,7 +12,13 @@
     </p>
 
     <ol class="process-steps">
-      <li v-for="(step, index) in steps" :key="step.id" class="process-step tag">
+      <li
+        v-for="(step, index) in steps"
+        :key="step.id"
+        class="process-step"
+        data-reveal
+        :style="{ '--reveal-delay': `${index * 100}ms` }"
+      >
         <span class="process-step__num">{{ index + 1 }}</span>
         <div class="process-step__body">
           <h3>{{ storeLang.languaje == 'en' ? step.titleEn : step.titleEs }}</h3>
@@ -24,10 +30,13 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { store } from '../stores/languaje.js'
-import $ from 'jquery'
+import { useScrollReveal } from '../composables/useScrollReveal.js'
 
 const storeLang = store()
+const sectionRef = ref(null)
+useScrollReveal(sectionRef)
 
 const steps = [
   {
@@ -76,102 +85,84 @@ const steps = [
       'Support, improvements, and new features as your processes or market change — the solution grows with your business.'
   }
 ]
-
-$(document).on('scroll', function () {
-  var pageTop = $(document).scrollTop()
-  var pageBottom = pageTop + $(window).height()
-  var tags = $('#process .tag')
-
-  for (var i = 0; i < tags.length; i++) {
-    var tag = tags[i]
-    if ($(tag).position().top < pageBottom) {
-      $(tag).addClass('visible')
-    } else {
-      $(tag).removeClass('visible')
-    }
-  }
-})
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-
 #process {
-  color: black;
-  padding: 5rem 24px 3rem;
-  background-color: #f0f0f0;
-  margin-bottom: 0;
+  color: #fafafa;
+  padding: 4.5rem 20px 5rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.08) 100%);
 }
 
 .section-title {
-  font-size: 40px;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
   text-align: center;
-  font-weight: bold;
+  font-weight: 650;
+  letter-spacing: -0.03em;
   margin: 0;
 }
 
 .section-lead {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 17px;
-  letter-spacing: 1px;
+  font-size: 1.05rem;
   text-align: center;
   max-width: 40rem;
   margin: 12px auto 0;
-  color: #333;
+  color: rgba(244, 246, 251, 0.72);
+  line-height: 1.6;
 }
 
 .process-steps {
   list-style: none;
-  max-width: 720px;
-  margin: 48px auto 0;
+  max-width: 1100px;
+  margin: 2.75rem auto 0;
   padding: 0;
-  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .process-step {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  padding: 20px 0;
-  border-bottom: 1px solid #ddd;
-  opacity: 0;
-  transform: translate(0, 10vh);
-  transition: all 1.2s ease;
-}
-
-.process-step:last-child {
-  border-bottom: none;
-}
-
-.process-step.visible {
-  opacity: 1;
-  transform: translate(0, 0);
+  flex-direction: column;
+  gap: 12px;
+  padding: 1.15rem 1rem 1.25rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+  min-height: 100%;
 }
 
 .process-step__num {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: #1b1b1b;
-  color: #fff;
+  background: #fafafa;
+  color: #0a0a0a;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
 .process-step__body h3 {
-  margin: 0 0 6px;
-  font-size: 1.25rem;
+  margin: 0 0 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
 }
 
 .process-step__body p {
   margin: 0;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #444;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(244, 246, 251, 0.7);
+}
+
+@media screen and (max-width: 980px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+    max-width: 36rem;
+  }
 }
 </style>

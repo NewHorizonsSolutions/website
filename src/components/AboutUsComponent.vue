@@ -1,223 +1,148 @@
 <template>
-  <section id="aboutus">
-    <div class="cont">
-      <div class="monitor onleft" style="padding-bottom: 25px">
-        <div class="tag left">
-          <div class="mb-4 onleft" style="display: flex">
-            <h2
-              style="
-                font-size: 30px;
-                margin: auto 0px;
-                font-weight: bold;
-                letter-spacing: 1px;
-                border-bottom: 2px solid black;
-              "
-            >
-              {{ storeLang.languaje == 'en' ? 'About Us' : 'Nosotros' }}
-            </h2>
-          </div>
-          <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
-            {{
-              storeLang.languaje == 'en'
-                ? 'New Horizons Solutions is a technology partner based in Buenos Aires. We build custom software, platform delivery practices, and cybersecurity consulting — working closely with each client to understand how their business operates before we build.'
-                : 'New Horizons Solutions es un partner tecnológico con base en Buenos Aires. Desarrollamos software a medida, plataformas de despliegue y consultoría en ciberseguridad — trabajando cerca de cada cliente para entender cómo opera su negocio antes de construir.'
-            }}
-          </p>
-        </div>
-        <span
-          class="mdi mdi-molecule icono"
-          style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px; transition: 1s"
-        ></span>
-      </div>
-      <hr />
-      <!-- DIVISION -->
-      <div class="monitor onright" style="padding: 25px 0px">
-        <div>
-          <span
-            class="mdi mdi-fingerprint huella icono"
-            style="
-              font-size: 48px;
-              border-radius: 1000px;
-              height: 70px;
-              width: 70px;
-              transition: 1s;
-            "
-          ></span>
-        </div>
-        <div class="tag rightdiv" id="showed">
-          <div class="mb-4 onright" style="display: flex">
-            <h2
-              style="
-                font-size: 30px;
-                margin: auto 0px;
-                font-weight: bold;
-                letter-spacing: 1px;
-                border-bottom: 2px solid black;
-              "
-            >
-              {{ storeLang.languaje == 'en' ? 'How we partner' : 'Cómo acompañamos' }}
-            </h2>
-          </div>
-          <div style="display: flex; align-items: center">
-            <p class="rightxt" style="font-family: 'DM Sans', sans-serif; font-size: 16px">
-              {{
-                storeLang.languaje == 'en'
-                  ? 'We aim for long-term relationships: clear communication, realistic scopes, and solutions that can grow with you. We combine product thinking, engineering, and operations so technology supports daily work — not the other way around.'
-                  : 'Buscamos relaciones de largo plazo: comunicación clara, alcances realistas y soluciones que puedan crecer con vos. Combinamos mirada de producto, ingeniería y operación para que la tecnología acompañe el día a día — no al revés.'
-              }}
-            </p>
-            <span
-              class="mdi mdi-fingerprint huella2 icono"
-              style="
-                font-size: 48px;
-                border-radius: 1000px;
-                height: 70px;
-                width: 70px;
-                display: none;
-                transition: 1s;
-              "
-            ></span>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <!-- DIVISION -->
-      <div class="monitor onleft" style="padding-top: 25px">
-        <div class="tag left">
-          <div class="mb-4 onleft" style="display: flex">
-            <h2
-              style="
-                font-size: 30px;
-                margin: auto 0px;
-                font-weight: bold;
-                letter-spacing: 1px;
-                border-bottom: 2px solid black;
-              "
-            >
-              {{ storeLang.languaje == 'en' ? 'Our capabilities' : 'Capacidades' }}
-            </h2>
-          </div>
-          <p style="font-family: 'DM Sans', sans-serif; font-size: 16px; text-align: initial">
-            {{
-              storeLang.languaje == 'en'
-                ? 'Multidisciplinary team: analysis, UX, development, integrations, cloud, and emerging tools including AI. We stay up to date because our clients need solutions that remain useful over time — not one-off deliveries.'
-                : 'Equipo multidisciplinario: análisis, UX, desarrollo, integraciones, cloud y herramientas emergentes, incluida IA. Nos actualizamos porque nuestros clientes necesitan soluciones útiles en el tiempo — no entregas aisladas.'
-            }}
-          </p>
-        </div>
-        <span
-          class="mdi mdi-wall icono"
-          style="font-size: 48px; border-radius: 1000px; height: 70px; width: 70px; transition: 1s"
-        ></span>
+  <section id="aboutus" ref="sectionRef" class="section-mountain">
+    <div class="about-inner">
+      <header class="about-head">
+        <h2 data-reveal="fade">{{ storeLang.languaje == 'en' ? 'About Us' : 'Nosotros' }}</h2>
+        <p data-reveal="fade" style="--reveal-delay: 80ms">
+          {{
+            storeLang.languaje == 'en'
+              ? 'New Horizons Solutions is a technology partner based in Buenos Aires. We build custom software, platform delivery practices, and cybersecurity consulting — working closely with each client to understand how their business operates before we build.'
+              : 'New Horizons Solutions es un partner tecnológico con base en Buenos Aires. Desarrollamos software a medida, plataformas de despliegue y consultoría en ciberseguridad — trabajando cerca de cada cliente para entender cómo opera su negocio antes de construir.'
+          }}
+        </p>
+      </header>
+
+      <div class="about-grid">
+        <article
+          v-for="(block, idx) in blocks"
+          :key="block.id"
+          class="about-card"
+          data-reveal
+          :style="{ '--reveal-delay': `${idx * 110}ms` }"
+        >
+          <span :class="['mdi', block.icon, 'about-icon']" aria-hidden="true"></span>
+          <h3>{{ storeLang.languaje == 'en' ? block.titleEn : block.titleEs }}</h3>
+          <p>{{ storeLang.languaje == 'en' ? block.textEn : block.textEs }}</p>
+        </article>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { store } from '../stores/languaje.js'
-import $ from 'jquery'
+import { useScrollReveal } from '../composables/useScrollReveal.js'
+
 const storeLang = store()
+const sectionRef = ref(null)
+useScrollReveal(sectionRef)
 
-$(document).on('scroll', function () {
-  var pageTop = $(document).scrollTop()
-  var pageBottom = pageTop + $(window).height()
-  var tags = $('.tag')
-
-  for (var i = 0; i < tags.length; i++) {
-    var tag = tags[i]
-
-    if ($(tag).position().top < pageBottom) {
-      $(tag).addClass('visible')
-    } else {
-      $(tag).removeClass('visible')
-    }
+const blocks = [
+  {
+    id: 'partner',
+    icon: 'mdi-handshake-outline',
+    titleEs: 'Cómo acompañamos',
+    titleEn: 'How we partner',
+    textEs:
+      'Buscamos relaciones de largo plazo: comunicación clara, alcances realistas y soluciones que puedan crecer con vos. Combinamos mirada de producto, ingeniería y operación para que la tecnología acompañe el día a día.',
+    textEn:
+      'We aim for long-term relationships: clear communication, realistic scopes, and solutions that can grow with you. We combine product thinking, engineering, and operations so technology supports daily work.'
+  },
+  {
+    id: 'capabilities',
+    icon: 'mdi-layers-triple-outline',
+    titleEs: 'Capacidades',
+    titleEn: 'Our capabilities',
+    textEs:
+      'Equipo multidisciplinario: análisis, UX, desarrollo, integraciones, cloud y herramientas emergentes, incluida IA. Nos actualizamos porque nuestros clientes necesitan soluciones útiles en el tiempo.',
+    textEn:
+      'Multidisciplinary team: analysis, UX, development, integrations, cloud, and emerging tools including AI. We stay up to date because our clients need solutions that remain useful over time.'
+  },
+  {
+    id: 'focus',
+    icon: 'mdi-target',
+    titleEs: 'Enfoque',
+    titleEn: 'Our focus',
+    textEs:
+      'Priorizamos impacto real: menos promesas vacías, más entregas medibles, seguridad desde el diseño y plataformas que tu equipo pueda operar con confianza.',
+    textEn:
+      'We prioritize real impact: fewer empty promises, more measurable delivery, security by design, and platforms your team can operate with confidence.'
   }
-})
+]
 </script>
 
 <style scoped>
 #aboutus {
-  background-color: #f0f0f0;
-  height: fit-content;
-  padding: 90px 40px 72px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  padding: 4.5rem 20px 5rem;
 }
-.cont {
-  padding-top: 30px;
-  width: 1100px;
-  margin: auto;
+
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
 }
-.onleft {
-  justify-content: flex-start;
-}
-.onright {
-  justify-content: flex-end;
-}
-.rightxt {
-  text-align: end;
-}
-.monitor {
-  display: flex;
-  align-items: center;
+
+.about-head {
   text-align: center;
-  width: 100%;
-}
-.aside {
-  text-align: center;
+  max-width: 46rem;
+  margin: 0 auto 2.5rem;
 }
 
-.left {
-  width: 520px;
-  padding-right: 50px;
-  margin-right: 0px;
-}
-.tag {
-  opacity: 0;
-  transform: translate(0, 10vh);
-  transition: all 3s;
-}
-.tag.visible {
-  opacity: 1;
-  transform: translate(0, 0);
+.about-head h2 {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  letter-spacing: -0.03em;
+  color: #f4f6fb;
 }
 
-.rightdiv {
-  width: 520px;
-  padding-left: 50px;
-  margin-left: 0px;
-}
-.right:hover {
-  box-shadow: inset 400px 0 0 0 #38393b;
-  color: rgb(255, 255, 255);
+.about-head p {
+  margin: 1rem 0 0;
+  line-height: 1.65;
+  color: rgba(244, 246, 251, 0.74);
+  font-size: 1.02rem;
 }
 
-.icono:hover {
-  cursor: pointer;
-  font-size: 52px !important;
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
 }
 
-@media screen and (max-width: 922px) {
-  .cont {
-    width: 100%;
-  }
-  .rightxt {
-    text-align: initial !important;
-    padding-right: 50px;
-  }
-  .onright {
-    justify-content: flex-start;
-  }
-  .huella {
-    display: none;
-  }
-  .huella2 {
-    display: block !important;
-    margin-bottom: 50px !important;
-  }
-  .rightdiv {
-    width: 100%;
-    padding-left: 0px;
-    margin-left: 0px;
+.about-card {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+  padding: 1.35rem 1.2rem 1.4rem;
+}
+
+.about-icon {
+  font-size: 2rem;
+  color: #d4d4d4;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.about-card h3 {
+  margin: 0 0 0.6rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  color: #f4f6fb;
+}
+
+.about-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(244, 246, 251, 0.72);
+}
+
+@media screen and (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
+    margin: 0 auto;
   }
 }
 </style>

@@ -1,0 +1,53 @@
+:root {
+  --bg: #141820;
+  --bg-soft: #1c2430;
+  --bg-elevated: rgba(255, 255, 255, 0.06);
+  --mountain-far: #6b7a8f;
+  --mountain-mid: #4a5568;
+  --mountain-near: #2d3748;
+  --mountain-base: #141820;
+  --fog: #b8c4d4;
+  --line: rgba(255, 255, 255, 0.14);
+  --text: #f4f7fb;
+  --muted: #a8b4c4;
+  --accent: #ffffff;
+  --accent-soft: #d8e0ea;
+  --nav-glass: rgba(48, 58, 72, 0.38);
+  --nav-glass-scrolled: rgba(42, 52, 66, 0.52);
+  --card-glass: rgba(255, 255, 255, 0.06);
+  --card-glass-border: rgba(255, 255, 255, 0.12);
+  --radius: 18px;
+  --font: 'DM Sans', 'Segoe UI', sans-serif;
+  --display: 'Outfit', 'DM Sans', sans-serif;
+}
+
+html,
+body,
+#app {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
