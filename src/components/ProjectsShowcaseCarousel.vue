@@ -1,39 +1,54 @@
 <template>
-  <div class="showcase" data-reveal="fade" :style="{ '--reveal-delay': '120ms' }">
-    <p class="showcase-label">
+  <div ref="rootRef" class="showcase">
+    <p class="showcase-label" data-reveal="fade" :style="{ '--reveal-delay': '120ms' }">
       {{ isEn ? 'Products in the field' : 'Productos en producción' }}
     </p>
 
-    <Transition :name="transitionName" mode="out-in">
-      <div :key="activeSlide.id" class="showcase-slide">
+    <div class="showcase-stage">
+      <article
+        v-for="(slide, index) in slides"
+        v-show="index === activeIndex"
+        :key="slide.id"
+        class="showcase-slide"
+      >
         <div class="showcase-viewport">
           <div class="showcase-float">
             <div class="showcase-img-wrap">
               <div class="showcase-ground-shadow" aria-hidden="true"></div>
-              <img
-                class="showcase-img"
-                :src="activeSlide.src"
-                :alt="activeSlide.alt"
-                width="2048"
-                height="1364"
-                loading="lazy"
-                decoding="async"
-              />
+              <picture class="showcase-picture">
+                <source
+                  type="image/webp"
+                  :srcset="slide.srcsetWebp"
+                  :sizes="showcaseImageSizes"
+                />
+                <img
+                  class="showcase-img"
+                  :src="slide.src"
+                  :srcset="slide.srcsetPng"
+                  :sizes="showcaseImageSizes"
+                  :alt="slide.alt"
+                  width="2048"
+                  height="1364"
+                  loading="eager"
+                  :fetchpriority="index === activeIndex ? 'high' : 'low'"
+                  decoding="async"
+                />
+              </picture>
             </div>
           </div>
         </div>
 
         <div class="showcase-copy">
-          <h3 class="showcase-product-title">{{ activeSlide.title }}</h3>
+          <h3 class="showcase-product-title">{{ slide.title }}</h3>
           <p
-            v-for="(paragraph, pIdx) in activeSlide.bodyHtml"
+            v-for="(paragraph, pIdx) in slide.bodyHtml"
             :key="pIdx"
             class="showcase-product-text"
             v-html="paragraph"
           />
         </div>
-      </div>
-    </Transition>
+      </article>
+    </div>
 
     <div class="showcase-controls">
       <div class="showcase-dots" role="tablist" :aria-label="isEn ? 'Showcase slides' : 'Diapositivas'">
@@ -60,10 +75,24 @@ import { store } from '../stores/languaje.js'
 const storeLang = store()
 const isEn = computed(() => storeLang.languaje === 'en')
 
+const showcaseImageSizes = '(max-width: 767px) 92vw, 880px'
+
+function slideAssets(baseName) {
+  const png = `/showcase-${baseName}.png`
+  const png2x = `/showcase-${baseName}@2x.png`
+  const webp = `/showcase-${baseName}.webp`
+  const webp2x = `/showcase-${baseName}@2x.webp`
+  return {
+    src: png,
+    srcsetPng: `${png} 1024w, ${png2x} 2048w`,
+    srcsetWebp: `${webp} 1024w, ${webp2x} 2048w`
+  }
+}
+
 const slides = computed(() => [
   {
     id: 'mcpaper-wms',
-    src: '/showcase-mcpaper-wms.png',
+    ...slideAssets('mcpaper-wms'),
     label: isEn.value ? 'WMS warehouse and production' : 'WMS almacén y producción',
     alt: isEn.value
       ? 'WMS warehouse and production dashboard on laptop and tablet'
@@ -81,7 +110,7 @@ const slides = computed(() => [
   },
   {
     id: 'logistica',
-    src: '/showcase-logistica.png',
+    ...slideAssets('logistica'),
     label: isEn.value ? 'MEG - Mercado Envios Gateway' : 'MEG - Mercado Envios Gateway',
     alt: isEn.value
       ? 'MEG Mercado Envios Gateway logistics platform on laptop'
@@ -90,39 +119,49 @@ const slides = computed(() => [
     bodyHtml: isEn.value
       ? [
           'Custom system built to <strong>centralize and automate shipping management</strong> for multiple sellers. The platform connects <strong>Mercado Libre</strong> orders with <strong>logistics operations</strong>, letting you manage <strong>clients</strong>, <strong>sellers</strong>, <strong>orders</strong>, and <strong>sync status</strong> from one place.',
-          'It improves visibility on every operation and cuts manual work by integrating <strong>e-commerce</strong>, <strong>logistics</strong>, and <strong>back-office systems</strong>.'
+          'We integrate your main <strong>sales channels</strong> in one place. We connect <strong>Mercado Libre</strong>, <strong>Shopify</strong>, <strong>WooCommerce</strong>, <strong>Tiendanube</strong>, and other platforms to <strong>centralize operations</strong>, <strong>automate workflows</strong>, keep information <strong>in sync</strong>, and streamline <strong>invoicing</strong>.',
+          'Everything from a <strong>single dashboard</strong>, built to support your business as it grows.'
         ]
       : [
           'Sistema desarrollado a medida para <strong>centralizar y automatizar la gestión de envíos</strong> de múltiples vendedores. La plataforma integra las órdenes provenientes de <strong>Mercado Libre</strong> con la <strong>operación logística</strong>, permitiendo administrar <strong>clientes</strong>, <strong>vendedores</strong>, <strong>órdenes</strong> y <strong>estados de sincronización</strong> desde un único lugar.',
-          'Facilita el seguimiento de cada operación y reduce tareas manuales mediante la integración entre <strong>e-commerce</strong>, <strong>logística</strong> y <strong>sistemas de gestión</strong>.'
+          'Integramos tus principales <strong>canales de venta</strong> en un solo lugar. Conectamos <strong>Mercado Libre</strong>, <strong>Shopify</strong>, <strong>WooCommerce</strong>, <strong>Tiendanube</strong> y otras plataformas para <strong>centralizar la gestión</strong>, <strong>automatizar procesos</strong>, mantener la información <strong>sincronizada</strong> y simplificar la <strong>facturación</strong>.',
+          'Todo desde un <strong>único dashboard</strong>, preparado para acompañar el <strong>crecimiento de tu negocio</strong>.'
         ]
   }
 ])
 
+const SLIDE_COUNT = 2
 const activeIndex = ref(0)
-const direction = ref(1)
+const rootRef = ref(null)
 
-const activeSlide = computed(() => slides.value[activeIndex.value])
-const transitionName = computed(() => (direction.value >= 0 ? 'showcase-next' : 'showcase-prev'))
+const AUTOPLAY_MS = 9000
+let autoplayTimer = null
 
-let timer = null
+function isShowcaseHovered() {
+  return Boolean(rootRef.value?.matches(':hover'))
+}
+
+function startAutoplay() {
+  if (autoplayTimer !== null) return
+  autoplayTimer = window.setInterval(() => {
+    if (isShowcaseHovered()) return
+    activeIndex.value = (activeIndex.value + 1) % SLIDE_COUNT
+  }, AUTOPLAY_MS)
+}
 
 function goTo(index) {
-  direction.value = index >= activeIndex.value ? 1 : -1
   activeIndex.value = index
 }
 
-function next() {
-  direction.value = 1
-  activeIndex.value = (activeIndex.value + 1) % slides.value.length
-}
-
 onMounted(() => {
-  timer = window.setInterval(next, 9000)
+  startAutoplay()
 })
 
 onUnmounted(() => {
-  if (timer) window.clearInterval(timer)
+  if (autoplayTimer !== null) {
+    window.clearInterval(autoplayTimer)
+    autoplayTimer = null
+  }
 })
 </script>
 
@@ -150,13 +189,20 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
-.showcase-slide {
+.showcase-stage {
   width: 100%;
   max-width: 920px;
+  position: relative;
+  padding: 0.5rem 1rem 1rem;
+  box-sizing: border-box;
+}
+
+.showcase-slide {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  gap: 1.75rem;
 }
 
 .showcase-viewport {
@@ -168,13 +214,21 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   overflow: visible;
-  background: transparent;
 }
 
 .showcase-float {
   animation: showcase-float 6s ease-in-out infinite;
-  pointer-events: none;
   width: 100%;
+}
+
+.showcase:hover .showcase-float {
+  animation-play-state: paused;
+}
+
+.showcase-picture {
+  display: block;
+  width: 100%;
+  line-height: 0;
 }
 
 .showcase-img-wrap {
@@ -211,18 +265,17 @@ onUnmounted(() => {
   max-height: min(52vw, 420px);
   margin: 0 auto;
   object-fit: contain;
-  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.28));
-  pointer-events: none;
+  object-position: center;
   user-select: none;
+  image-rendering: auto;
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.28));
 }
 
 .showcase-copy {
   width: 100%;
   max-width: 42rem;
-  margin-top: 1.75rem;
-  padding: 0 1rem 0.25rem;
+  padding: 0 0.25rem;
   text-align: center;
-  order: 2;
 }
 
 .showcase-product-title {
@@ -280,33 +333,6 @@ onUnmounted(() => {
   box-shadow: 0 0 12px rgba(147, 197, 253, 0.5);
 }
 
-.showcase-next-enter-active,
-.showcase-next-leave-active,
-.showcase-prev-enter-active,
-.showcase-prev-leave-active {
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.showcase-next-enter-from {
-  opacity: 0;
-  transform: translateX(24px);
-}
-
-.showcase-next-leave-to {
-  opacity: 0;
-  transform: translateX(-24px);
-}
-
-.showcase-prev-enter-from {
-  opacity: 0;
-  transform: translateX(-24px);
-}
-
-.showcase-prev-leave-to {
-  opacity: 0;
-  transform: translateX(24px);
-}
-
 @keyframes showcase-float {
   0%,
   100% {
@@ -320,13 +346,6 @@ onUnmounted(() => {
 @media (prefers-reduced-motion: reduce) {
   .showcase-float {
     animation: none;
-  }
-
-  .showcase-next-enter-active,
-  .showcase-next-leave-active,
-  .showcase-prev-enter-active,
-  .showcase-prev-leave-active {
-    transition: none;
   }
 }
 
