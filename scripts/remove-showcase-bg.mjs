@@ -34,6 +34,13 @@ const jobs = [
       'c__Users_rami4_AppData_Roaming_Cursor_User_workspaceStorage_445630cbdb31eee8175bd3695469bee7_images_logistica-94902a0e-d272-4f03-93a5-265761bdcaaf.jpg'
     ),
     baseName: 'showcase-logistica'
+  },
+  {
+    input: path.join(
+      assetsDir,
+      'c__Users_rami4_AppData_Roaming_Cursor_User_workspaceStorage_445630cbdb31eee8175bd3695469bee7_images_AML-7996e439-c65a-42ed-b546-172ae9607f0b.jpg'
+    ),
+    baseName: 'showcase-aml'
   }
 ]
 
