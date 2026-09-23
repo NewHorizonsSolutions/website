@@ -27,8 +27,8 @@
                   :srcset="slide.srcsetPng"
                   :sizes="showcaseImageSizes"
                   :alt="slide.alt"
-                  width="2048"
-                  height="1364"
+                  :width="slide.imgWidth"
+                  :height="slide.imgHeight"
                   loading="eager"
                   :fetchpriority="index === activeIndex ? 'high' : 'low'"
                   decoding="async"
@@ -77,15 +77,17 @@ const isEn = computed(() => storeLang.languaje === 'en')
 
 const showcaseImageSizes = '(max-width: 767px) 92vw, 880px'
 
-function slideAssets(baseName) {
+function slideAssets(baseName, { w1 = 1024, w2 = 2048, h1 = 682, h2 = 1364 } = {}) {
   const png = `/showcase-${baseName}.png`
   const png2x = `/showcase-${baseName}@2x.png`
   const webp = `/showcase-${baseName}.webp`
   const webp2x = `/showcase-${baseName}@2x.webp`
   return {
     src: png,
-    srcsetPng: `${png} 1024w, ${png2x} 2048w`,
-    srcsetWebp: `${webp} 1024w, ${webp2x} 2048w`
+    srcsetPng: `${png} ${w1}w, ${png2x} ${w2}w`,
+    srcsetWebp: `${webp} ${w1}w, ${webp2x} ${w2}w`,
+    imgWidth: w1,
+    imgHeight: h1
   }
 }
 
@@ -127,10 +129,31 @@ const slides = computed(() => [
           'Integramos tus principales <strong>canales de venta</strong> en un solo lugar. Conectamos <strong>Mercado Libre</strong>, <strong>Shopify</strong>, <strong>WooCommerce</strong>, <strong>Tiendanube</strong> y otras plataformas para <strong>centralizar la gestión</strong>, <strong>automatizar procesos</strong>, mantener la información <strong>sincronizada</strong> y simplificar la <strong>facturación</strong>.',
           'Todo desde un <strong>único dashboard</strong>, preparado para acompañar el <strong>crecimiento de tu negocio</strong>.'
         ]
+  },
+  {
+    id: 'aml',
+    ...slideAssets('aml'),
+    label: isEn.value ? 'AML and compliance management' : 'Gestión AML y compliance',
+    alt: isEn.value
+      ? 'AML and compliance management platform on laptop and tablet'
+      : 'Plataforma de gestión AML y compliance en notebook y tablet',
+    title: isEn.value
+      ? 'AML and Compliance Management Platform'
+      : 'Plataforma de Gestión de AML y Compliance',
+    bodyHtml: isEn.value
+      ? [
+          'End-to-end <strong>Compliance and AML</strong> platform designed to <strong>centralize and automate</strong> critical compliance workflows. It includes a <strong>client onboarding back-office</strong>, <strong>cash payment management</strong>, and <strong>custody accounts</strong> for regulated entities—so teams can run all information and operations from <strong>one environment</strong>.',
+          'The solution integrates <strong>RENAPER</strong>, <strong>NOSIS</strong>, and <strong>messaging services</strong> to streamline identity validation and user communication. It also digitizes <strong>sworn declarations (DDJJ)</strong> with <strong>electronic signature</strong> and centralizes documentation for each client.',
+          'It includes an <strong>AML alert engine</strong> to detect unusual behavior and transactional deviations, generating alerts for analysis, tracking, and resolution. The full process maintains <strong>complete traceability</strong>, supporting control, audit, and day-to-day <strong>Compliance</strong> team workflows.'
+        ]
+      : [
+          'Plataforma integral de <strong>Compliance y AML</strong> diseñada para <strong>centralizar y automatizar</strong> procesos críticos de cumplimiento. Cuenta con un <strong>backoffice de onboarding de clientes</strong>, <strong>gestión de pagos físicos</strong> y <strong>cuentas custodia</strong> para sujetos obligados, permitiendo administrar toda la información y operatoria desde un <strong>único entorno</strong>.',
+          'La solución incorpora integraciones con <strong>RENAPER</strong>, <strong>NOSIS</strong> y servicios de <strong>mensajería</strong> para facilitar la validación de información y comunicación con los usuarios. Además, digitaliza la gestión de <strong>Declaraciones Juradas (DDJJ)</strong> con <strong>firma electrónica</strong> y centraliza la documentación asociada a cada cliente.',
+          'Incluye un <strong>motor de alertas AML</strong> que permite identificar comportamientos inusuales y desvíos transaccionales, generando alertas para su análisis, seguimiento y resolución. Todo el proceso mantiene una <strong>trazabilidad completa</strong>, facilitando el control, la auditoría y la gestión diaria de los equipos de <strong>Compliance</strong>.'
+        ]
   }
 ])
 
-const SLIDE_COUNT = 2
 const activeIndex = ref(0)
 const rootRef = ref(null)
 
@@ -145,7 +168,7 @@ function startAutoplay() {
   if (autoplayTimer !== null) return
   autoplayTimer = window.setInterval(() => {
     if (isShowcaseHovered()) return
-    activeIndex.value = (activeIndex.value + 1) % SLIDE_COUNT
+    activeIndex.value = (activeIndex.value + 1) % slides.value.length
   }, AUTOPLAY_MS)
 }
 
