@@ -58,8 +58,7 @@ const solutionCards = [
     bodyEn:
       'We build custom platforms and systems to digitize processes, centralize information, and solve concrete business needs.',
     tagsEs: ['Plataformas web', 'Sistemas internos', 'APIs', 'Integraciones'],
-    tagsEn: ['Web platforms', 'Internal systems', 'APIs', 'Integrations'],
-    featured: true
+    tagsEn: ['Web platforms', 'Internal systems', 'APIs', 'Integrations']
   },
   {
     id: 'cybersecurity',
@@ -95,8 +94,7 @@ const solutionCards = [
     bodyEn:
       'We streamline and set up a clear, practical deployment flow and release tracking so your software team can ship with more confidence and less friction.',
     tagsEs: ['CI/CD', 'Despliegues', 'Versiones', 'DevOps'],
-    tagsEn: ['CI/CD', 'Deployments', 'Release tracking', 'DevOps'],
-    featured: true
+    tagsEn: ['CI/CD', 'Deployments', 'Release tracking', 'DevOps']
   }
 ]
 </script>
@@ -147,6 +145,7 @@ const solutionCards = [
 .solutions-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 16px;
   max-width: 1100px;
   margin: 0 auto;
@@ -224,6 +223,12 @@ const solutionCards = [
 @media screen and (max-width: 899px) {
   .solutions-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .solution-card {
+    height: auto;
+    min-height: 0;
   }
 }
 </style>

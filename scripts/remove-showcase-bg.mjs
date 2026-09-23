@@ -1,6 +1,6 @@
 /**
  * Removes near-black backgrounds from showcase JPGs → transparent PNGs.
- * Usage: node scripts/remove-showcase-bg.mjs <input> <output>
+ * Usage: node scripts/remove-showcase-bg.mjs
  */
 import sharp from 'sharp'
 import path from 'path'
@@ -23,20 +23,21 @@ const jobs = [
   {
     input: path.join(
       assetsDir,
-      'c__Users_rami4_AppData_Roaming_Cursor_User_workspaceStorage_445630cbdb31eee8175bd3695469bee7_images_tablets-2c8dfeff-57dd-4975-b592-ad735db909c6.jpg'
+      'c__Users_rami4_AppData_Roaming_Cursor_User_workspaceStorage_445630cbdb31eee8175bd3695469bee7_images_mcpapper-produccion-f5790a13-9e31-4517-a889-71c190adda60.jpg'
     ),
-    output: path.join(repoRoot, 'public', 'showcase-tablet.png')
+    output: path.join(repoRoot, 'public', 'showcase-mcpaper-wms.png')
   },
   {
     input: path.join(
       assetsDir,
-      'c__Users_rami4_AppData_Roaming_Cursor_User_workspaceStorage_445630cbdb31eee8175bd3695469bee7_images_notebook-e8a55907-ceef-4ba1-91f0-d194c5db3e84.jpg'
+      'c__Users_rami4_AppData_Roaming_Cursor_User_workspaceStorage_445630cbdb31eee8175bd3695469bee7_images_logistica-produccion-d2679957-7480-4be0-a27a-9f76d453e570.jpg'
     ),
-    output: path.join(repoRoot, 'public', 'showcase-notebook.png')
+    output: path.join(repoRoot, 'public', 'showcase-logistica.png')
   }
 ]
 
-/** Turn dark background pixels transparent; soft edge for anti-aliasing. */
+const OUTPUT_SCALE = 2
+
 function keyOutBlack(raw, channels) {
   if (channels !== 4) throw new Error('Expected RGBA')
   for (let i = 0; i < raw.length; i += 4) {
@@ -46,13 +47,11 @@ function keyOutBlack(raw, channels) {
     const max = Math.max(r, g, b)
     const min = Math.min(r, g, b)
 
-    // Pure/near-black background
     if (max <= 22) {
       raw[i + 3] = 0
       continue
     }
 
-    // Dark gray shadow fringe on black studio bg
     if (max <= 55 && min <= 40 && max - min <= 18) {
       const t = (max - 22) / (55 - 22)
       raw[i + 3] = Math.round(Math.min(255, Math.max(0, t * t * 255)))
@@ -62,8 +61,6 @@ function keyOutBlack(raw, channels) {
     raw[i + 3] = 255
   }
 }
-
-const OUTPUT_SCALE = 2
 
 async function processOne({ input, output }) {
   const meta = await sharp(input).metadata()

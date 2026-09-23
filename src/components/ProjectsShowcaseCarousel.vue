@@ -4,9 +4,9 @@
       {{ isEn ? 'Products in the field' : 'Productos en producción' }}
     </p>
 
-    <div class="showcase-viewport">
-      <Transition :name="transitionName" mode="out-in">
-        <div :key="activeSlide.id" class="showcase-slide">
+    <Transition :name="transitionName" mode="out-in">
+      <div :key="activeSlide.id" class="showcase-slide">
+        <div class="showcase-viewport">
           <div class="showcase-float">
             <div class="showcase-img-wrap">
               <div class="showcase-ground-shadow" aria-hidden="true"></div>
@@ -22,8 +22,18 @@
             </div>
           </div>
         </div>
-      </Transition>
-    </div>
+
+        <div class="showcase-copy">
+          <h3 class="showcase-product-title">{{ activeSlide.title }}</h3>
+          <p
+            v-for="(paragraph, pIdx) in activeSlide.bodyHtml"
+            :key="pIdx"
+            class="showcase-product-text"
+            v-html="paragraph"
+          />
+        </div>
+      </div>
+    </Transition>
 
     <div class="showcase-controls">
       <div class="showcase-dots" role="tablist" :aria-label="isEn ? 'Showcase slides' : 'Diapositivas'">
@@ -52,16 +62,40 @@ const isEn = computed(() => storeLang.languaje === 'en')
 
 const slides = computed(() => [
   {
-    id: 'tablet',
-    src: '/showcase-tablet.png',
-    label: isEn.value ? 'Tablet app' : 'App en tablet',
-    alt: isEn.value ? 'Warehouse apps on tablet' : 'Apps de depósito en tablet'
+    id: 'mcpaper-wms',
+    src: '/showcase-mcpaper-wms.png',
+    label: isEn.value ? 'WMS warehouse and production' : 'WMS almacén y producción',
+    alt: isEn.value
+      ? 'WMS warehouse and production dashboard on laptop and tablet'
+      : 'WMS — panel de almacén y producción en notebook y tablet',
+    title: isEn.value
+      ? 'WMS – End-to-end warehouse and production management'
+      : 'WMS – Gestión integral de almacén y producción',
+    bodyHtml: isEn.value
+      ? [
+          'Custom system built to <strong>centralize and manage</strong> the company’s full operational flow. It tracks <strong>material stock</strong>, <strong>work orders</strong>, <strong>production</strong>, material consumption, <strong>palletizing</strong>, and <strong>finished goods</strong> while maintaining <strong>traceability</strong> at every stage through to dispatch preparation.'
+        ]
+      : [
+          'Sistema desarrollado a medida para <strong>centralizar y gestionar</strong> todo el flujo operativo de la empresa. Permite controlar <strong>stock de materiales</strong>, <strong>órdenes de trabajo</strong>, <strong>producción</strong>, consumo de materiales, <strong>paletizado</strong> y <strong>producto terminado</strong>, manteniendo la <strong>trazabilidad</strong> de cada etapa hasta su preparación para despacho.'
+        ]
   },
   {
-    id: 'notebook',
-    src: '/showcase-notebook.png',
-    label: isEn.value ? 'Laptop dashboard' : 'Panel en notebook',
-    alt: isEn.value ? 'Gateway dashboard on laptop' : 'Panel gateway en notebook'
+    id: 'logistica',
+    src: '/showcase-logistica.png',
+    label: isEn.value ? 'MEG - Mercado Envios Gateway' : 'MEG - Mercado Envios Gateway',
+    alt: isEn.value
+      ? 'MEG Mercado Envios Gateway logistics platform on laptop'
+      : 'MEG Mercado Envios Gateway — plataforma logística en notebook',
+    title: isEn.value ? 'MEG - Mercado Envios Gateway' : 'MEG - Mercado Envios Gateway',
+    bodyHtml: isEn.value
+      ? [
+          'Custom system built to <strong>centralize and automate shipping management</strong> for multiple sellers. The platform connects <strong>Mercado Libre</strong> orders with <strong>logistics operations</strong>, letting you manage <strong>clients</strong>, <strong>sellers</strong>, <strong>orders</strong>, and <strong>sync status</strong> from one place.',
+          'It improves visibility on every operation and cuts manual work by integrating <strong>e-commerce</strong>, <strong>logistics</strong>, and <strong>back-office systems</strong>.'
+        ]
+      : [
+          'Sistema desarrollado a medida para <strong>centralizar y automatizar la gestión de envíos</strong> de múltiples vendedores. La plataforma integra las órdenes provenientes de <strong>Mercado Libre</strong> con la <strong>operación logística</strong>, permitiendo administrar <strong>clientes</strong>, <strong>vendedores</strong>, <strong>órdenes</strong> y <strong>estados de sincronización</strong> desde un único lugar.',
+          'Facilita el seguimiento de cada operación y reduce tareas manuales mediante la integración entre <strong>e-commerce</strong>, <strong>logística</strong> y <strong>sistemas de gestión</strong>.'
+        ]
   }
 ])
 
@@ -84,7 +118,7 @@ function next() {
 }
 
 onMounted(() => {
-  timer = window.setInterval(next, 7000)
+  timer = window.setInterval(next, 9000)
 })
 
 onUnmounted(() => {
@@ -106,7 +140,7 @@ onUnmounted(() => {
 .showcase-label {
   position: relative;
   z-index: 3;
-  margin: 0 0 2.25rem;
+  margin: 0 0 2rem;
   padding: 0 1rem;
   font-size: 0.78rem;
   letter-spacing: 0.14em;
@@ -116,35 +150,38 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
+.showcase-slide {
+  width: 100%;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
 .showcase-viewport {
   position: relative;
   z-index: 1;
   width: 100%;
-  min-height: min(48vw, 380px);
-  max-height: 440px;
+  min-height: min(52vw, 420px);
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   background: transparent;
-}
-
-.showcase-slide {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .showcase-float {
   animation: showcase-float 6s ease-in-out infinite;
   pointer-events: none;
+  width: 100%;
 }
 
 .showcase-img-wrap {
   position: relative;
   display: inline-block;
   line-height: 0;
+  width: 100%;
 }
 
 .showcase-ground-shadow {
@@ -169,14 +206,48 @@ onUnmounted(() => {
   position: relative;
   z-index: 1;
   display: block;
-  width: min(92vw, 1024px);
+  width: min(100%, 880px);
   height: auto;
   max-height: min(52vw, 420px);
+  margin: 0 auto;
   object-fit: contain;
-  image-rendering: auto;
   filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.28));
   pointer-events: none;
   user-select: none;
+}
+
+.showcase-copy {
+  width: 100%;
+  max-width: 42rem;
+  margin-top: 1.75rem;
+  padding: 0 1rem 0.25rem;
+  text-align: center;
+  order: 2;
+}
+
+.showcase-product-title {
+  margin: 0 0 0.85rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: #f4f6fb;
+}
+
+.showcase-product-text {
+  margin: 0 0 0.75rem;
+  font-size: clamp(0.92rem, 1.8vw, 1.02rem);
+  line-height: 1.65;
+  color: rgba(244, 246, 251, 0.78);
+}
+
+.showcase-product-text:last-child {
+  margin-bottom: 0;
+}
+
+.showcase-product-text :deep(strong) {
+  font-weight: 650;
+  color: rgba(244, 246, 251, 0.96);
 }
 
 .showcase-controls {
@@ -261,14 +332,7 @@ onUnmounted(() => {
 
 @media screen and (max-width: 767px) {
   .showcase-img {
-    width: min(94vw, 480px);
-    max-height: min(56vw, 300px);
-  }
-
-  .showcase-ground-shadow {
-    width: 85%;
-    height: 12%;
-    bottom: 0;
+    max-height: min(56vw, 280px);
   }
 }
 </style>
